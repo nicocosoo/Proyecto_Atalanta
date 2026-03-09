@@ -131,16 +131,16 @@ nav a:hover{
     visibility 0.8s ease;
 }
 
-.hero-content h1{
+/*Cambio de color y tamaño de los titulos h3*/
+.hero-content h3{
+  font-style: italic;
   font-family:"Space Grotesk", sans-serif;
+  color: #ff0033;
+  font-size:clamp(15px, 5vw, 30px);
+  line-height:1.00;
 
-  font-size:clamp(46px, 5vw, 88px);
-  line-height:1.02;
-
-  font-weight:700;
+  font-weight:200;
   letter-spacing:-1.2px;
-
-  text-transform:uppercase;
 
   margin-bottom:28px;
   max-width:960px;
@@ -148,6 +148,27 @@ nav a:hover{
   word-break:normal;
   overflow-wrap:break-word;
 }
+
+/*Cambio de tamaño y width*/
+.hero-content h1{
+  font-family:"Space Grotesk", sans-serif;
+
+  font-size:clamp(40px, 5vw, 80px);
+  line-height:1.02;
+
+  font-weight:800;
+  letter-spacing:-1.2px;
+
+  text-transform:uppercase;
+
+  margin-bottom:28px;
+  max-width:1000px;
+
+  word-break:normal;
+  overflow-wrap:break-word;
+
+}
+
 .hero-content p,
 .hero-content .btn-red{
   opacity:0;
@@ -169,9 +190,11 @@ nav a:hover{
   animation-delay:0.15s;
 }
 
+/*Cambiar el estilo de la definición de los titulos*/
 .hero-content.active p{
   animation:contentUp 0.8s ease forwards;
   animation-delay:0.3s;
+  font-family: "Space Grotesk", sans-serif;
 }
 
 @keyframes contentUp{
@@ -185,16 +208,8 @@ nav a:hover{
   }
 }
 
-.hero-content h1{
-  font-size:clamp(46px, 5vw, 88px);
-  line-height:1.02;
-  font-weight:800;
-  text-transform:uppercase;
-  margin-bottom:28px;
-  max-width:960px;
-  word-break:normal;
-  overflow-wrap:break-word;
-}
+/*Cambio de tamaño y width*/
+
 
 .hero-content p{
   font-size:clamp(18px, 1.35vw, 24px);

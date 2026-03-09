@@ -1372,16 +1372,17 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
   text-align:center;
   margin-bottom:60px;
 }
-
+/*Cambio color naranja a rojo para mas armonia*/
 .partners-kicker{
   display:inline-block;
   margin-bottom:14px;
-  color:#ff4d2d;
+  color:#ff3131;
   font-size:14px;
   letter-spacing:3px;
   font-weight:700;
   text-transform:uppercase;
 }
+/*Fin del tercer commit, Nico 2.2*/
 
 .partners-header h2{
   font-family:"Space Grotesk", Arial, sans-serif;

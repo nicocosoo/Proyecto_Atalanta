@@ -321,10 +321,24 @@ nav a:hover{
 }
 
 /* STATS */
-
+/*Cambio de color, introducir el +, introducir el titulo*/
 .stats{
   padding:120px 0;
-  background:#0b0b0b;
+  background:#d9dde2;
+}
+
+.stats-title{
+  font-family:"Space Grotesk", Arial, sans-serif;
+  font-size:52px;
+  font-weight:800;
+  text-transform:uppercase;
+  text-align:center;
+  color:#0f1720;
+  margin-bottom:90px;
+  letter-spacing:-1.5px;
+  max-width:1400px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .stats-inner{
@@ -335,6 +349,7 @@ nav a:hover{
 
 .stat{
   text-align:center;
+  max-width:360px;
 }
 
 .stat-number{
@@ -342,17 +357,19 @@ nav a:hover{
   font-size:88px;
   line-height:0.95;
   color:#ff2a2a;
-  margin-bottom:16px;
+  margin-bottom:20px;
   font-weight:800;
   letter-spacing:-2px;
-  text-shadow:0 0 18px rgba(255,0,0,0.10);
 }
 
 .stat p{
-  color:#ececec;
-  font-size:18px;
+  color:#0f1720;
+  font-size:20px;
   font-weight:500;
+  line-height:1.3;
+  margin:0;
 }
+/*Fin del primer commit, Nico 2.0*/
 
 /* CIRCLE METRICS */
 

@@ -60,7 +60,7 @@ nav a{
 }
 
 nav a:hover{
-  color:#ff2a2a;
+  color:#f00000;
 }
 
 /* HERO */
@@ -131,16 +131,16 @@ nav a:hover{
     visibility 0.8s ease;
 }
 
-.hero-content h1{
+/*Cambio de color y tamaño de los titulos h3*/
+.hero-content h3{
+  font-style: italic;
   font-family:"Space Grotesk", sans-serif;
+  color: #ff0033;
+  font-size:clamp(15px, 5vw, 30px);
+  line-height:1.00;
 
-  font-size:clamp(46px, 5vw, 88px);
-  line-height:1.02;
-
-  font-weight:700;
+  font-weight:200;
   letter-spacing:-1.2px;
-
-  text-transform:uppercase;
 
   margin-bottom:28px;
   max-width:960px;
@@ -148,6 +148,27 @@ nav a:hover{
   word-break:normal;
   overflow-wrap:break-word;
 }
+
+/*Cambio de tamaño y width*/
+.hero-content h1{
+  font-family:"Space Grotesk", sans-serif;
+
+  font-size:clamp(40px, 5vw, 80px);
+  line-height:1.02;
+
+  font-weight:800;
+  letter-spacing:-1.2px;
+
+  text-transform:uppercase;
+
+  margin-bottom:28px;
+  max-width:1000px;
+
+  word-break:normal;
+  overflow-wrap:break-word;
+
+}
+
 .hero-content p,
 .hero-content .btn-red{
   opacity:0;
@@ -169,9 +190,11 @@ nav a:hover{
   animation-delay:0.15s;
 }
 
+/*Cambiar el estilo de la definición de los titulos*/
 .hero-content.active p{
   animation:contentUp 0.8s ease forwards;
   animation-delay:0.3s;
+  font-family: "Space Grotesk", sans-serif;
 }
 
 @keyframes contentUp{
@@ -185,16 +208,8 @@ nav a:hover{
   }
 }
 
-.hero-content h1{
-  font-size:clamp(46px, 5vw, 88px);
-  line-height:1.02;
-  font-weight:800;
-  text-transform:uppercase;
-  margin-bottom:28px;
-  max-width:960px;
-  word-break:normal;
-  overflow-wrap:break-word;
-}
+/*Cambio de tamaño y width*/
+
 
 .hero-content p{
   font-size:clamp(18px, 1.35vw, 24px);
@@ -341,7 +356,7 @@ nav a:hover{
   font-family:"Space Grotesk", Arial, sans-serif;
   font-size:88px;
   line-height:0.95;
-  color:#ff2a2a;
+  color:#ff0000;
   margin-bottom:16px;
   font-weight:800;
   letter-spacing:-2px;
@@ -387,7 +402,7 @@ nav a:hover{
 
 .small-red-text{
   display:block;
-  color:#ff5338;
+  color:#ff0000;
   font-size:18px;
   font-weight:700;
   letter-spacing:4px;
@@ -437,7 +452,7 @@ nav a:hover{
 
 .circle-fill{
   fill:none;
-  stroke:#ff5a22;
+  stroke:#ff0000;
   stroke-width:14;
   stroke-linecap:butt;
   stroke-dasharray:515;
@@ -462,7 +477,7 @@ nav a:hover{
   font-family:"Space Grotesk", Arial, sans-serif;
   font-size:32px;
   line-height:1.15;
-  color:#ff5a22;
+  color:#ff0000;
   margin-bottom:16px;
   font-weight:700;
 }
@@ -548,7 +563,7 @@ nav a:hover{
   height:100%;
   width:0%;
   border-radius:999px;
-  background:linear-gradient(90deg,#7a0000 0%, #ff2d2d 50%, #ff6a3d 100%);
+  background:linear-gradient(90deg,#7a0000 0%, #ff2d2d 50%, #ff3d3d 100%);
   box-shadow:0 0 18px rgba(255,0,0,0.35);
   transition:width 1.6s ease;
   position:relative;
@@ -895,7 +910,7 @@ nav a:hover{
 }
 
 .ai-title span{
-  color:#ff3131;
+  color:#ff0000;
 }
 
 .ai-text{
@@ -915,7 +930,7 @@ nav a:hover{
 .ai-metrics h3{
   font-family:"Space Grotesk", Arial, sans-serif;
   font-size:40px;
-  color:#ff2a2a;
+  color:#ff0000;
   margin-bottom:8px;
 }
 
@@ -1104,7 +1119,7 @@ nav a:hover{
 }
 
 .threat-header h2 span{
-  color:#ff5a2a;
+  color:#ff0000;
 }
 
 .threat-subtitle{
@@ -1205,7 +1220,7 @@ nav a:hover{
   font-family:"Space Grotesk", Arial, sans-serif;
   font-size:clamp(28px, 3vw, 54px);
   line-height:1;
-  color:#ff5a2a;
+  color:#ff0000;
   margin-bottom:8px;
   font-weight:700;
   letter-spacing:-1px;
@@ -1357,7 +1372,7 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
 .partners-kicker{
   display:inline-block;
   margin-bottom:14px;
-  color:#ff4d2d;
+  color:rgb(255, 0, 0);
   font-size:14px;
   letter-spacing:3px;
   font-weight:700;
@@ -2156,7 +2171,7 @@ footer p{
 .section-kicker-red{
   display:inline-block;
   margin-bottom:16px;
-  color:#ff4d2d;
+  color:#ff0000;
   font-size:14px;
   font-weight:700;
   letter-spacing:3px;
@@ -3089,7 +3104,7 @@ font-size:28px;
   left:0;
   width:100%;
   height:6px;
-  background:linear-gradient(90deg, #ff214d 0%, #ff6a00 100%);
+  background:linear-gradient(90deg, #ff0000 0%, #ff6a00 100%);
 }
 
 .digital-capability-icon{
@@ -3770,13 +3785,13 @@ font-size:28px;
 
 /* colores por tarjeta */
 .spec-orange{
-  border:1px solid #ff7a18;
+  border:1px solid #ff1818;
   box-shadow:0 0 0 1px rgba(255,122,24,0.12), 0 0 24px rgba(255,122,24,0.08);
 }
 
 .spec-orange h3,
 .spec-orange h4{
-  color:#ff8b26;
+  color:#ff2626;
 }
 
 .spec-cyan{
@@ -4002,7 +4017,7 @@ font-size:28px;
 }
 
 .btn-orange{
-  background:linear-gradient(135deg,#ff7a18,#ff4e00);
+  background:linear-gradient(135deg,#ff1818,#ff0000);
   box-shadow:0 0 20px rgba(255,102,24,0.18);
 }
 

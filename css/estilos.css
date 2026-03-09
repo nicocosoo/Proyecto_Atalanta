@@ -1485,7 +1485,6 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
 
   transform:translateY(-6px);
 
-
   border-color:rgba(255,90,40,0.35);
 
   box-shadow:
@@ -1573,17 +1572,56 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
 }
 
 /* FOOTER */
-
+/*Modifico los valores dle footer y agrego columnas*/
 footer{
   background:black;
-  padding:40px 20px;
-  text-align:center;
+  padding:60px 40px 20px;
   border-top:1px solid #151515;
+}
+
+.footer-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 40px;
 }
 
 footer p{
   color:#cfcfcf;
 }
+
+footer h3,footer h4{
+  margin-bottom: 40px;
+}
+
+.footer-logo{
+  max-width: 100%;height: auto;
+}
+
+footer ul{
+  list-style: none;
+  padding: 0;
+}
+
+footer ul li{
+  margin-bottom: 8px;
+}
+
+.footer-social{
+  display: inline;
+  gap: 12px;
+}
+
+.social-box{
+  display: inline-block;
+  margin-block-end: var(--grid-row-gap);
+  word-break: break-word;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+
 
 /* REVEALS */
 
@@ -5548,4 +5586,5 @@ font-size:28px;
   .contact-info-point span{
     font-size:17px;
   }
+
 }

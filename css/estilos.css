@@ -1451,7 +1451,7 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
   border-radius:18px;
 
   /* MÁS CLARO para que logos negros se vean */
-  background:#ffffff;
+  background:#ffffff; /*Cambio de background color*/
 
   border:1px solid rgba(255,255,255,0.1);
 
@@ -1484,7 +1484,7 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
 .partner-item:hover{
 
   transform:translateY(-6px);
-
+  /*Eliminacion de background color*/
 
   border-color:rgba(255,90,40,0.35);
 
@@ -2477,7 +2477,7 @@ footer p{
 }
 
 
-
+/* Cambio en el margin */
 .cyber-hero-actions{
   margin-top: 35px;
 }

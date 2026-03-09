@@ -1451,7 +1451,7 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
   border-radius:18px;
 
   /* MÁS CLARO para que logos negros se vean */
-  background:#2f2f2f;
+  background:#ffffff;
 
   border:1px solid rgba(255,255,255,0.1);
 
@@ -1485,7 +1485,6 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
 
   transform:translateY(-6px);
 
-  background:#3a3a3a;
 
   border-color:rgba(255,90,40,0.35);
 

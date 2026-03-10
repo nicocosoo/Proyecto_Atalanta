@@ -64,7 +64,7 @@ nav a:hover{
 }
 
 /* HERO */
-
+/* se aumentó el padding superior para que el texto no se corte con la barra de navegación, Nico2.4*/
 .hero-slider{
   position:relative;
   min-height:100vh;
@@ -72,7 +72,7 @@ nav a:hover{
   align-items:center;
   justify-content:center;
   overflow:hidden;
-  padding-top:90px;
+  padding-top:110px;
   padding-bottom:120px;
 }
 
@@ -114,10 +114,12 @@ nav a:hover{
   justify-content:center;
 }
 
+/* Nico 2.4, se añadieron márgenes laterales para que el contenido no quede pegado a los bordes en distintas pantallas */
+
 .hero-content{
   position:absolute;
   left:80px;   /* antes 0 */
-  right:0;
+  right:40px;;
   top:50%;
   transform:translateY(-50%);
   max-width:980px;
@@ -130,6 +132,22 @@ nav a:hover{
     transform 0.8s ease,
     visibility 0.8s ease;
 }
+
+/* Cambios de dani + cambios Nico2.4, se ajustó el tamaño y la altura de línea del texto para evitar que se corte en algunos dispositivos */
+.hero-content h3{
+  font-style:italic;
+  font-family:"Space Grotesk", sans-serif;
+  color:#ff0033;
+  font-size:clamp(15px, 2vw, 24px);
+  line-height:1.15;
+  font-weight:200;
+  letter-spacing:-1px;
+  margin-bottom:22px;
+  max-width:960px;
+  word-break:normal;
+  overflow-wrap:break-word;
+}
+
 
 .hero-content h1{
   font-family:"Space Grotesk", sans-serif;
@@ -169,9 +187,11 @@ nav a:hover{
   animation-delay:0.15s;
 }
 
+
 .hero-content.active p{
   animation:contentUp 0.8s ease forwards;
   animation-delay:0.3s;
+
 }
 
 @keyframes contentUp{
@@ -185,7 +205,7 @@ nav a:hover{
   }
 }
 
-.hero-content h1{
+/*.hero-content h1{
   font-size:clamp(46px, 5vw, 88px);
   line-height:1.02;
   font-weight:800;
@@ -194,7 +214,7 @@ nav a:hover{
   max-width:960px;
   word-break:normal;
   overflow-wrap:break-word;
-}
+}*/
 
 .hero-content p{
   font-size:clamp(18px, 1.35vw, 24px);
@@ -865,6 +885,7 @@ nav a:hover{
 /* AI SECTION */
 
 /* AI SECTION */
+/*Cambios de Dani + cambios Nico 2.4*/
 
 .ai-security{
   padding:160px 0;
@@ -897,14 +918,16 @@ nav a:hover{
 
 .ai-container{
   display:flex;
-  gap:100px;
-  align-items:center;
+  gap:80px;
+  align-items:flex-start;
   position:relative;
   z-index:1;
 }
 
 .ai-left{
   flex:1;
+  margin-left:0;
+  max-width:520px;
 }
 
 .ai-title{
@@ -943,24 +966,30 @@ nav a:hover{
 }
 
 .ai-right{
-  flex:1;
+  flex:1.4;
   display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr));
-  gap:22px;
+  grid-template-columns:repeat(3, 1fr);
+  gap:26px;
 }
 
 .award-card{
   position:relative;
-  min-height:230px;
-  padding:26px 24px 24px;
+  height:300px;
+  padding:22px 26px 22px;
   border-radius:22px;
   overflow:hidden;
   background:
-    linear-gradient(180deg, rgba(255,190,0,0.10) 0%, rgba(11,11,11,0.94) 45%, rgba(8,8,8,0.98) 100%);
-  border:1px solid rgba(255,185,0,0.28);
+    linear-gradient(
+      180deg,
+      rgba(255,0,30,0.25) 0%,
+      rgba(150,0,10,0.65) 40%,
+      rgba(8,8,8,0.98) 100%
+    );
+  border:1px solid rgba(255,0,40,0.55);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.04),
-    0 0 0 1px rgba(255,185,0,0.05);
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 0 10px rgba(255,0,40,0.25),
+    0 0 0 1px rgba(255,0,40,0.15);
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease,
@@ -972,16 +1001,15 @@ nav a:hover{
   position:absolute;
   inset:0;
   background:
-    linear-gradient(135deg, rgba(255,210,90,0.08), transparent 40%),
+    linear-gradient(135deg, rgba(255,60,60,0.15), transparent 40%),
     repeating-linear-gradient(
       135deg,
-      rgba(255,185,0,0.05) 0px,
-      rgba(255,185,0,0.05) 2px,
+      rgba(255,30,30,0.10) 0px,
+      rgba(255,30,30,0.10) 2px,
       transparent 2px,
       transparent 12px
     );
-  opacity:0.55;
-  pointer-events:none;
+  opacity:0.65;
 }
 
 .award-card::after{
@@ -992,16 +1020,15 @@ nav a:hover{
   width:180px;
   height:180px;
   border-radius:50%;
-  background:radial-gradient(circle, rgba(255,185,0,0.18), transparent 65%);
-  pointer-events:none;
+  background:radial-gradient(circle, rgba(255,40,40,0.35), transparent 65%);
 }
 
 .award-card:hover{
   transform:translateY(-10px);
-  border-color:rgba(255,200,70,0.55);
+  border-color:rgba(255,60,60,0.85);
   box-shadow:
     0 18px 40px rgba(0,0,0,0.45),
-    0 0 26px rgba(255,185,0,0.18),
+    0 0 35px rgba(255,0,30,0.55),
     inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
@@ -1011,13 +1038,10 @@ nav a:hover{
   left:0;
   width:100%;
   height:4px;
-  background:linear-gradient(90deg, #ffcf33 0%, #ff8a00 100%);
-  z-index:2;
+  background:linear-gradient(90deg, #ff3a3a, #ff0000);
 }
 
 .award-icon{
-  position:relative;
-  z-index:2;
   width:58px;
   height:58px;
   border-radius:16px;
@@ -1025,19 +1049,24 @@ nav a:hover{
   align-items:center;
   justify-content:center;
   margin-bottom:18px;
-  background:linear-gradient(135deg, rgba(255,215,90,0.18), rgba(255,130,0,0.10));
-  border:1px solid rgba(255,200,80,0.26);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,0.05);
+  background:linear-gradient(
+    135deg,
+    rgba(255,70,70,0.35),
+    rgba(255,0,0,0.18)
+  );
+  border:1px solid rgba(255,60,60,0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 0 10px rgba(255,0,0,0.25);
+  position:relative;
+  z-index:2;
 }
 
-.award-icon svg{
-  width:28px;
-  height:28px;
-  fill:none;
-  stroke:#ffcc3d;
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+.award-icon img{
+  width:30px;
+  height:30px;
+  object-fit:contain;
+  display:block;
 }
 
 .award-content{
@@ -1052,40 +1081,85 @@ nav a:hover{
   font-weight:700;
   letter-spacing:2px;
   text-transform:uppercase;
-  color:rgba(255,215,110,0.82);
+  color:rgba(255, 110, 110, 0.82);
 }
 
 .award-card h4{
   font-family:"Space Grotesk", Arial, sans-serif;
-  font-size:30px;
-  line-height:1.05;
-  margin-bottom:12px;
-  color:#fff4cf;
+  font-size:22px;
+  line-height:1.2;
+  margin-bottom:10px;
+  color:#ffffff;
 }
 
 .award-card p{
   font-size:16px;
-  line-height:1.55;
-  color:#f0e6ca;
-  max-width:260px;
+  line-height:1.5;
+  color:#f3f3f3;
 }
 
 /* variantes sutiles */
 
 .award-card-cloud .award-top-line{
-  background:linear-gradient(90deg, #ffd24d 0%, #ff9f1a 100%);
+  background:linear-gradient(90deg, #ff4d4d 0%, #ff1a1a 100%);
 }
 
 .award-card-network .award-top-line{
-  background:linear-gradient(90deg, #ffe27a 0%, #ffb300 100%);
+  background:linear-gradient(90deg, #ff7a7a 0%, #ff0000 100%);
 }
 
 .award-card-ai .award-top-line{
-  background:linear-gradient(90deg, #ffcf5f 0%, #ff7a00 100%);
+  background:linear-gradient(90deg, #ff5f5f 0%, #ff0000 100%);
 }
 
 .award-card-business .award-top-line{
-  background:linear-gradient(90deg, #ffd84a 0%, #ff9500 100%);
+  background:linear-gradient(90deg, #ff4a4a 0%, #ff0000 100%);
+}
+
+@media (max-width:1200px){
+  .ai-container{
+    flex-direction:column;
+    gap:70px;
+    align-items:flex-start;
+  }
+
+  .ai-left{
+    max-width:100%;
+  }
+
+  .ai-right{
+    width:100%;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width:768px){
+  .ai-title{
+    font-size:36px;
+  }
+
+  .ai-metrics{
+    flex-direction:column;
+    gap:24px;
+  }
+
+  .ai-right{
+    grid-template-columns:1fr;
+  }
+
+  .award-card{
+    height:auto;
+    min-height:230px;
+    padding:22px 20px 20px;
+  }
+
+  .award-card h4{
+    font-size:20px;
+  }
+
+  .award-card p{
+    font-size:15px;
+  }
 }
 /* THREAT VISUALS */
 

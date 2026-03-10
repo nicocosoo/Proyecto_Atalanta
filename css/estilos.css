@@ -1654,9 +1654,10 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
 }
 
 /* CTA */
+/* Nico 2.5: cambio fondo de rojo a blanco, color del título a oscuro */
 
 .cta{
-  background:linear-gradient(135deg,#d60024,#ff1237);
+  background:#ffffff;
   padding:110px 0;
   text-align:center;
 }
@@ -1664,6 +1665,7 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
 .cta-inner h2{
   font-size:54px;
   margin-bottom:26px;
+  color:#111111;
 }
 
 /* FOOTER */

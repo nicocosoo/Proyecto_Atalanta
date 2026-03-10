@@ -277,8 +277,30 @@
     </div>
   </section>
 
+  <!-- ============================================================
+       SECCIÓN SERVICIOS — Nico 2.6
+       Cambios aplicados:
+       1. Añadido bloque de título (services-title-block) antes del submenú
+          con el texto de la página original de tres tarjetas rojas.
+       2. Textos de las 12 tarjetas actualizados con el contenido
+          de las tarjetas rojas originales (más detalle por tarjeta).
+       3. Fondos de color añadidos a cada panel:
+          - Panel azul  → radial-gradient azul   (class="service-panel blue")
+          - Panel verde → radial-gradient verde   (class="service-panel green")
+          - Panel amarillo → radial-gradient amarillo (class="service-panel yellow")
+          Los estilos están en estilos.css, reglas .service-panel.blue/green/yellow
+  ============================================================ -->
   <section class="services-showcase" id="services-showcase">
     <div class="services-sticky-area">
+
+      <!-- Título de sección añadido (Nico 2.6): equivalente al encabezado
+           que aparece sobre las tarjetas rojas en la página de referencia -->
+      <div class="services-title-block page-container reveal-up">
+        <h2 class="services-main-title">TODO LO QUE NECESITAS PARA QUE TU NEGOCIO CREZCA CON SEGURIDAD</h2>
+        <p class="services-main-subtitle">Descubre nuestros servicios y programas diseñados para proteger organizaciones, impulsar la transformación digital y formar a los expertos del mañana.</p>
+      </div>
+
+      <!-- Submenú sticky con tres pestañas: azul / verde / amarillo -->
       <div class="services-subnav-wrapper">
         <div class="services-subnav page-container">
           <button class="service-tab active blue" data-target="service-cyber">
@@ -300,6 +322,7 @@
 
       <div class="service-panels page-container">
 
+        <!-- PANEL 1: Ciberseguridad avanzada — fondo azul añadido en estilos.css (.service-panel.blue) -->
         <article class="service-panel blue reveal-up" id="service-cyber" data-service="service-cyber">
           <div class="service-panel-left">
             <span class="service-kicker blue-text">Ciberseguridad avanzada</span>
@@ -329,26 +352,27 @@
           <div class="service-panel-right">
             <div class="service-feature-card blue-card">
               <h4>Red Team y DevSecOps</h4>
-              <p>Simulación de ataques reales y seguridad embebida en el desarrollo.</p>
+              <p>Simulación de ataques reales, seguridad embebida en el desarrollo y pruebas continuas de seguridad ofensiva.</p>
             </div>
 
             <div class="service-feature-card blue-card">
-              <h4>Cloud, OT e IoT</h4>
-              <p>Protección avanzada de infraestructuras cloud y entornos industriales.</p>
+              <h4>Seguridad Cloud y OT/IoT</h4>
+              <p>Protección avanzada de infraestructuras cloud, entornos industriales y dispositivos conectados.</p>
             </div>
 
             <div class="service-feature-card blue-card">
               <h4>Cumplimiento normativo</h4>
-              <p>ISO, ENS, DORA, NIS2 y marcos regulatorios críticos.</p>
+              <p>Adecuación a ISO, ENS, DORA, NIS2 y todos los marcos regulatorios críticos para tu sector.</p>
             </div>
 
             <div class="service-feature-card blue-card">
-              <h4>Ciberdefensa</h4>
-              <p>MDR, Threat Hunting e Incident Response con enfoque operativo.</p>
+              <h4>Servicios de ciberdefensa</h4>
+              <p>MDR, Threat Hunting e Incident Response para detección y respuesta ante amenazas en tiempo real.</p>
             </div>
           </div>
         </article>
 
+        <!-- PANEL 2: Digital e IA — fondo verde añadido en estilos.css (.service-panel.green) -->
         <article class="service-panel green reveal-up" id="service-digital" data-service="service-digital">
           <div class="service-panel-left">
             <span class="service-kicker green-text">Digital e IA</span>
@@ -378,26 +402,27 @@
           <div class="service-panel-right">
             <div class="service-feature-card green-card">
               <h4>Planes directores</h4>
-              <p>Roadmaps realistas para evolucionar tu negocio con seguridad.</p>
+              <p>Roadmaps realistas para evolucionar tu negocio con seguridad y alineados con tus objetivos estratégicos.</p>
             </div>
 
             <div class="service-feature-card green-card">
               <h4>Arquitecturas seguras</h4>
-              <p>Diseño de soluciones híbridas y multi-cloud orientadas a negocio.</p>
+              <p>Diseño de soluciones híbridas y multi-cloud con seguridad integrada desde el primer día.</p>
             </div>
 
             <div class="service-feature-card green-card">
               <h4>Gobierno de identidades</h4>
-              <p>Gestión de accesos, privilegios y riesgo sobre cuentas críticas.</p>
+              <p>Gestión de accesos, privilegios y riesgo sobre cuentas críticas con enfoque Zero Trust.</p>
             </div>
 
             <div class="service-feature-card green-card">
               <h4>Continuidad de negocio</h4>
-              <p>BCP y DRP para reforzar la resiliencia de la organización.</p>
+              <p>BCP y DRP para garantizar la operativa y la resiliencia ante cualquier incidente o disrupción.</p>
             </div>
           </div>
         </article>
 
+        <!-- PANEL 3: Atalanta Academy — fondo amarillo añadido en estilos.css (.service-panel.yellow) -->
         <article class="service-panel yellow reveal-up" id="service-academy" data-service="service-academy">
           <div class="service-panel-left">
             <span class="service-kicker yellow-text">Atalanta Academy</span>
@@ -426,22 +451,22 @@
           <div class="service-panel-right">
             <div class="service-feature-card yellow-card">
               <h4>Certificados oficiales</h4>
-              <p>Formación alineada con estándares reconocidos y socios oficiales.</p>
+              <p>Formación alineada con estándares reconocidos y socios oficiales como OffSec (OSCP, OSEP, OSED...).</p>
             </div>
 
             <div class="service-feature-card yellow-card">
-              <h4>Plataforma propia</h4>
-              <p>Entornos prácticos y laboratorios para entrenar habilidades reales.</p>
+              <h4>Laboratorios y plataforma CTF</h4>
+              <p>Entornos prácticos y laboratorios CTF para entrenar habilidades reales en escenarios controlados.</p>
             </div>
 
             <div class="service-feature-card yellow-card">
               <h4>Itinerarios profesionales</h4>
-              <p>Programas orientados a empleabilidad y progresión técnica.</p>
+              <p>Planes de carrera orientados a empleabilidad y progresión técnica en ciberseguridad.</p>
             </div>
 
             <div class="service-feature-card yellow-card">
               <h4>Acuerdos académicos</h4>
-              <p>Colaboraciones con universidades y programas especializados.</p>
+              <p>Colaboraciones con universidades y centros especializados para certificar el talento del mañana.</p>
             </div>
           </div>
         </article>

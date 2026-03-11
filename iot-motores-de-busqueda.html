@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IoT y Motores de búsqueda | Atalanta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="prueba.html">
+        <img src="imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+      <nav>
+        <a href="quienes_somos.html">Quiénes somos</a>
+        <a href="ciberseguridad.html">Ciberseguridad</a>
+        <a href="digital.html">Digital</a>
+        <a href="formacion.html">Formación</a>
+        <a href="empleo.html">Empleo</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="article-hero">
+      <div class="article-hero-bg" style="background-image: url('imagenes/electricidad-atalanta-portada.jpg');"></div>
+      <div class="article-hero-overlay"></div>
+      <div class="page-container article-hero-content">
+        <span class="article-hero-category">Herramientas</span>
+        <h1>IoT y Motores de búsqueda</h1>
+        <div class="article-meta">
+          <span>
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            Mouad Tenbihi
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            23/09/2020
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="article-body-section">
+      <div class="page-container">
+        <div class="article-body">
+
+          <a href="noticias.html" class="article-back">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5"></path><path d="m11 18-6-6 6-6"></path></svg>
+            Volver a Noticias
+          </a>
+
+          <h2>¿Qué es IoT?</h2>
+
+          <p>
+            <strong>IoT</strong> significa "Internet of Things" (Internet de las Cosas) y es un sistema de dispositivos de computación — máquinas mecánicas y digitales — que tienen la capacidad de transferir datos a través de una red sin requerir interacciones humano a humano o humano a computadora. Es todo aquello que puede acceder a internet y comunicarse de forma autónoma: la comunicación M2M (de máquina a máquina).
+          </p>
+
+          <p>Ejemplos de dispositivos IoT: sensores de presión de ruedas, sensores de aparcamiento, frigoríficos inteligentes, sensores de humedad, etc.</p>
+
+          <h2>Motores de búsqueda para IoT</h2>
+
+          <p>
+            Existen buscadores especializados que rastrean dispositivos IoT conectados a internet. Los más importantes son <strong>Shodan</strong> y <strong>Censys</strong>.
+          </p>
+
+          <h2>Shodan</h2>
+
+          <p>
+            Shodan tiene como objetivo <strong>ubicar todo tipo de dispositivos conectados a la red</strong>: routers, cámaras de seguridad, servidores, etc. Para usarlo es necesario registrarse en su web oficial.
+          </p>
+
+          <p>Una de sus grandes ventajas son los <strong>filtros de búsqueda</strong>:</p>
+
+          <ul>
+            <li><code>country:es</code> — filtro por país</li>
+            <li><code>city:Barcelona</code> — filtro por ciudad</li>
+            <li><code>port:443</code> — filtro por puerto</li>
+            <li><code>os:Linux</code> — filtro por sistema operativo</li>
+            <li><code>hostname:google.com</code> — filtro por dominio</li>
+            <li><code>net:192.168.1.1</code> — filtro por IP</li>
+            <li><code>product:MySQL</code> — filtro por producto</li>
+          </ul>
+
+          <p>
+            Mezclando estos filtros con palabras clave del objetivo se puede realizar una búsqueda muy específica. Por ejemplo, buscar "default password" muestra dispositivos con credenciales por defecto aún activas.
+          </p>
+
+          <h2>Censys</h2>
+
+          <p>
+            Censys es otro motor de búsqueda de dispositivos IoT que emergió en 2013 con el respaldo de Google. Utiliza las herramientas <strong>ZMap</strong> y <strong>ZGrab</strong> para el barrido de direcciones IPv4. Ofrece resultados con un mayor número de vulnerabilidades de dispositivos y de forma más rápida que Shodan.
+          </p>
+
+          <p>
+            Sin registro, solo permite 5 búsquedas diarias. Con cuenta, el acceso es completo.
+          </p>
+
+          <h2>Conclusión</h2>
+
+          <p>
+            Estos dos motores de búsqueda son herramientas muy potentes para obtener información sobre objetivos en la fase de reconocimiento. Su uso es totalmente legal, aunque los ciberdelincuentes también hacen uso malicioso de ellos. La diferencia está en la intención del usuario.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="about-cta">
+      <div class="page-container about-cta-inner">
+        <h2>Explora más contenidos y mantente al día en ciberseguridad y tecnología</h2>
+        <a href="contacto.html" class="btn-red">Contactar</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+        <div class="footer-col-brand">
+          <a href="prueba.html"><img src="imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img"></a>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="digital.html">Digital</a></li>
+            <li><a href="formacion.html">Formación</a></li>
+            <li><a href="empleo.html">Empleo</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Madrid, España</span>
+          </div>
+          <div class="map-placeholder">
+            <iframe src="https://maps.google.com/maps?q=40.4292413,-3.7049219&z=16&output=embed" frameborder="0" width="100%" height="250" style="border: 0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright &copy; 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="#">AVISO LEGAL</a><span>|</span>
+          <a href="#">POLÍTICA DE PRIVACIDAD</a><span>|</span>
+          <a href="#">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/js.js"></script>
+</body>
+</html>

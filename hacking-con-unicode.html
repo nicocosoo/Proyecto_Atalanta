@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacking con Unicode | Atalanta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="prueba.html">
+        <img src="imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+
+      <nav>
+        <a href="quienes_somos.html">Quiénes somos</a>
+        <a href="ciberseguridad.html">Ciberseguridad</a>
+        <a href="digital.html">Digital</a>
+        <a href="formacion.html">Formación</a>
+        <a href="empleo.html">Empleo</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="article-hero">
+      <div class="article-hero-bg" style="background-image: url('imagenes/leona-atalanta-portada.jpg');"></div>
+      <div class="article-hero-overlay"></div>
+      <div class="page-container article-hero-content">
+        <span class="article-hero-category">Hacking avanzado</span>
+        <h1>HACKING CON UNICODE</h1>
+        <div class="article-meta">
+          <span>
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            Daniel Monzón
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            29/04/2020
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="article-body-section">
+      <div class="page-container">
+        <div class="article-body">
+
+          <a href="noticias.html" class="article-back">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5"></path><path d="m11 18-6-6 6-6"></path></svg>
+            Volver a Noticias
+          </a>
+
+          <p>
+            Hola a todos, mi nombre es Daniel Monzón y en este primer post me gustaría comentar un tema que he investigado hace poco y que me parece muy interesante. Vamos a hablar sobre <strong>Unicode</strong>, qué es y cómo usarlo en ejercicios de Red Team o pentests.
+          </p>
+
+          <h2>¿Qué es Unicode?</h2>
+
+          <p>
+            Unicode (al contrario de lo que parece) no es un tipo de encoding; es una <strong>base de datos que mapea cualquier símbolo (glifo) existente a un número único</strong> llamado <em>code point</em>, al cual se le asigna también un nombre único. Por ejemplo, "A" se mapea a U+0041 y "a" se mapea a U+0061.
+          </p>
+
+          <p>
+            Existen caracteres Unicode desde U+000000 hasta U+10FFFF (más de un millón de símbolos). Unicode divide todos esos posibles símbolos en «planos»; el más conocido es el <strong>BMP (Basic Multilingual Plane)</strong>, que va desde U+0000 hasta U+FFFF. Existen 16 planos más, denominados «planos astrales».
+          </p>
+
+          <p>
+            Unicode se puede usar en JavaScript y la manera de representarlo es con secuencias de escape:
+          </p>
+
+          <ul>
+            <li><strong>Secuencias de escape Unicode (BMP):</strong> <code>\u0041\u0042</code></li>
+            <li><strong>Secuencias de escape ECMA Script 6 (BMP):</strong> <code>\u{41}</code></li>
+            <li><strong>Secuencias de escape ECMA Script 6 (planos astrales):</strong> <code>\u{1F4A9}</code></li>
+          </ul>
+
+          <p>
+            Los caracteres de los planos astrales también se pueden representar como <em>surrogate pairs</em> en UTF-16. Existe además una <strong>feature de Unicode llamada normalización</strong> (NFC, NFD, NFKD, NFKC) que «normaliza» algunos code-points para acabar teniendo el mismo carácter.
+          </p>
+
+          <h2>¿Qué podemos hacer como atacantes con Unicode?</h2>
+
+          <h2>1. Phishing con dominios homoglíficos</h2>
+
+          <p>
+            Podemos usar herramientas como <strong>EvilURL</strong> para buscar nombres de dominio parecidos a los que queremos suplantar, generando URLs que visualmente son idénticas al dominio legítimo pero apuntan a otro servidor.
+          </p>
+
+          <h2>2. Inyecciones SQL</h2>
+
+          <p>
+            Se puede usar Unicode para <strong>bypassear funciones de sanitización custom</strong>, aprovechando la normalización de caracteres Unicode. También es posible usar Unicode para terminar strings en MySQL si el charset no es utf8mb4.
+          </p>
+
+          <h2>3. WAF Bypass</h2>
+
+          <p>
+            Unicode permite evadir reglas de <strong>Web Application Firewalls (WAF)</strong> en ataques XSS y otras inyecciones, sustituyendo caracteres ASCII por sus equivalentes Unicode que el WAF no reconoce pero el intérprete sí normaliza.
+          </p>
+
+          <h2>4. Path Traversal</h2>
+
+          <p>
+            Unicode puede usarse para conseguir <strong>path traversals con restricciones de caracteres</strong>, usando codificaciones como <code>%c1%1c</code> o <code>%c0%af</code> en vez de <code>../</code>, o representaciones hexadecimales de <code>..</code>.
+          </p>
+
+          <h2>5. Extensiones de archivos</h2>
+
+          <p>
+            Con el carácter <strong>RTLO (U+202E)</strong> se pueden «falsificar» extensiones de archivos visualmente, y también es posible bypassear whitelists y blacklists tradicionales con extensiones equivalentes en Unicode.
+          </p>
+
+          <h2>6. CRLF y Open Redirects</h2>
+
+          <p>
+            Los caracteres <code>\u2028</code> y <code>\u2029</code> pueden usarse de la misma manera que <code>%0a</code> y <code>%0d</code> en inyecciones CRLF y open redirects. Un ejemplo de payload: <code>%E5%98%8A%E5%98%8DSet-Cookie:%20test</code>.
+          </p>
+
+          <h2>7. Account Takeover</h2>
+
+          <p>
+            Si sabemos que existe un usuario <code>admin</code> en una aplicación web, registrando un usuario con caracteres Unicode equivalentes podemos <strong>sobreescribir sus datos y tomar el control de su cuenta</strong>. Incluso es posible bypassear whitelists de dominios en registros o resets de contraseña.
+          </p>
+
+          <h2>8. Errores de memoria</h2>
+
+          <p>
+            Muchos programas tienen problemas para manejar caracteres Unicode, lo que da lugar a vulnerabilidades como <strong>stack buffer overflow, heap-based overflow, out-of-bounds read/write, integer overflow o use-after-free (UAF)</strong>. Unicode también incluye caracteres de control, caracteres vacíos (U+2800 y U+200C) y «colisiones» en la conversión de mayúsculas a minúsculas que pueden ser explotadas.
+          </p>
+
+          <p>
+            Hay un sinfín de cosas curiosas y útiles que pueden hacerse con Unicode, seguramente muchas más de las que yo he podido encontrar. Espero que os haya gustado. ¡Hasta la próxima!
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="about-cta">
+      <div class="page-container about-cta-inner">
+        <h2>Explora más contenidos y mantente al día en ciberseguridad y tecnología</h2>
+        <a href="contacto.html" class="btn-red">Contactar</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+
+        <div class="footer-col-brand">
+          <a href="prueba.html">
+            <img src="imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="digital.html">Digital</a></li>
+            <li><a href="formacion.html">Formación</a></li>
+            <li><a href="empleo.html">Empleo</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Madrid, España</span>
+          </div>
+          <div class="map-placeholder">
+              <iframe src="https://maps.google.com/maps?q=40.4292413,-3.7049219&z=16&output=embed" frameborder="0" width="100%" height="250" style="border: 0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright &copy; 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="#">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="#">POLÍTICA DE PRIVACIDAD</a>
+          <span>|</span>
+          <a href="#">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/js.js"></script>
+</body>
+</html>

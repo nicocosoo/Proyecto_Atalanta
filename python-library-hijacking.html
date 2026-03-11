@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Library Hijacking | Atalanta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="prueba.html">
+        <img src="imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+
+      <nav>
+        <a href="quienes_somos.html">Quiénes somos</a>
+        <a href="ciberseguridad.html">Ciberseguridad</a>
+        <a href="digital.html">Digital</a>
+        <a href="formacion.html">Formación</a>
+        <a href="empleo.html">Empleo</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="article-hero">
+      <div class="article-hero-bg" style="background-image: url('imagenes/python-hijacking.png');"></div>
+      <div class="article-hero-overlay"></div>
+      <div class="page-container article-hero-content">
+        <span class="article-hero-category">Iniciación al Hacking</span>
+        <h1>Python Library Hijacking</h1>
+        <div class="article-meta">
+          <span>
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            Daniel Tapia
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            01/12/2020
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="article-body-section">
+      <div class="page-container">
+        <div class="article-body">
+
+          <a href="noticias.html" class="article-back">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5"></path><path d="m11 18-6-6 6-6"></path></svg>
+            Volver a Noticias
+          </a>
+
+          <h2>¿Qué es Python Library Hijacking?</h2>
+
+          <p>
+            El método de explotación de <strong>Python Library Hijacking</strong> consiste en suplantar una librería de Python que un binario esté usando, para inyectar código de forma que el atacante escale privilegios y/u obtenga una shell en el sistema. Con esta técnica podríamos obtener una escalada de privilegios tanto lateral como vertical, dependiendo de la situación.
+          </p>
+
+          <p>
+            Esta explotación se da porque, a la hora de ejecutar librerías en Python, la búsqueda de estas librerías se realiza con un orden de prioridad: primero mira en la ruta donde se ha ejecutado el script y luego sigue un orden de rutas concreto. Si encuentra la librería en la ruta donde se ubica el script, no lo comprueba en el resto de ubicaciones. Es aquí donde el atacante puede aprovecharse.
+          </p>
+
+          <h2>Procedimiento de explotación</h2>
+
+          <ol>
+            <li>Ubicar el programa objetivo</li>
+            <li>Listar los permisos de la ubicación en la que se encuentra</li>
+            <li>Leer el contenido del programa para identificar las librerías que importa</li>
+            <li>Crear un archivo para suplantar una de las librerías del programa</li>
+            <li>Inyectar el código deseado (setuid, shell, reverse shell…)</li>
+          </ol>
+
+          <h2>Ejemplo: Reverse Shell con Rshell</h2>
+
+          <p>
+            Imaginemos un archivo de backup que invoca a librerías de Python. Vamos a suplantar una de ellas creando un archivo con el mismo nombre en el mismo directorio que el archivo a explotar:
+          </p>
+
+          <pre><code>zipfile.py  ← archivo malicioso creado por el atacante</code></pre>
+
+          <p>
+            Si el usuario tiene programado un crontab que ejecuta el script de backup cada 5 minutos, cuando se ejecute recibiremos una shell como ese usuario. Este caso es una <strong>escalada lateral</strong>.
+          </p>
+
+          <h2>Escalada vertical (root)</h2>
+
+          <p>
+            Si el proceso se ejecuta con privilegios elevados, podemos inyectar código que establezca nuestro UID al de root (0):
+          </p>
+
+          <pre><code>import os
+os.setuid(0)
+os.system('/bin/bash')</code></pre>
+
+          <p>
+            Esto nos daría acceso completo al sistema. La clave del ataque reside en tener permisos de escritura en el directorio donde se ejecuta el script vulnerable.
+          </p>
+
+          <p>
+            Básicamente esto es la explotación de un Library Hijacking. Espero que os haya gustado.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="about-cta">
+      <div class="page-container about-cta-inner">
+        <h2>Explora más contenidos y mantente al día en ciberseguridad y tecnología</h2>
+        <a href="contacto.html" class="btn-red">Contactar</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+
+        <div class="footer-col-brand">
+          <a href="prueba.html">
+            <img src="imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="digital.html">Digital</a></li>
+            <li><a href="formacion.html">Formación</a></li>
+            <li><a href="empleo.html">Empleo</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Madrid, España</span>
+          </div>
+          <div class="map-placeholder">
+              <iframe src="https://maps.google.com/maps?q=40.4292413,-3.7049219&z=16&output=embed" frameborder="0" width="100%" height="250" style="border: 0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright &copy; 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="#">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="#">POLÍTICA DE PRIVACIDAD</a>
+          <span>|</span>
+          <a href="#">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/js.js"></script>
+</body>
+</html>

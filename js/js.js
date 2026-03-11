@@ -282,3 +282,71 @@ if (testimonialSlides.length > 0 && testimonialDots.length > 0) {
     });
   });
 }
+/*Añado funciones*/
+
+document.addEventListener('DOMContentLoaded', function() {
+  const wrappers = document.querySelectorAll('.custom-select-wrapper');
+
+  wrappers.forEach(wrapper => {
+    const trigger = wrapper.querySelector('.custom-select-trigger');
+    trigger.addEventListener('click', () => {
+      wrappers.forEach(w => { if(w !== wrapper) w.classList.remove('open') });
+      wrapper.classList.toggle('open');
+    });
+
+    const options = wrapper.querySelectorAll('.custom-option');
+    options.forEach(option => {
+      option.addEventListener('click', function() {
+        wrapper.querySelector('.custom-option.selected').classList.remove('selected');
+        this.classList.add('selected');
+        trigger.textContent = this.textContent;
+        wrapper.classList.remove('open');
+        
+        ejecutarFiltro();
+      });
+    });
+  });
+
+  window.addEventListener('click', (e) => {
+    if (!e.target.closest('.custom-select-wrapper')) {
+      wrappers.forEach(w => w.classList.remove('open'));
+    }
+  });
+
+  function ejecutarFiltro() {
+    const locValue = document.querySelector('#filter-location-wrapper .custom-option.selected').dataset.value;
+    const teamValue = document.querySelector('#filter-team-wrapper .custom-option.selected').dataset.value;
+    const typeValue = document.querySelector('#filter-type-wrapper .custom-option.selected').dataset.value;
+
+    const groups = document.querySelectorAll('.jobs-group');
+
+    groups.forEach(group => {
+      let groupVisible = false;
+      const groupLoc = group.getAttribute('data-location');
+      const matchLoc = (locValue === 'all' || locValue === groupLoc);
+
+      const items = group.querySelectorAll('.job-item');
+      items.forEach(item => {
+        const itemTeam = item.dataset.team;
+        const itemType = item.dataset.type;
+        
+        const matchTeam = (teamValue === 'all' || teamValue === itemTeam);
+        const matchType = (typeValue === 'all' || typeValue === itemType);
+
+        if (matchLoc && matchTeam && matchType) {
+          item.style.display = 'flex';
+          groupVisible = true;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      group.style.display = groupVisible ? 'block' : 'none';
+    });
+  }
+});
+option.addEventListener('click', function() {
+  trigger.textContent = this.textContent;
+  wrapper.classList.remove('open');
+  ejecutarFiltro();
+});

@@ -94,6 +94,8 @@
       </div>
     </section>
 
+    <!--Cambios en div y funciones-->
+
     <!-- VACANTES -->
     <section class="jobs-openings" id="vacantes">
       <div class="page-container jobs-openings-inner">
@@ -102,19 +104,41 @@
           <h2>Únete a nuestro equipo</h2>
           <p>Explora nuestras posiciones abiertas y encuentra la oportunidad que mejor encaja contigo.</p>
         </div>
-
+      
         <div class="jobs-filters reveal-up">
-          <div class="jobs-filter-box">Todas las ubicaciones</div>
-          <div class="jobs-filter-box">Todos los equipos</div>
-          <div class="jobs-filter-box">Todos los tipos de contrato</div>
+          <div class="custom-select-wrapper" id="filter-location-wrapper">
+            <div class="custom-select-trigger">Todas las ubicaciones</div>
+            <div class="custom-options">
+              <span class="custom-option selected" data-value="all">Todas las ubicaciones</span>
+              <span class="custom-option" data-value="asuncion">Asunción</span>
+              <span class="custom-option" data-value="madrid">Madrid</span>
+              <span class="custom-option" data-value="valencia">València</span>
+            </div>
+          </div>
+        
+          <div class="custom-select-wrapper" id="filter-team-wrapper">
+            <div class="custom-select-trigger">Todos los equipos</div>
+            <div class="custom-options">
+              <span class="custom-option selected" data-value="all">Todos los equipos</span>
+              <span class="custom-option" data-value="comercial">Comercial</span>
+              <span class="custom-option" data-value="ciberseguridad">Ciberseguridad</span>
+            </div>
+          </div>
+        
+          <div class="custom-select-wrapper" id="filter-type-wrapper">
+            <div class="custom-select-trigger">Todos los tipos de contrato</div>
+            <div class="custom-options">
+              <span class="custom-option selected" data-value="all">Todos los tipos de contrato</span>
+              <span class="custom-option" data-value="hibrido">Híbrido</span>
+              <span class="custom-option" data-value="presencial">Presencial</span>
+            </div>
+          </div>
         </div>
-
+      
         <div class="jobs-groups">
-
-          <div class="jobs-group reveal-up">
+          <div class="jobs-group reveal-up" data-location="asuncion">
             <h3>Asunción</h3>
-
-            <article class="job-item">
+            <article class="job-item" data-team="comercial" data-type="hibrido">
               <div class="job-item-main">
                 <h4>Ejecutivo/a de cuentas</h4>
                 <span>Híbrido</span>
@@ -122,27 +146,26 @@
               <a href="ejecutivo-cuentas-asuncion.html" class="job-apply-btn">Inscribirte ahora</a>
             </article>
           </div>
-
-          <div class="jobs-group reveal-up">
+      
+          <div class="jobs-group reveal-up" data-location="madrid">
             <h3>Madrid</h3>
-
-            <article class="job-item">
+            <article class="job-item" data-team="ciberseguridad" data-type="hibrido">
               <div class="job-item-main">
                 <h4>Analista SOC N3</h4>
                 <span>Híbrido</span>
               </div>
               <a href="analista-soc-n3-madrid.html" class="job-apply-btn">Inscribirte ahora</a>
             </article>
-
-            <article class="job-item">
+      
+            <article class="job-item" data-team="comercial" data-type="hibrido">
               <div class="job-item-main">
                 <h4>Key Account Manager Ciberseguridad</h4>
                 <span>Híbrido</span>
               </div>
               <a href="key-account-manager-madrid.html" class="job-apply-btn">Inscribirte ahora</a>
             </article>
-
-            <article class="job-item">
+      
+            <article class="job-item" data-team="ciberseguridad" data-type="hibrido">
               <div class="job-item-main">
                 <h4>Analista de ciberseguridad - respuesta a incidentes</h4>
                 <span>Híbrido</span>
@@ -150,11 +173,10 @@
               <a href="analista-respuesta-incidentes-madrid.html" class="job-apply-btn">Inscribirte ahora</a>
             </article>
           </div>
-
-          <div class="jobs-group reveal-up">
+      
+          <div class="jobs-group reveal-up" data-location="valencia">
             <h3>València</h3>
-
-            <article class="job-item">
+            <article class="job-item" data-team="ciberseguridad" data-type="presencial">
               <div class="job-item-main">
                 <h4>Ingeniero/a Ciberseguridad industrial OT</h4>
                 <span>Presencial</span>
@@ -162,7 +184,6 @@
               <a href="ingeniero-ot-valencia.html" class="job-apply-btn">Inscribirte ahora</a>
             </article>
           </div>
-
         </div>
       </div>
     </section>

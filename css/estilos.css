@@ -60,7 +60,7 @@ nav a{
 }
 
 nav a:hover{
-  color:#ff2a2a;
+  color:#f00000;
 }
 
 /* HERO */
@@ -151,14 +151,12 @@ nav a:hover{
 
 .hero-content h1{
   font-family:"Space Grotesk", sans-serif;
+  color: #ff0033;
+  font-size:clamp(15px, 5vw, 30px);
+  line-height:1.00;
 
-  font-size:clamp(46px, 5vw, 88px);
-  line-height:1.02;
-
-  font-weight:700;
+  font-weight:200;
   letter-spacing:-1.2px;
-
-  text-transform:uppercase;
 
   margin-bottom:28px;
   max-width:960px;
@@ -166,6 +164,27 @@ nav a:hover{
   word-break:normal;
   overflow-wrap:break-word;
 }
+
+/*Cambio de tamaño y width*/
+.hero-content h1{
+  font-family:"Space Grotesk", sans-serif;
+
+  font-size:clamp(40px, 5vw, 80px);
+  line-height:1.02;
+
+  font-weight:800;
+  letter-spacing:-1.2px;
+
+  text-transform:uppercase;
+
+  margin-bottom:28px;
+  max-width:1000px;
+
+  word-break:normal;
+  overflow-wrap:break-word;
+
+}
+
 .hero-content p,
 .hero-content .btn-red{
   opacity:0;
@@ -588,7 +607,7 @@ nav a:hover{
   height:100%;
   width:0%;
   border-radius:999px;
-  background:linear-gradient(90deg,#7a0000 0%, #ff2d2d 50%, #ff6a3d 100%);
+  background:linear-gradient(90deg,#7a0000 0%, #ff2d2d 50%, #ff3d3d 100%);
   box-shadow:0 0 18px rgba(255,0,0,0.35);
   transition:width 1.6s ease;
   position:relative;
@@ -1002,7 +1021,7 @@ nav a:hover{
 }
 
 .ai-title span{
-  color:#ff3131;
+  color:#ff0000;
 }
 
 .ai-text{
@@ -1022,7 +1041,7 @@ nav a:hover{
 .ai-metrics h3{
   font-family:"Space Grotesk", Arial, sans-serif;
   font-size:40px;
-  color:#ff2a2a;
+  color:#ff0000;
   margin-bottom:8px;
 }
 
@@ -1263,7 +1282,7 @@ nav a:hover{
 }
 
 .threat-header h2 span{
-  color:#ff5a2a;
+  color:#ff0000;
 }
 
 .threat-subtitle{
@@ -1364,7 +1383,7 @@ nav a:hover{
   font-family:"Space Grotesk", Arial, sans-serif;
   font-size:clamp(28px, 3vw, 54px);
   line-height:1;
-  color:#ff5a2a;
+  color:#ff0000;
   margin-bottom:8px;
   font-weight:700;
   letter-spacing:-1px;
@@ -2468,7 +2487,7 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
 .section-kicker-red{
   display:inline-block;
   margin-bottom:16px;
-  color:#ff4d2d;
+  color:#ff0000;
   font-size:14px;
   font-weight:700;
   letter-spacing:3px;
@@ -2480,11 +2499,18 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
   margin-bottom:56px;
 }
 
+
+
 .section-heading h2{
   font-family:"Space Grotesk", Arial, sans-serif;
   font-size:clamp(34px, 3.8vw, 60px);
   line-height:1.08;
   margin-bottom:14px;
+  color:#ffffff;
+}
+.change-color-h2 h2{ /*Agrego color a una nueva clase*/
+  color:#06093b;
+  font-family:"Space Grotesk", Arial, sans-serif;
 }
 
 .section-heading p{
@@ -3422,7 +3448,7 @@ font-size:28px;
   left:0;
   width:100%;
   height:6px;
-  background:linear-gradient(90deg, #ff214d 0%, #ff6a00 100%);
+  background:linear-gradient(90deg, #ff0000 0%, #ff6a00 100%);
 }
 
 .digital-capability-icon{
@@ -4114,13 +4140,13 @@ font-size:28px;
 
 /* colores por tarjeta */
 .spec-orange{
-  border:1px solid #ff7a18;
+  border:1px solid #ff1818;
   box-shadow:0 0 0 1px rgba(255,122,24,0.12), 0 0 24px rgba(255,122,24,0.08);
 }
 
 .spec-orange h3,
 .spec-orange h4{
-  color:#ff8b26;
+  color:#ff2626;
 }
 
 .spec-cyan{
@@ -4351,7 +4377,7 @@ font-size:28px;
 }
 
 .btn-orange{
-  background:linear-gradient(135deg,#ff7a18,#ff4e00);
+  background:linear-gradient(135deg,#ff1818,#ff0000);
   box-shadow:0 0 20px rgba(255,102,24,0.18);
 }
 
@@ -5918,107 +5944,595 @@ font-size:28px;
 /* ===============================
    TEAM — LAS PERSONAS QUE LIDERAN ATALANTA
    Líneas 5836–5934 en estilos.css
+}
+   JOB DETAIL PAGES
+   Paste this at the bottom of estilos.css
 ================================ */
 
-.about-team{
-  padding:120px 0;
-  background:#050505;
-  position:relative;
+/* HERO */
+
+.job-hero {
+  background: linear-gradient(135deg, #0e0e0e 0%, #1a0a0a 50%, #0e0e0e 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 5rem 0 4rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.about-team::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(ellipse at 50% 100%, rgba(180,20,20,0.07), transparent 60%);
-  pointer-events:none;
+.job-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 80% 50%, rgba(226,35,26,0.08) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.about-team .section-heading{
-  margin-bottom:70px;
+.job-hero-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #c8c8c8;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
 }
 
-.team-grid{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:52px 32px;
+.job-hero-back:hover { color: #ffffff; }
+
+.job-hero-back svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
 }
 
-.team-card{
-  text-align:center;
-  flex:0 0 calc(25% - 24px);
-  max-width:calc(25% - 24px);
+.job-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
 }
 
-.team-photo-wrap{
-  width:150px;
-  height:150px;
-  border-radius:50%;
-  overflow:hidden;
-  margin:0 auto 20px;
-  border:3px solid rgba(220,30,30,0.45);
-  background:#1a1a1a;
-  transition:border-color 0.3s ease, transform 0.3s ease;
+.job-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
-.team-card:hover .team-photo-wrap{
-  border-color:rgba(220,30,30,0.85);
-  transform:translateY(-4px);
+.job-tag-red {
+  background: rgba(226,35,26,0.15);
+  color: #ff5c56;
+  border: 1px solid rgba(226,35,26,0.3);
 }
 
-.team-photo-wrap img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center top;
-  display:block;
+.job-tag-gray {
+  background: rgba(255,255,255,0.07);
+  color: #c8c8c8;
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
-.team-role{
-  font-family:"Space Grotesk", Arial, sans-serif;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:#e63030;
-  margin-bottom:8px;
+.job-hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+  text-transform: none;
+  letter-spacing: -1px;
 }
 
-.team-name{
-  font-family:"Space Grotesk", Arial, sans-serif;
-  font-size:17px;
-  font-weight:600;
-  color:#fff;
-  margin-bottom:12px;
+.job-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  color: #c8c8c8;
+  font-size: 0.9rem;
+  margin-bottom: 2.5rem;
 }
 
-.team-desc{
-  font-size:14px;
-  line-height:1.65;
-  color:#aaa;
+.job-hero-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
-@media(max-width:1024px){
-  .team-card{
-    flex:0 0 calc(33.333% - 22px);
-    max-width:calc(33.333% - 22px);
+.job-hero-meta svg {
+  width: 15px;
+  height: 15px;
+  stroke: #e2231a;
+  fill: none;
+  stroke-width: 2;
+}
+
+/* LAYOUT */
+
+.job-content {
+  padding: 4rem 0;
+  background: #0e0e0e;
+}
+
+.job-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* MAIN SECTIONS */
+
+.job-section {
+  margin-bottom: 3rem;
+}
+
+.job-section h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.job-section p {
+  color: #c8c8c8;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.job-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.job-section ul li {
+  color: #c8c8c8;
+  font-size: 0.92rem;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.job-section ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: #e2231a;
+  border-radius: 50%;
+}
+
+/* BENEFITS GRID */
+
+.job-benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.job-benefit-item {
+  background: #181818;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.2rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.job-benefit-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  border-color: rgba(226,35,26,0.25);
+}
+
+.job-benefit-item .icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(226,35,26,0.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.job-benefit-item .icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: #e2231a;
+  fill: none;
+  stroke-width: 2;
+}
+
+.job-benefit-item h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.job-benefit-item p {
+  color: #c8c8c8;
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+/* SIDEBAR */
+
+.job-sidebar-card {
+  background: #181818;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 2rem;
+  position: sticky;
+  top: 90px;
+}
+
+.job-sidebar-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.job-sidebar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.job-sidebar-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.si-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(226,35,26,0.1);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.si-icon svg {
+  width: 15px;
+  height: 15px;
+  stroke: #e2231a;
+  fill: none;
+  stroke-width: 2;
+}
+
+.si-text label {
+  display: block;
+  font-size: 0.73rem;
+  color: #c8c8c8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.15rem;
+}
+
+.si-text span {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.job-sidebar-card .btn-red {
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+}
+
+.job-sidebar-email {
+  text-align: center;
+  font-size: 0.82rem;
+  color: #c8c8c8;
+}
+
+.job-sidebar-email a {
+  color: #e2231a;
+  text-decoration: none;
+}
+
+/* APPLY FORM SECTION */
+
+.job-form-section {
+  background: #181818;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 4rem 0;
+}
+
+.job-form-section h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-transform: none;
+  letter-spacing: -0.5px;
+}
+
+.job-form-section .sub {
+  color: #c8c8c8;
+  margin-bottom: 2.5rem;
+  font-size: 0.95rem;
+}
+
+.job-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  max-width: 800px;
+}
+
+.job-form .full {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #c8c8c8;
+  margin-bottom: 0.5rem;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #ffffff;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: rgba(255,255,255,0.25);
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #e2231a;
+  box-shadow: 0 0 0 3px rgba(226,35,26,0.10);
+}
+
+.form-field select option {
+  background: #1a1a1a;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.form-checkbox {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: #c8c8c8;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.form-checkbox input {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: #e2231a;
+}
+
+.btn-submit {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #ff0033, #ff2a2a);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 1rem 2.5rem;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.15s;
+  width: fit-content;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.btn-submit:hover {
+  box-shadow: 0 0 24px rgba(255,0,0,0.38);
+  transform: translateY(-3px);
+}
+
+/* JOB NAV */
+
+.job-nav {
+  background: #0e0e0e;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 1.8rem 0;
+}
+
+.job-nav-inner {
+  display: flex;
+  align-items: center;
+}
+
+.job-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #c8c8c8;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.job-nav-btn:hover {
+  color: #ffffff;
+  border-color: rgba(226,35,26,0.4);
+  background: rgba(226,35,26,0.08);
+}
+
+.job-nav-btn svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.job-nav-btn.siguiente {
+  margin-left: auto;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .job-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .job-sidebar-card {
+    position: static;
   }
 }
 
-@media(max-width:768px){
-  .team-grid{
-    gap:40px 20px;
+@media (max-width: 600px) {
+  .job-hero {
+    padding: 7rem 0 3rem;
   }
-  .team-card{
-    flex:0 0 calc(50% - 10px);
-    max-width:calc(50% - 10px);
+
+  .job-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .job-benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .job-form {
+    grid-template-columns: 1fr;
+  }
+
+  .job-form-section h2 {
+    font-size: 1.5rem;
   }
 }
+.jobs-filters {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto 50px auto;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
 
-@media(max-width:480px){
-  .team-card{
-    flex:0 0 100%;
-    max-width:100%;
-  }
+.custom-select-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.custom-select-trigger {
+  background: #fff;
+  padding: 18px 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #13243c;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  transition: all 0.3s ease;
+  min-height: 56px;
+  box-sizing: border-box;
+}
+
+.custom-select-trigger:hover {
+  border-color: #ff214d;
+}
+
+.custom-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-top: 5px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 9999;
+  overflow: hidden;
+  text-align: center;
+}
+
+.custom-select-wrapper.open .custom-options {
+  display: block;
+}
+
+.custom-option {
+  display: block;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #13243c;
+  transition: 0.2s;
+}
+
+.custom-option:hover {
+  background-color: #ff214d;
+  color: #fff;
+}
+
+.custom-option.selected {
+  color: #ff214d;
+  font-weight: 700;
+  background-color: #fff5f6;
+}
+
+.jobs-groups {
+  position: relative;
+  z-index: 1; 
 }

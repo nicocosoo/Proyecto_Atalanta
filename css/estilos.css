@@ -6005,6 +6005,52 @@ font-size:28px;
   transform: translateY(-3px);
 }
 
+/* JOB NAV */
+
+.job-nav {
+  background: #0e0e0e;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 1.8rem 0;
+}
+
+.job-nav-inner {
+  display: flex;
+  align-items: center;
+}
+
+.job-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #c8c8c8;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.job-nav-btn:hover {
+  color: #ffffff;
+  border-color: rgba(226,35,26,0.4);
+  background: rgba(226,35,26,0.08);
+}
+
+.job-nav-btn svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.job-nav-btn.siguiente {
+  margin-left: auto;
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 900px) {

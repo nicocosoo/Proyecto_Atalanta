@@ -340,19 +340,13 @@
     }
     .ac-ticket-mock {
       background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 16px;
-      position: relative;
-    }
-    .ac-ticket-mock::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      pointer-events: none;
-      z-index: 2;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
     }
     .ac-ticket-mock:last-child { margin-bottom: 0; }
     .ac-ticket-mock-header {

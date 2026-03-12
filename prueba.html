@@ -853,5 +853,10 @@
     </div>
   </footer>
   <script src="js/js.js"></script>
+  <script>
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) window.location.reload();
+    });
+  </script>
 </body>
 </html>

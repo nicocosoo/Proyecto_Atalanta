@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footprinting | Atalanta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="prueba.html">
+        <img src="imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+      <nav>
+        <a href="quienes_somos.html">Quiénes somos</a>
+        <a href="ciberseguridad.html">Ciberseguridad</a>
+        <a href="digital.html">Digital</a>
+        <a href="formacion.html">Formación</a>
+        <a href="empleo.html">Empleo</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO ARTICULO -->
+    <section class="news-article-hero" style="background-image: url('https://atalantago.com/wp-content/uploads/leona-atalanta-portada.jpg');">
+      <div class="news-article-hero-overlay"></div>
+      <div class="page-container news-article-hero-content">
+        <a href="noticias.html" class="news-article-back">← Volver a Noticias</a>
+        <span class="news-article-category">Ciberseguridad</span>
+        <h1>Footprinting</h1>
+      </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="news-article-body">
+      <div class="page-container news-article-container">
+
+        <h2>¿Qué es el Footprinting?</h2>
+
+        <p>El footprinting es una técnica práctica de reconocimiento que se utiliza para intentar recabar toda la información pública posible sobre una empresa. Dicha información ha podido ser publicada conscientemente por la empresa a auditar o puede haberse publicado de manera desconocida.</p>
+
+        <p>Este es el proceso que normalmente se utiliza primero dentro de la ciberseguridad para llevar a cabo un informe de evaluación que utilizaremos más adelante.</p>
+
+        <p>Hay dos tipos de Footprinting:</p>
+        <ul>
+          <li><strong>Activo:</strong> en este caso interactuamos directamente con el objetivo.</li>
+          <li><strong>Pasivo:</strong> recogemos toda la información posible pero sin entrar en contacto directo con el objetivo.</li>
+        </ul>
+
+        <h2>¿Cuándo se utiliza esta técnica?</h2>
+
+        <p>Este procedimiento sería la primera fase de auditoría. Se utiliza normalmente cuando tenemos una empresa u organización como objetivo, con el fin de recolectar información para intentar buscar posibles vulnerabilidades con la finalidad de poder acceder más fácilmente a sus sistemas.</p>
+
+        <h2>¿Cómo hacemos Footprinting?</h2>
+
+        <p>Al realizar cotidianamente una búsqueda normal en Google sobre un tema ya estamos haciendo footprinting sin ser conscientes de ello. Los hackers y ciberdelincuentes lo hacen de manera consciente usando todas las maneras factibles para acceder al mayor número de información posible del objetivo.</p>
+
+        <p>Para ello se emplean distintos comandos, programas y herramientas. Algunos ejemplos pueden ser los siguientes:</p>
+
+        <ul>
+          <li><code>whois + DOMINIO</code> en cualquier terminal de comandos de Linux.</li>
+          <li><code>whatweb + DOMINIO</code> en cualquier terminal de comandos de Linux.</li>
+          <li><code>dnsenum + DOMINIO</code> en cualquier terminal de comandos de Linux.</li>
+          <li>Redes sociales.</li>
+          <li><code>ping + DOMINIO</code> en cualquier terminal de comandos de Linux y CMD.</li>
+          <li><code>dig + DOMINIO</code> (hay que instalarlo previamente en CMD).</li>
+          <li><code>dirb + DOMINIO + diccionario</code> en cualquier terminal de comandos Linux.</li>
+          <li><code>nslookup</code> en cualquier terminal de comandos Linux.</li>
+          <li>Fuzzers como Wfuzz, Bed, etc.</li>
+        </ul>
+
+        <h2>Tipo de información que se obtiene</h2>
+
+        <p>La principal información que se obtiene es:</p>
+
+        <ul>
+          <li>Nombre de dominio</li>
+          <li>Dirección IP</li>
+          <li>Registros Whois</li>
+          <li>Información de DNS</li>
+          <li>Correos electrónicos</li>
+          <li>Sistema operativo utilizado</li>
+          <li>Números de teléfono</li>
+          <li>Mapa de red</li>
+          <li>URLs</li>
+          <li>Cortafuegos</li>
+        </ul>
+
+        <h2>Herramientas complementarias al Footprinting</h2>
+
+        <p>Podemos ayudarnos de otras herramientas para realizar un buen reconocimiento de nuestro objetivo:</p>
+
+        <ul>
+          <li><strong>Google Hacking:</strong> se define como las técnicas o parámetros con comandos de Google para conseguir búsquedas avanzadas o precisas.</li>
+          <li><strong>Maltego:</strong> herramienta que tiene el potencial de encontrar información sobre personas, dominios, emails, dispositivos IoT, servidores de diferentes servicios, documentos y empresas en Internet, permitiendo cruzar datos para obtener perfiles en redes sociales, servidores de correo, etc.</li>
+          <li><strong>Harvester:</strong> herramienta que permite obtener información sobre un objetivo concreto. Una vez encontrada la información, permite exportarla a un archivo HTML y XML.</li>
+        </ul>
+
+        <h2>Diferencia entre Footprinting y Fingerprinting</h2>
+
+        <p>La principal diferencia es que con el <strong>footprinting</strong> obtenemos la información a través de búsquedas específicas en Internet, redes sociales, páginas web…, mientras que con el <strong>fingerprinting</strong> se intenta conseguir la información interactuando directamente con el sistema o un servicio del objetivo, lo cual en algunos países resulta ser ilegal.</p>
+
+        <h2>Conclusión</h2>
+
+        <p>El Footprinting es una buena manera de preparar un documento con toda la información que posiblemente te sea útil para llevar a cabo tu objetivo. Consigues bastantes datos con los que ya tienes una base para empezar a trabajar en tu proyecto y te aseguras no ir totalmente a ciegas en el trabajo que vayas a realizar.</p>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-cta">
+      <div class="page-container about-cta-inner reveal-up">
+        <h2>¿Quieres saber más sobre ciberseguridad y tecnología?</h2>
+        <a href="contacto.html" class="btn-red">Contactar</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+        <div class="footer-col-brand">
+          <a href="prueba.html">
+            <img src="imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="digital.html">Digital</a></li>
+            <li><a href="formacion.html">Formación</a></li>
+            <li><a href="empleo.html">Empleo</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Madrid, España</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright © 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="#">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="politica_privacidad.html">POLÍTICA DE PRIVACIDAD</a>
+          <span>|</span>
+          <a href="#">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top-btn" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+
+  <script src="js/js.js"></script>
+</body>
+</html>

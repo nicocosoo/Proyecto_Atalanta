@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cómo usar localstack para interactuar con AWS en tus scripts | Atalanta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="prueba.html">
+        <img src="imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+      <nav>
+        <a href="quienes_somos.html">Quiénes somos</a>
+        <a href="ciberseguridad.html">Ciberseguridad</a>
+        <a href="digital.html">Digital</a>
+        <a href="formacion.html">Formación</a>
+        <a href="empleo.html">Empleo</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO ARTICULO -->
+    <section class="news-article-hero" style="background-image: url('https://atalantago.com/wp-content/uploads/localstack-4.png');">
+      <div class="news-article-hero-overlay"></div>
+      <div class="page-container news-article-hero-content">
+        <a href="noticias.html" class="news-article-back">← Volver a Noticias</a>
+        <span class="news-article-category">Digital</span>
+        <h1>Cómo usar localstack para interactuar con AWS en tus scripts</h1>
+      </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="news-article-body">
+      <div class="page-container news-article-container">
+
+        <p>¡Buenas! Mi nombre es Adrián Sanz y me dedico a DevSecOps en Atalanta. Aparezco por aquí porque quiero compartir con vosotros una herramienta que me llamó mucho la atención cuando la descubrí: localstack. En concreto, en este artículo quiero enseñaros, para todos aquellos que no lo sepáis, cómo utilizar esta herramienta para interactuar en vuestros scripts con AWS. ¡Empezamos!</p>
+
+        <h2>El problema</h2>
+
+        <p>Cuando me interesé por automatizar y agilizar mi trabajo, solía usar una cuenta de AWS para probar, mejorar o desarrollar estas utilidades; sin embargo, ya no tengo accesos y tendría que usar la mía personal, pero dios sabe lo fácil que es que AWS te sorprenda a final de mes.</p>
+
+        <p>Así que, me puse a investigar una herramienta que conocí hace no mucho tiempo y que llamó mi atención: <strong>localstack</strong>. Localstack nos permite "emular" una versión simplificada de AWS, con la que podemos interactuar como si se tratase realmente de AWS, solo cambiando el end-point al que apuntamos en nuestro script.</p>
+
+        <p>Mola, ¿eh? Bueno, no todo son cosas buenas, ya que esta herramienta tiene un modelo de pago, lo que quiere decir que la versión community está limitada en algunos servicios. Por ejemplo, no puedes usar imágenes de docker como "source" para las imágenes de EC2, ni cuenta con todos los servicios o cubre todas las interacciones de estos.</p>
+
+        <p>Para más info sobre qué cubre localstack y si puede servirte para desarrollar, te invito a echar un ojo a la <a href="https://docs.localstack.cloud/aws/feature-coverage/" target="_blank" rel="noopener">documentación oficial de localstack</a>.</p>
+
+        <h2>Hands on</h2>
+
+        <p>En este caso, he implementado el uso de localstack en un script para listado de instancias EC2, llamado "lister". Es un proyecto activo y, al no tener cuenta de AWS, probar cambios puede complicarse. Es ahí donde esta herramienta muestra su utilidad.</p>
+
+        <p>Tras instalarlo podemos lanzar el comando <code>localstack start -d</code> para iniciarlo, comprobar el estado de los servicios con <code>localstack status services</code> o bien pararlo con <code>localstack stop</code>:</p>
+
+        <img src="https://atalantago.com/wp-content/uploads/Localstack1.png" alt="Comandos de localstack">
+
+        <p>Ahora que tenemos todo iniciado, ¡es hora de empezar a interactuar con los servicios!</p>
+
+        <h3>En AWS CLI</h3>
+
+        <p>Mi script lista instancias EC2, y si no hay instancias, no hay listado, así que, primero debo crearlas. Para esto, dispones de 2 opciones: el CLI de AWS o el CLI creado por localstack, <code>awslocal</code>. Personalmente, prefiero el CLI oficial de AWS, pues awslocal es un wrapper alrededor del CLI oficial y no soporta muy bien todavía la v2.</p>
+
+        <p>Para poder interactuar con el CLI oficial tendremos que configurar un perfil de AWS y cambiar el end-point al que apuntamos en los comandos:</p>
+
+        <p><strong>1. El perfil:</strong></p>
+        <img src="https://atalantago.com/wp-content/uploads/Localstack2.png" alt="Configuración del perfil AWS para localstack">
+
+        <p><strong>2. El end-point</strong> (No se puede cambiar el end-point de forma permanente, sino que se especifica en cada comando, por ese motivo yo tengo un alias para evitar escribir todo el rato lo mismo):</p>
+        <img src="https://atalantago.com/wp-content/uploads/Localstack3.png" alt="Configuración del end-point en localstack">
+
+        <p>Con esto ya están las instancias creadas y sabemos cómo interactuar con localstack con el CLI.</p>
+
+        <h3>En el script</h3>
+
+        <p>Como el script debería usar por defecto el end-point de AWS real, he metido el uso de localstack con el flag <code>-ls</code> o <code>--localstack</code>. A continuación, os dejo un pequeño bloque de código:</p>
+
+        <img src="https://atalantago.com/wp-content/uploads/Localstack4.png" alt="Código del script con localstack">
+
+        <p>Como se puede observar, hago uso del argumento <code>endpoint_url</code> (se puede usar tanto en "client" como en "resource"), y con eso ya podría probar interacciones entre mi script y AWS:</p>
+
+        <img src="https://atalantago.com/wp-content/uploads/Localstack5.png" alt="Interacción del script con localstack">
+        <img src="https://atalantago.com/wp-content/uploads/Localstack6.png" alt="Resultado de la ejecución con localstack">
+
+        <h2>Reflexión sobre localstack</h2>
+
+        <p>Poder emular algunos de los servicios de AWS puede ser exageradamente útil, no solo para desarrollo local (que también, de hecho, podría automatizarse la creación de un entorno local serverless en AWS con un simple script en bash), sino también para integrar con terraform y probar en CI las configuraciones antes de desplegarse en un entorno real.</p>
+
+        <p>Sin embargo, la herramienta queda limitada a uso local si no adquieres la versión pro, así que la sensación final es un poco agridulce.</p>
+
+        <p>En fin, espero que os haya resultado de utilidad todo lo que he expuesto en esta entrada. Y si solo os quedáis con una parte, ¡ya os ha servido de algo! ¡Nos vemos!</p>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-cta">
+      <div class="page-container about-cta-inner reveal-up">
+        <h2>¿Quieres saber más sobre ciberseguridad y tecnología?</h2>
+        <a href="contacto.html" class="btn-red">Contactar</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+        <div class="footer-col-brand">
+          <a href="prueba.html">
+            <img src="imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="digital.html">Digital</a></li>
+            <li><a href="formacion.html">Formación</a></li>
+            <li><a href="empleo.html">Empleo</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Madrid, España</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright © 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="#">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="politica_privacidad.html">POLÍTICA DE PRIVACIDAD</a>
+          <span>|</span>
+          <a href="#">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top-btn" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+
+  <script src="js/js.js"></script>
+</body>
+</html>

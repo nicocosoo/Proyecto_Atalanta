@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NSE, un campo abierto para el pentest | Atalanta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="prueba.html">
+        <img src="imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+      <nav>
+        <a href="quienes_somos.html">Quiénes somos</a>
+        <a href="ciberseguridad.html">Ciberseguridad</a>
+        <a href="digital.html">Digital</a>
+        <a href="formacion.html">Formación</a>
+        <a href="empleo.html">Empleo</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO ARTICULO -->
+    <section class="news-article-hero" style="background-image: url('https://atalantago.com/wp-content/uploads/Captura-de-pantalla-2020-08-25-09-38-51.png');">
+      <div class="news-article-hero-overlay"></div>
+      <div class="page-container news-article-hero-content">
+        <a href="noticias.html" class="news-article-back">← Volver a Noticias</a>
+        <span class="news-article-category">Footprinting</span>
+        <h1>NSE, un campo abierto para el pentest</h1>
+      </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="news-article-body">
+      <div class="page-container news-article-container">
+
+        <p>Cuando hablamos de NMAP lo primero que se nos viene a la cabeza es análisis de puertos. Si bien es cierto que NMAP es la herramienta más potente y efectiva para esta tarea, NMAP nos brinda un conjunto de oportunidades ilimitadas que hace de esta herramienta, posiblemente junto con MetaSploit, el mejor framework de aplicaciones para los hackers y pentesters.</p>
+
+        <p>Adicionalmente a su principal funcionalidad para análisis de puertos y servicios, contamos con un conjunto de cientos de scripts creados por una gran comunidad programados en LUA. En este artículo vamos a ver cómo sacar un alto rendimiento de estos scripts de NMAP (NSE), para adaptarlo a nuestras necesidades y no limitarnos a la visión de cada programador de los scripts.</p>
+
+        <p>Para este artículo usaremos un script básico pero muy interesante, <strong>dns-brute</strong>, que nos va a permitir realizar una función fundamental en nuestros pentesting: obtener los subdominios de un dominio. Esto es un básico de cualquier caja negra, ya que en muchas ocasiones lograremos acceder mediante fallos o vulnerabilidades de uno de estos subdominios que suelen estar menos atendidos.</p>
+
+        <h2>Lanzando dns-brute por defecto</h2>
+        <p>El comando que usaremos es el siguiente:</p>
+        <pre><code>nmap --script dns-brute microsoft.com</code></pre>
+
+        <img src="https://atalantago.com/wp-content/uploads/nse1.png" alt="NSE - Resultado dns-brute por defecto">
+
+        <p>El resultado obtenido lo pasamos a un archivo de texto para ver los registros detectados. Para ver el número de registros DNS, eliminamos las cabeceras y dejamos un registro por línea para ver con el comando <code>wc</code> el total de registros detectados.</p>
+
+        <img src="https://atalantago.com/wp-content/uploads/ns2.png" alt="NSE - Conteo de registros DNS">
+
+        <p>Un total de 58 registros, lo que no está mal, pero es muy limitado para una empresa de la envergadura de Microsoft, por lo que sabemos que el diccionario usado por este script por defecto está muy limitado. Es por esto que es preciso mejorarlo o, en este caso, hacer uso de sus propiedades.</p>
+
+        <h2>Usando un diccionario propio</h2>
+        <p>Ahora vamos a lanzar un diccionario propio creado para la ocasión; esto es lo que marcará la diferencia en los resultados. He creado un diccionario de subdominios habituales llamado <em>subdominios</em> que coloco en la ruta de diccionarios por defecto de Kali Linux. Para ello me valgo de los argumentos de NMAP y lanzo el siguiente comando:</p>
+        <pre><code>nmap --script dns-brute --script-args dns-brute.hostlist=/usr/share/wordlists/subdominios microsoft.com</code></pre>
+
+        <img src="https://atalantago.com/wp-content/uploads/nse3.png" alt="NSE - Lanzando diccionario propio">
+
+        <p>El resultado por lo general es rápido. Todo dependerá del número de palabras en el diccionario y la conexión, pero con una conexión 3G y un diccionario de cerca de 2500 palabras, el tiempo ha sido de 1 minuto aproximadamente. Afinar con mejores resultados dependerá de que vayamos mejorando y ampliando nuestro diccionario en base a la experiencia.</p>
+
+        <img src="https://atalantago.com/wp-content/uploads/nse4.png" alt="NSE - Resultado con diccionario propio">
+
+        <h2>Script de bash para depurar resultados</h2>
+        <p>El resultado parece mucho más amplio que el obtenido por el script por defecto, pero el orden del resultado complica el análisis para continuar trabajando. La forma de solucionarlo es crear un propio script de bash que depure el resultado, lo ordene en base a nuestras necesidades e informe del número de registros detectados:</p>
+
+        <img src="https://atalantago.com/wp-content/uploads/nse5.png" alt="NSE - Script bash personalizado">
+
+        <p>Damos permisos de ejecución al script de bash y lo lanzamos para comparar resultados con el mismo dominio:</p>
+
+        <img src="https://atalantago.com/wp-content/uploads/nse6.png" alt="NSE - Ejecutando script bash">
+
+        <p>Tras poco más de un minuto de espera, nos encontramos con un resultado muy superior a la inicial, concretamente un total de <strong>415 registros</strong>, 9 más que antes gracias a la propia información proporcionada por el cliente. Este resultado es fundamental para evitar dejar subdominios fuera de la auditoría.</p>
+
+        <img src="https://atalantago.com/wp-content/uploads/nse7.png" alt="NSE - 415 registros encontrados">
+
+        <h2>Extrayendo IPs únicas</h2>
+        <p>Otra de las grandes ventajas es que, al crear un archivo en local con los resultados, podremos tratarlo a nuestro gusto. Por ejemplo, vamos a mostrar tan solo las direcciones IP ordenadas y sin repetirse:</p>
+        <pre><code>cat microsoft.com.txt | sed 's/\s+/_/g' | cut -d '_' -f 2 | sort | uniq</code></pre>
+
+        <img src="https://atalantago.com/wp-content/uploads/nse8.png" alt="NSE - IPs únicas ordenadas">
+
+        <p>No solo obtenemos mayor número de registros DNS, sino que además vamos a encontrar pools de IPs sobre los que poder trabajar posteriormente. Para verificar que pertenecen al cliente, usamos una IP del rango y hacemos un <code>whois</code>:</p>
+
+        <img src="https://atalantago.com/wp-content/uploads/nse9.png" alt="NSE - Verificación whois">
+
+        <p>Con estas nuevas direcciones IP, podremos seguir usando NMAP con los puertos habituales para descubrir nuevos registros DNS:</p>
+        <pre><code>nmap -p80,443 20.190.137.0/24</code></pre>
+
+        <img src="https://atalantago.com/wp-content/uploads/nse10.png" alt="NSE - Escaneo de rango de IPs">
+
+        <p>Si accedemos a la web por el puerto SSL, veremos que logramos obtener multitud de nuevos dominios del cliente para continuar con nuestro trabajo. Este es un fallo habitual de las empresas, donde por ahorrar dinero usan un certificado digital para multitud de dominios.</p>
+
+        <img src="https://atalantago.com/wp-content/uploads/nse11.png" alt="NSE - Nuevos dominios descubiertos via SSL">
+
+        <h2>Conclusión</h2>
+        <p>El objetivo de este artículo no es llegar hasta el final de las posibilidades de este script, ni hacer un footprinting completo de ninguna empresa. Es dar una visión de las capacidades de adaptación que cada script de NMAP o NSE proporciona al auditor para facilitar su trabajo. Este mismo ejemplo, siendo muy simple, se puede replicar en decenas de scripts de NMAP que se valen de diccionarios, como puedan ser los de enumeración de usuarios, fuzzers, etc.</p>
+
+        <p><em>— Javier Blanco —</em></p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+
+        <div class="footer-col-brand">
+          <a href="prueba.html">
+            <img src="imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="digital.html">Digital</a></li>
+            <li><a href="formacion.html">Formación</a></li>
+            <li><a href="empleo.html">Empleo</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Madrid, España</span>
+          </div>
+          <div class="map-placeholder">
+            <iframe src="https://maps.google.com/maps?q=40.4292413,-3.7049219&z=16&output=embed" frameborder="0" width="100%" height="250" style="border: 0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright © 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="#">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="#">POLÍTICA DE PRIVACIDAD</a>
+          <span>|</span>
+          <a href="#">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top-btn" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+
+  <script src="js/js.js"></script>
+</body>
+</html>

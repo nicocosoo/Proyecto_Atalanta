@@ -63,6 +63,65 @@ nav a:hover{
   color:#f00000;
 }
 
+/* DROPDOWN OTROS */
+.nav-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.nav-dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+.nav-dropdown-toggle:hover {
+  color: #f00000;
+}
+.nav-dropdown-toggle svg {
+  transition: transform 0.25s ease;
+}
+.nav-dropdown:hover .nav-dropdown-toggle svg {
+  transform: rotate(180deg);
+}
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  min-width: 200px;
+  padding: 8px 0;
+  z-index: 1000;
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  display: block;
+}
+.nav-dropdown-menu a {
+  display: block;
+  padding: 12px 22px;
+  color: #162644;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-dropdown-menu a:hover {
+  background: #f4f6f9;
+  color: #e01f1f;
+}
+
 /* HERO */
 /* se aumentó el padding superior para que el texto no se corte con la barra de navegación, Nico2.4*/
 .hero-slider{

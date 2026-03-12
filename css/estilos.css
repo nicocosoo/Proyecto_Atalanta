@@ -6899,3 +6899,74 @@ font-size:28px;
   border-color: #e01f1f;
   color: #ff3333;
 }
+
+/* ── Article author ── */
+.news-article-author {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  margin: 16px 0 0;
+  letter-spacing: 0.04em;
+}
+
+/* ── Article prev/next nav ── */
+.news-article-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 70px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  flex-wrap: wrap;
+}
+.news-nav-prev,
+.news-nav-next {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+  max-width: 36%;
+  transition: color 0.2s;
+}
+.news-nav-prev span,
+.news-nav-next span {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #e01f1f;
+}
+.news-nav-prev em,
+.news-nav-next em {
+  font-style: normal;
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+.news-nav-prev:hover em,
+.news-nav-next:hover em { color: #fff; }
+.news-nav-next { align-items: flex-end; text-align: right; }
+.news-nav-index {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.news-nav-index:hover { color: #fff; }
+.news-nav-disabled {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.15);
+  max-width: 36%;
+}

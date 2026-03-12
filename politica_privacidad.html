@@ -17,10 +17,21 @@
     ================================================ */
 
     .privacy-hero {
-      background: black;
+      background: #0a0a0a url('imagenes/Diseno-sin-titulo-23.png') center center / cover no-repeat;
       padding: 140px 0 70px;
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.07);
+      position: relative;
+    }
+    .privacy-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+    }
+    .privacy-hero > * {
+      position: relative;
+      z-index: 1;
     }
 
     .privacy-hero-kicker {

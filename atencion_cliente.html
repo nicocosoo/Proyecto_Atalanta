@@ -344,7 +344,7 @@
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 16px;
-      min-width: 0;
+      overflow: hidden;
     }
     .ac-ticket-mock:last-child { margin-bottom: 0; }
     .ac-ticket-mock-header {
@@ -352,7 +352,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 8px;
-      flex-wrap: nowrap;
+      width: 100%;
       margin-bottom: 8px;
     }
     .ac-ticket-mock-id {
@@ -363,6 +363,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      flex: 1;
       min-width: 0;
     }
     .ac-ticket-badge {

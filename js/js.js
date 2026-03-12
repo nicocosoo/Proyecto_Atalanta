@@ -345,6 +345,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+/* añado JS para Equipo y Blog */
+
+(function () {
+  function initFilter(btnSelector, cardSelector, attr) {
+    const btns = document.querySelectorAll(btnSelector);
+    const cards = document.querySelectorAll(cardSelector);
+    if (!btns.length || !cards.length) return;
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', function () {
+        btns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset[attr] === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  }
+
+  initFilter('.equipo-filtro-btn', '.equipo-card', 'dept');
+  initFilter('.blog-filtro-btn', '.blog-card', 'category');
+})();
+
 /* Scroll to top button */
 (function () {
   const btn = document.getElementById('scroll-top-btn');

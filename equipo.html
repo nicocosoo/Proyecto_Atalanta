@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipo | Atalanta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" referrerpolicy="no-referrer">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="prueba.html">
+        <img src="imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+      <nav>
+        <a href="quienes_somos.html">Quiénes somos</a>
+        <a href="equipo.html" class="active">Equipo</a>
+        <a href="ciberseguridad.html">Ciberseguridad</a>
+        <a href="digital.html">Digital</a>
+        <a href="formacion.html">Formación</a>
+        <a href="empleo.html">Empleo</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="blog.html">Blog</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="news-hero">
+      <div class="news-hero-bg" style="background-image: url('imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="news-hero-overlay"></div>
+      <div class="page-container news-hero-content">
+        <span class="news-hero-kicker reveal-up">Nuestro equipo</span>
+        <h1 class="reveal-up">
+          Las personas que hacen posible Atalanta
+        </h1>
+        <p class="news-hero-lead reveal-up">
+          Un equipo de expertos en ciberseguridad, transformación digital e innovación comprometidos con la excelencia.
+        </p>
+      </div>
+    </section>
+
+    <!-- FILTRO EQUIPO -->
+    <section class="equipo-section page-container">
+
+      <!-- añado filtro de equipo via JS -->
+      <div class="equipo-filtros reveal-up">
+        <button class="equipo-filtro-btn active" data-filter="all">Todos</button>
+        <button class="equipo-filtro-btn" data-filter="ciberseguridad">Ciberseguridad</button>
+        <button class="equipo-filtro-btn" data-filter="digital">Digital</button>
+        <button class="equipo-filtro-btn" data-filter="direccion">Dirección</button>
+      </div>
+
+      <div class="equipo-grid">
+
+        <div class="equipo-card reveal-up" data-dept="direccion">
+          <div class="equipo-card-img">
+            <img src="imagenes/joseantonio_munoz_fuentes.jpg" alt="José Antonio Muñoz">
+          </div>
+          <div class="equipo-card-info">
+            <h3 class="blog-h3-letter">José Antonio Muñoz</h3>
+            <span class="equipo-role">CEO &amp; Fundador</span>
+            <span class="equipo-dept">Dirección</span>
+          </div>
+        </div>
+
+        <div class="equipo-card reveal-up" data-dept="ciberseguridad">
+          <div class="equipo-card-img">
+            <img src="imagenes/Eduardo-Sugranes-Andivia.jpg" alt="Eduardo Sugranes">
+          </div>
+          <div class="equipo-card-info">
+            <h3 class="blog-h3-letter">Eduardo Sugranes</h3>
+            <span class="equipo-role">Red Team Lead</span>
+            <span class="equipo-dept">Ciberseguridad</span>
+          </div>
+        </div>
+
+        <div class="equipo-card reveal-up" data-dept="ciberseguridad">
+          <div class="equipo-card-img">
+            <img src="imagenes/Irene-Diaz-Garoz.jpeg" alt="Irene Díaz">
+          </div>
+          <div class="equipo-card-info">
+            <h3 class="blog-h3-letter">Irene Díaz</h3>
+            <span class="equipo-role">Analista SOC</span>
+            <span class="equipo-dept">Ciberseguridad</span>
+          </div>
+        </div>
+
+        <div class="equipo-card reveal-up" data-dept="digital">
+          <div class="equipo-card-img">
+            <img src="imagenes/ArturTuro-Marketing-Digital-con-IA-Madrid.jpg" alt="Artur Turo">
+          </div>
+          <div class="equipo-card-info">
+            <h3 class="blog-h3-letter">Artur Turo</h3>
+            <span class="equipo-role">Marketing Digital &amp; IA</span>
+            <span class="equipo-dept">Digital</span>
+          </div>
+        </div>
+
+        <div class="equipo-card reveal-up" data-dept="direccion">
+          <div class="equipo-card-img">
+            <img src="imagenes/Cristina-Cano-Talento-e1771590251923.jpg" alt="Cristina Cano">
+          </div>
+          <div class="equipo-card-info">
+            <h3 class="blog-h3-letter">Cristina Cano</h3>
+            <span class="equipo-role">Directora de Talento</span>
+            <span class="equipo-dept">Dirección</span>
+          </div>
+        </div>
+
+        <div class="equipo-card reveal-up" data-dept="ciberseguridad">
+          <div class="equipo-card-img">
+            <img src="imagenes/Isaac-Gutierrez-Gomez-e1771590776800.jpg" alt="Isaac Gutiérrez">
+          </div>
+          <div class="equipo-card-info">
+            <h3 class="blog-h3-letter">Isaac Gutiérrez</h3>
+            <span class="equipo-role">Especialista OT/IoT</span>
+            <span class="equipo-dept">Ciberseguridad</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+
+        <div class="footer-col-brand">
+          <a href="prueba.html">
+            <img src="imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="equipo.html">Equipo</a></li>
+            <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="digital.html">Digital</a></li>
+            <li><a href="formacion.html">Formación</a></li>
+            <li><a href="empleo.html">Empleo</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Madrid, España</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright © 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="#">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="politica_privacidad.html">POLÍTICA DE PRIVACIDAD</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/js.js"></script>
+</body>
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios | Atalanta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <style>
+    /* ── HERO ── */
+    .srv-hero {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      background: #0a0a0a url('imagenes/Diseno-sin-titulo-14.png') center center / cover no-repeat;
+    }
+    .srv-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(0,0,0,0.85) 50%, rgba(22,38,68,0.6) 100%);
+    }
+    .srv-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 160px 0 100px;
+    }
+    .srv-hero-kicker {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #e01f1f;
+      margin-bottom: 20px;
+    }
+    .srv-hero-content h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      max-width: 700px;
+      margin: 0 0 20px;
+    }
+    .srv-hero-content p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
+      max-width: 580px;
+      line-height: 1.7;
+      margin: 0 0 36px;
+    }
+    .srv-hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+    .srv-stat-item strong {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: #e01f1f;
+    }
+    .srv-stat-item span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── INTRO ── */
+    .srv-intro {
+      background: #0f0f0f;
+      padding: 90px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .srv-intro-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .srv-intro-text h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 20px;
+      line-height: 1.2;
+    }
+    .srv-intro-text p {
+      color: rgba(255,255,255,0.6);
+      font-size: 16px;
+      line-height: 1.75;
+      margin: 0 0 16px;
+    }
+    .srv-intro-image img {
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+      max-height: 380px;
+    }
+
+    /* ── SERVICIOS GRID ── */
+    .srv-grid-section {
+      background: #0a0a0a;
+      padding: 100px 0 110px;
+    }
+    .srv-grid-section .section-heading {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .srv-grid-section .section-heading h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 16px;
+    }
+    .srv-grid-section .section-heading p {
+      color: rgba(255,255,255,0.5);
+      font-size: 16px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .srv-categories {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .srv-category {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 40px 48px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      align-items: start;
+      transition: border-color 0.3s;
+    }
+    .srv-category:hover { border-color: rgba(224,31,31,0.3); }
+    .srv-category-header { display: flex; flex-direction: column; gap: 12px; }
+    .srv-category-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(224,31,31,0.12);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .srv-category-icon svg { width: 28px; height: 28px; stroke: #e01f1f; }
+    .srv-category-header h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+    .srv-category-header p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      margin: 0;
+      line-height: 1.6;
+    }
+    .srv-category-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #e01f1f;
+      background: rgba(224,31,31,0.1);
+      border-radius: 4px;
+      padding: 3px 8px;
+      margin-top: 4px;
+      width: fit-content;
+    }
+    .srv-category-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .srv-category-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+    .srv-category-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      background: #e01f1f;
+      border-radius: 50%;
+      margin-top: 7px;
+    }
+
+    /* ── PROCESO ── */
+    .srv-process {
+      background: #111;
+      padding: 100px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .srv-process .section-heading {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .srv-process .section-heading h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 14px;
+    }
+    .srv-process .section-heading p {
+      color: rgba(255,255,255,0.5);
+      font-size: 16px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .srv-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .srv-step {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 32px 28px;
+      text-align: center;
+      position: relative;
+    }
+    .srv-step-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      color: rgba(224,31,31,0.15);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .srv-step h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 10px;
+    }
+    .srv-step p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── VENTAJAS ── */
+    .srv-ventajas {
+      background: #0a0a0a;
+      padding: 100px 0;
+    }
+    .srv-ventajas-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .srv-ventajas-text h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 20px;
+      line-height: 1.2;
+    }
+    .srv-ventajas-text p {
+      color: rgba(255,255,255,0.55);
+      font-size: 16px;
+      line-height: 1.75;
+      margin: 0 0 32px;
+    }
+    .srv-ventajas-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .srv-ventajas-list li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+    }
+    .srv-ventaja-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: rgba(224,31,31,0.12);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .srv-ventaja-icon svg { width: 20px; height: 20px; stroke: #e01f1f; }
+    .srv-ventajas-image img {
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .srv-intro-inner,
+      .srv-ventajas-inner { grid-template-columns: 1fr; }
+      .srv-category { grid-template-columns: 1fr; }
+      .srv-category-list { grid-template-columns: 1fr; }
+      .srv-steps { grid-template-columns: 1fr 1fr; }
+      .srv-intro-image { order: -1; }
+    }
+    @media (max-width: 600px) {
+      .srv-steps { grid-template-columns: 1fr; }
+      .srv-hero-stats { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="prueba.html">
+        <img src="imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+      <nav>
+        <a href="quienes_somos.html">Quiénes somos</a>
+        <a href="servicios.html" class="active">Servicios</a>
+        <a href="ciberseguridad.html">Ciberseguridad</a>
+        <a href="digital.html">Digital</a>
+        <a href="formacion.html">Formación</a>
+        <a href="empleo.html">Empleo</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="atencion_cliente.html">Atención</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="srv-hero">
+      <div class="srv-hero-overlay"></div>
+      <div class="page-container srv-hero-content">
+        <span class="srv-hero-kicker reveal-up">Soluciones empresariales</span>
+        <h1 class="reveal-up">Servicios diseñados para proteger y hacer crecer tu negocio</h1>
+        <p class="reveal-up">En Atalanta ofrecemos soluciones digitales y de ciberseguridad para empresas que buscan proteger su información, optimizar su infraestructura y mejorar su presencia online.</p>
+        <a href="contacto.html" class="btn-red reveal-up">Solicitar asesoramiento</a>
+        <div class="srv-hero-stats reveal-up">
+          <div class="srv-stat-item">
+            <strong>+200</strong>
+            <span>Empresas protegidas</span>
+          </div>
+          <div class="srv-stat-item">
+            <strong>+8</strong>
+            <span>Años de experiencia</span>
+          </div>
+          <div class="srv-stat-item">
+            <strong>98%</strong>
+            <span>Satisfacción de clientes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="srv-intro">
+      <div class="page-container srv-intro-inner">
+        <div class="srv-intro-text reveal-left">
+          <h2>Tu socio tecnológico de confianza</h2>
+          <p>Atalanta es una empresa especializada en ciberseguridad y transformación digital con sede en Madrid. Trabajamos con empresas de todos los tamaños, desde pymes hasta grandes corporaciones, ayudándoles a afrontar los retos tecnológicos del presente y del futuro.</p>
+          <p>Nuestro equipo multidisciplinar combina experiencia técnica avanzada con una visión estratégica del negocio, garantizando soluciones que no solo funcionan, sino que aportan valor real.</p>
+          <a href="quienes_somos.html" class="btn-red" style="display:inline-block;margin-top:8px;">Conoce al equipo</a>
+        </div>
+        <div class="srv-intro-image reveal-right">
+          <img src="imagenes/IA Atalanta.jpg" alt="Atalanta equipo">
+        </div>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE SERVICIOS -->
+    <section class="srv-grid-section">
+      <div class="page-container">
+        <div class="section-heading reveal-up">
+          <h2>Nuestros servicios</h2>
+          <p>Cuatro áreas de especialización que cubren todas las necesidades digitales de tu empresa.</p>
+        </div>
+
+        <div class="srv-categories">
+
+          <!-- Ciberseguridad -->
+          <div class="srv-category reveal-up">
+            <div class="srv-category-header">
+              <div class="srv-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <h3>Ciberseguridad</h3>
+              <p>Protección integral de tus activos digitales frente a amenazas actuales y emergentes.</p>
+              <span class="srv-category-tag">Red Team · Blue Team · Cumplimiento</span>
+            </div>
+            <ul class="srv-category-list">
+              <li>Auditoría de seguridad informática</li>
+              <li>Pruebas de penetración (pentesting)</li>
+              <li>Análisis de vulnerabilidades</li>
+              <li>Monitorización y respuesta a incidentes</li>
+              <li>Cumplimiento normativo (ISO 27001, ENS, NIS2)</li>
+              <li>Protección contra malware y ransomware</li>
+              <li>Seguridad en entornos OT e IoT</li>
+              <li>Formación en concienciación de seguridad</li>
+            </ul>
+          </div>
+
+          <!-- Desarrollo Web -->
+          <div class="srv-category reveal-up">
+            <div class="srv-category-header">
+              <div class="srv-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"/>
+                  <polyline points="8 6 2 12 8 18"/>
+                </svg>
+              </div>
+              <h3>Desarrollo Web y Digital</h3>
+              <p>Presencia digital sólida y segura, diseñada para escalar con tu negocio.</p>
+              <span class="srv-category-tag">UX · Rendimiento · Seguridad</span>
+            </div>
+            <ul class="srv-category-list">
+              <li>Diseño de páginas web corporativas</li>
+              <li>Desarrollo de tiendas online (e-commerce)</li>
+              <li>Optimización de rendimiento y SEO técnico</li>
+              <li>Mantenimiento y actualizaciones web</li>
+              <li>Integración de APIs y sistemas externos</li>
+              <li>Estrategia de transformación digital</li>
+              <li>Consultoría de presencia digital</li>
+              <li>Desarrollo de aplicaciones a medida</li>
+            </ul>
+          </div>
+
+          <!-- Cloud -->
+          <div class="srv-category reveal-up">
+            <div class="srv-category-header">
+              <div class="srv-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                </svg>
+              </div>
+              <h3>Servicios en la Nube</h3>
+              <p>Infraestructura cloud escalable, segura y optimizada en coste para empresas modernas.</p>
+              <span class="srv-category-tag">AWS · Azure · GCP</span>
+            </div>
+            <ul class="srv-category-list">
+              <li>Implementación y gestión de servidores cloud</li>
+              <li>Migración de infraestructura a la nube</li>
+              <li>Copias de seguridad automáticas</li>
+              <li>Gestión de infraestructura como código</li>
+              <li>Arquitectura cloud segura y escalable</li>
+              <li>Optimización de costes cloud</li>
+              <li>Alta disponibilidad y recuperación ante desastres</li>
+              <li>Seguridad en entornos cloud (CSPM)</li>
+            </ul>
+          </div>
+
+          <!-- Formación -->
+          <div class="srv-category reveal-up">
+            <div class="srv-category-header">
+              <div class="srv-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+              </div>
+              <h3>Formación Tecnológica</h3>
+              <p>Programas de formación especializados para profesionales y equipos corporativos.</p>
+              <span class="srv-category-tag">Presencial · Online · In-company</span>
+            </div>
+            <ul class="srv-category-list">
+              <li>Cursos de ciberseguridad ofensiva y defensiva</li>
+              <li>Certificaciones internacionales (OSCP, OSWE, CEH)</li>
+              <li>Formación in-company para equipos de IT</li>
+              <li>Talleres de seguridad digital y concienciación</li>
+              <li>Máster en Ciberseguridad (con CEU)</li>
+              <li>Bootcamps intensivos de hacking ético</li>
+              <li>Formación en normativas ISO y ENS</li>
+              <li>Programas de desarrollo profesional</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESO DE TRABAJO -->
+    <section class="srv-process">
+      <div class="page-container">
+        <div class="section-heading reveal-up">
+          <h2>Cómo trabajamos</h2>
+          <p>Un proceso claro y estructurado para garantizar resultados medibles en cada proyecto.</p>
+        </div>
+        <div class="srv-steps">
+          <div class="srv-step reveal-up">
+            <div class="srv-step-num">01</div>
+            <h4>Análisis de necesidades</h4>
+            <p>Estudiamos en profundidad tu negocio, infraestructura y objetivos para diseñar la solución más adecuada.</p>
+          </div>
+          <div class="srv-step reveal-up">
+            <div class="srv-step-num">02</div>
+            <h4>Diseño de la solución</h4>
+            <p>Elaboramos una propuesta personalizada con alcance, plazos y recursos definidos de forma transparente.</p>
+          </div>
+          <div class="srv-step reveal-up">
+            <div class="srv-step-num">03</div>
+            <h4>Implementación</h4>
+            <p>Ejecutamos el proyecto con metodologías ágiles, manteniendo comunicación continua y entregas parciales.</p>
+          </div>
+          <div class="srv-step reveal-up">
+            <div class="srv-step-num">04</div>
+            <h4>Seguimiento y soporte</h4>
+            <p>Acompañamos a nuestros clientes con soporte técnico continuo y revisiones periódicas del servicio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VENTAJAS -->
+    <section class="srv-ventajas">
+      <div class="page-container srv-ventajas-inner">
+        <div class="srv-ventajas-text reveal-left">
+          <h2>¿Por qué elegir Atalanta?</h2>
+          <p>Somos mucho más que un proveedor de servicios tecnológicos. Somos el socio estratégico que tu empresa necesita para crecer con seguridad en el entorno digital.</p>
+          <ul class="srv-ventajas-list">
+            <li>
+              <div class="srv-ventaja-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              Profesionales certificados con experiencia real en el sector
+            </li>
+            <li>
+              <div class="srv-ventaja-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+              Respuesta rápida y soporte técnico continuo 24/5
+            </li>
+            <li>
+              <div class="srv-ventaja-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+              Soluciones personalizadas adaptadas a tu sector y tamaño
+            </li>
+            <li>
+              <div class="srv-ventaja-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+              Tecnología de vanguardia con partners líderes del sector
+            </li>
+            <li>
+              <div class="srv-ventaja-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              Cumplimiento normativo garantizado (ISO 27001, ENS, DORA, NIS2)
+            </li>
+            <li>
+              <div class="srv-ventaja-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              Precios competitivos y transparentes sin costes ocultos
+            </li>
+          </ul>
+        </div>
+        <div class="srv-ventajas-image reveal-right">
+          <img src="imagenes/ciber defensa.jpg" alt="Ventajas de Atalanta">
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-cta">
+      <div class="page-container about-cta-inner reveal-up">
+        <h2>¿Necesitas mejorar la seguridad o la presencia digital de tu empresa?</h2>
+        <a href="contacto.html" class="btn-red">Solicitar asesoramiento personalizado</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+        <div class="footer-col-brand">
+          <a href="prueba.html">
+            <img src="imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/atalanta-ciberseguridad" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://www.instagram.com/atalanta.academy/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="digital.html">Digital</a></li>
+            <li><a href="formacion.html">Formación</a></li>
+            <li><a href="empleo.html">Empleo</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="atencion_cliente.html">Atención al Cliente</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Madrid, España</span>
+          </div>
+          <div class="map-placeholder">
+            <iframe src="https://maps.google.com/maps?q=40.4292413,-3.7049219&z=16&output=embed" frameborder="0" width="100%" height="250" style="border: 0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright © 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="#">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="politica_privacidad.html">POLÍTICA DE PRIVACIDAD</a>
+          <span>|</span>
+          <a href="#">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top-btn" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+  <script src="js/js.js"></script>
+</body>
+</html>

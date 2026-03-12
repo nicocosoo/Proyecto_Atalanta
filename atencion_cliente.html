@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atención al Cliente | Atalanta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <style>
+    /* ── HERO ── */
+    .ac-hero {
+      position: relative;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      background: #0a0a0a url('imagenes/Diseno-sin-titulo-17.png') center center / cover no-repeat;
+    }
+    .ac-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.88) 55%, rgba(22,38,68,0.55) 100%);
+    }
+    .ac-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 160px 0 90px;
+    }
+    .ac-hero-kicker {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #e01f1f;
+      margin-bottom: 20px;
+    }
+    .ac-hero-content h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(34px, 4.5vw, 58px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      max-width: 680px;
+      margin: 0 0 20px;
+    }
+    .ac-hero-content p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      line-height: 1.7;
+      margin: 0 0 36px;
+    }
+    .ac-hero-chips {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .ac-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+    }
+    .ac-chip svg { width: 14px; height: 14px; stroke: #e01f1f; }
+
+    /* ── CANALES DE CONTACTO ── */
+    .ac-channels {
+      background: #0f0f0f;
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .ac-channels-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .ac-channel-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 32px 28px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    .ac-channel-card:hover {
+      border-color: rgba(224,31,31,0.35);
+      transform: translateY(-4px);
+    }
+    .ac-channel-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(224,31,31,0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .ac-channel-icon svg { width: 26px; height: 26px; stroke: #e01f1f; }
+    .ac-channel-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 8px;
+    }
+    .ac-channel-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      margin: 0 0 16px;
+      line-height: 1.6;
+    }
+    .ac-channel-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: #e01f1f;
+    }
+    .ac-channel-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 4px;
+    }
+
+    /* ── FAQ ── */
+    .ac-faq {
+      background: #0a0a0a;
+      padding: 100px 0;
+    }
+    .ac-faq-inner {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .ac-faq-sidebar h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 16px;
+      line-height: 1.2;
+    }
+    .ac-faq-sidebar p {
+      color: rgba(255,255,255,0.5);
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0 0 28px;
+    }
+    .ac-faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .ac-faq-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .ac-faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .ac-faq-question span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.4;
+    }
+    .ac-faq-question svg {
+      width: 18px;
+      height: 18px;
+      stroke: #e01f1f;
+      min-width: 18px;
+      transition: transform 0.3s;
+    }
+    .ac-faq-item.open .ac-faq-question svg { transform: rotate(45deg); }
+    .ac-faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+    .ac-faq-item.open .ac-faq-answer { max-height: 300px; }
+    .ac-faq-answer p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      padding: 0 24px 20px;
+      margin: 0;
+    }
+
+    /* ── SOPORTE TÉCNICO ── */
+    .ac-support {
+      background: #111;
+      padding: 100px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .ac-support .section-heading {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .ac-support .section-heading h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 14px;
+    }
+    .ac-support .section-heading p {
+      color: rgba(255,255,255,0.5);
+      font-size: 16px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .ac-support-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .ac-support-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: border-color 0.3s;
+    }
+    .ac-support-card:hover { border-color: rgba(224,31,31,0.3); }
+    .ac-support-card-icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      background: rgba(224,31,31,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ac-support-card-icon svg { width: 22px; height: 22px; stroke: #e01f1f; }
+    .ac-support-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 8px;
+    }
+    .ac-support-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── TICKETS ── */
+    .ac-tickets {
+      background: #0a0a0a;
+      padding: 100px 0;
+    }
+    .ac-tickets-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .ac-tickets-text h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 18px;
+      line-height: 1.2;
+    }
+    .ac-tickets-text p {
+      color: rgba(255,255,255,0.55);
+      font-size: 16px;
+      line-height: 1.75;
+      margin: 0 0 16px;
+    }
+    .ac-ticket-steps {
+      list-style: none;
+      padding: 0;
+      margin: 28px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .ac-ticket-steps li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+    }
+    .ac-ticket-num {
+      width: 30px;
+      height: 30px;
+      min-width: 30px;
+      background: rgba(224,31,31,0.12);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #e01f1f;
+    }
+    .ac-tickets-visual {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 36px;
+    }
+    .ac-ticket-mock {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .ac-ticket-mock:last-child { margin-bottom: 0; }
+    .ac-ticket-mock-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .ac-ticket-mock-id {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.3);
+    }
+    .ac-ticket-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .ac-ticket-badge.open { background: rgba(224,31,31,0.15); color: #e01f1f; }
+    .ac-ticket-badge.resolved { background: rgba(34,197,94,0.15); color: #22c55e; }
+    .ac-ticket-badge.progress { background: rgba(234,179,8,0.15); color: #eab308; }
+    .ac-ticket-mock-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 4px;
+    }
+    .ac-ticket-mock-meta {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── RECURSOS ── */
+    .ac-resources {
+      background: #111;
+      padding: 100px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .ac-resources .section-heading {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .ac-resources .section-heading h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 14px;
+    }
+    .ac-resources .section-heading p {
+      color: rgba(255,255,255,0.5);
+      font-size: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .ac-resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .ac-resource-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 28px;
+      transition: border-color 0.3s, transform 0.2s;
+      cursor: pointer;
+    }
+    .ac-resource-card:hover {
+      border-color: rgba(224,31,31,0.3);
+      transform: translateY(-3px);
+    }
+    .ac-resource-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #e01f1f;
+      background: rgba(224,31,31,0.1);
+      border-radius: 4px;
+      padding: 3px 8px;
+      margin-bottom: 14px;
+    }
+    .ac-resource-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 10px;
+      line-height: 1.4;
+    }
+    .ac-resource-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .ac-faq-inner { grid-template-columns: 1fr; }
+      .ac-tickets-inner { grid-template-columns: 1fr; }
+      .ac-channels-grid { grid-template-columns: 1fr; }
+      .ac-resources-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .ac-support-grid { grid-template-columns: 1fr; }
+      .ac-resources-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="prueba.html">
+        <img src="imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+      <nav>
+        <a href="quienes_somos.html">Quiénes somos</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="ciberseguridad.html">Ciberseguridad</a>
+        <a href="digital.html">Digital</a>
+        <a href="formacion.html">Formación</a>
+        <a href="empleo.html">Empleo</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="atencion_cliente.html" class="active">Atención</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="ac-hero">
+      <div class="ac-hero-overlay"></div>
+      <div class="page-container ac-hero-content">
+        <span class="ac-hero-kicker reveal-up">Soporte y ayuda</span>
+        <h1 class="reveal-up">Estamos aquí para ayudarte</h1>
+        <p class="reveal-up">En Atalanta ofrecemos atención personalizada para resolver dudas, incidencias técnicas y consultas sobre nuestros servicios de ciberseguridad y soluciones digitales. Nuestro equipo está disponible para ayudarte de forma rápida y eficiente.</p>
+        <a href="contacto.html" class="btn-red reveal-up">Contactar con soporte</a>
+        <div class="ac-hero-chips reveal-up">
+          <div class="ac-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Respuesta en menos de 24h
+          </div>
+          <div class="ac-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.92-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Lunes a Viernes 9:00–18:00
+          </div>
+          <div class="ac-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Equipo especializado
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CANALES DE CONTACTO -->
+    <section class="ac-channels">
+      <div class="page-container">
+        <div class="ac-channels-grid">
+          <div class="ac-channel-card reveal-up">
+            <div class="ac-channel-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <h3>Email de soporte</h3>
+            <p>Para consultas y solicitudes no urgentes. Te responderemos en menos de 24 horas laborables.</p>
+            <div class="ac-channel-value">soporte@atalantago.com</div>
+            <div class="ac-channel-sub">Respuesta en &lt; 24h</div>
+          </div>
+          <div class="ac-channel-card reveal-up">
+            <div class="ac-channel-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.92-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h3>Teléfono</h3>
+            <p>Para incidencias urgentes o consultas que requieran atención inmediata de nuestro equipo técnico.</p>
+            <div class="ac-channel-value">+34 91 000 00 00</div>
+            <div class="ac-channel-sub">Lun–Vie 9:00–18:00</div>
+          </div>
+          <div class="ac-channel-card reveal-up">
+            <div class="ac-channel-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <h3>Formulario de contacto</h3>
+            <p>Envíanos tu consulta a través del formulario y un agente te contactará para darte asistencia personalizada.</p>
+            <a href="contacto.html" class="ac-channel-value" style="text-decoration:none;display:inline-block;margin-top:4px;">Ir al formulario →</a>
+            <div class="ac-channel-sub">Disponible 24/7</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="ac-faq">
+      <div class="page-container ac-faq-inner">
+        <div class="ac-faq-sidebar reveal-left">
+          <h2>Preguntas frecuentes</h2>
+          <p>Resolvemos las dudas más habituales de nuestros clientes. Si no encuentras lo que buscas, no dudes en contactarnos directamente.</p>
+          <a href="contacto.html" class="btn-red">Hacer una pregunta</a>
+        </div>
+        <div class="ac-faq-list reveal-right">
+          <div class="ac-faq-item open">
+            <button class="ac-faq-question">
+              <span>¿Cómo puedo contratar un servicio de Atalanta?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="ac-faq-answer"><p>Puedes contactarnos a través del formulario de contacto, por email o por teléfono. Uno de nuestros asesores analizará tus necesidades y te propondrá la solución más adecuada sin compromiso.</p></div>
+          </div>
+          <div class="ac-faq-item">
+            <button class="ac-faq-question">
+              <span>¿Qué hago si detecto un problema de seguridad en mi empresa?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="ac-faq-answer"><p>Comunícalo inmediatamente a nuestro equipo de soporte. En caso de incidencia crítica, llámanos directamente. Contamos con un protocolo de respuesta a incidentes para actuar de forma rápida y minimizar el impacto.</p></div>
+          </div>
+          <div class="ac-faq-item">
+            <button class="ac-faq-question">
+              <span>¿Ofrecen soporte técnico continuo tras la implantación?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="ac-faq-answer"><p>Sí. Todos nuestros proyectos incluyen un período de soporte post-implantación. Adicionalmente, ofrecemos contratos de mantenimiento y soporte continuo adaptados a las necesidades de cada empresa.</p></div>
+          </div>
+          <div class="ac-faq-item">
+            <button class="ac-faq-question">
+              <span>¿Trabajan con empresas de cualquier tamaño?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="ac-faq-answer"><p>Sí, trabajamos con empresas de todos los tamaños, desde startups y pymes hasta grandes corporaciones. Adaptamos nuestros servicios y presupuestos a la realidad de cada cliente.</p></div>
+          </div>
+          <div class="ac-faq-item">
+            <button class="ac-faq-question">
+              <span>¿Cuánto tiempo tarda en completarse una auditoría de seguridad?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="ac-faq-answer"><p>Depende del alcance y la complejidad de la infraestructura. Una auditoría básica puede realizarse en 1-2 semanas, mientras que proyectos más complejos pueden requerir entre 4 y 8 semanas. Siempre definimos el plazo al inicio del proyecto.</p></div>
+          </div>
+          <div class="ac-faq-item">
+            <button class="ac-faq-question">
+              <span>¿Ofrecen formación para equipos internos de IT?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="ac-faq-answer"><p>Sí. Disponemos de programas de formación in-company adaptados a las necesidades específicas de cada equipo, desde concienciación básica en ciberseguridad hasta formación técnica avanzada para profesionales de IT.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOPORTE TÉCNICO -->
+    <section class="ac-support">
+      <div class="page-container">
+        <div class="section-heading reveal-up">
+          <h2>Soporte técnico</h2>
+          <p>Nuestro equipo especializado está preparado para resolver cualquier incidencia técnica con rapidez y eficacia.</p>
+        </div>
+        <div class="ac-support-grid">
+          <div class="ac-support-card reveal-up">
+            <div class="ac-support-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div>
+              <h4>Resolución de incidencias</h4>
+              <p>Análisis y resolución de fallos de seguridad, caídas de sistemas, brechas de datos y cualquier incidencia técnica que afecte a tu operativa.</p>
+            </div>
+          </div>
+          <div class="ac-support-card reveal-up">
+            <div class="ac-support-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div>
+              <h4>Configuración de sistemas</h4>
+              <p>Asistencia en la configuración, hardening y puesta en marcha de sistemas operativos, firewalls, servidores y entornos cloud.</p>
+            </div>
+          </div>
+          <div class="ac-support-card reveal-up">
+            <div class="ac-support-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h4>Soporte en ciberseguridad</h4>
+              <p>Apoyo continuo en la gestión de soluciones de seguridad: EDR, SIEM, firewalls, gestión de identidades y control de accesos.</p>
+            </div>
+          </div>
+          <div class="ac-support-card reveal-up">
+            <div class="ac-support-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <h4>Seguimiento de incidencias</h4>
+              <p>Monitorización del estado de cada incidencia reportada, con actualizaciones periódicas hasta su resolución completa y documentación final.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SISTEMA DE TICKETS -->
+    <section class="ac-tickets">
+      <div class="page-container ac-tickets-inner">
+        <div class="ac-tickets-text reveal-left">
+          <h2>Sistema de tickets de soporte</h2>
+          <p>Nuestro sistema de tickets permite gestionar de forma ordenada y eficiente todas las solicitudes de soporte. Cada ticket queda registrado y asignado a un técnico especializado que supervisará su resolución.</p>
+          <p>Recibirás actualizaciones automáticas sobre el estado de tu incidencia hasta que quede resuelta.</p>
+          <ul class="ac-ticket-steps">
+            <li><span class="ac-ticket-num">1</span>Contacta con soporte y describe tu incidencia</li>
+            <li><span class="ac-ticket-num">2</span>Se crea un ticket con ID único y prioridad asignada</li>
+            <li><span class="ac-ticket-num">3</span>Un técnico especializado analiza y trabaja en la solución</li>
+            <li><span class="ac-ticket-num">4</span>Recibes actualizaciones del estado en tiempo real</li>
+            <li><span class="ac-ticket-num">5</span>El ticket se cierra con informe de resolución</li>
+          </ul>
+          <a href="contacto.html" class="btn-red" style="margin-top:28px;display:inline-block;">Abrir ticket de soporte</a>
+        </div>
+        <div class="ac-tickets-visual reveal-right">
+          <div class="ac-ticket-mock">
+            <div class="ac-ticket-mock-header">
+              <span class="ac-ticket-mock-id">#TKT-2024-001</span>
+              <span class="ac-ticket-badge resolved">Resuelto</span>
+            </div>
+            <div class="ac-ticket-mock-title">Análisis de vulnerabilidades en servidor web</div>
+            <div class="ac-ticket-mock-meta">Actualizado hace 2 horas · Técnico: Daniel T.</div>
+          </div>
+          <div class="ac-ticket-mock">
+            <div class="ac-ticket-mock-header">
+              <span class="ac-ticket-mock-id">#TKT-2024-002</span>
+              <span class="ac-ticket-badge progress">En progreso</span>
+            </div>
+            <div class="ac-ticket-mock-title">Configuración de firewall perimetral</div>
+            <div class="ac-ticket-mock-meta">Actualizado hace 30 min · Técnico: Javier B.</div>
+          </div>
+          <div class="ac-ticket-mock">
+            <div class="ac-ticket-mock-header">
+              <span class="ac-ticket-mock-id">#TKT-2024-003</span>
+              <span class="ac-ticket-badge open">Abierto</span>
+            </div>
+            <div class="ac-ticket-mock-title">Consulta sobre cumplimiento ISO 27001</div>
+            <div class="ac-ticket-mock-meta">Recibido hace 1 hora · Sin asignar</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECURSOS DE AYUDA -->
+    <section class="ac-resources">
+      <div class="page-container">
+        <div class="section-heading reveal-up">
+          <h2>Recursos de ayuda</h2>
+          <p>Guías y documentación para que puedas proteger tu empresa desde hoy mismo.</p>
+        </div>
+        <div class="ac-resources-grid">
+          <div class="ac-resource-card reveal-up">
+            <span class="ac-resource-tag">Guía</span>
+            <h4>Cómo proteger tu empresa contra ataques de ransomware</h4>
+            <p>Medidas prácticas para reducir el riesgo de sufrir un ataque de ransomware y cómo actuar si ocurre.</p>
+          </div>
+          <div class="ac-resource-card reveal-up">
+            <span class="ac-resource-tag">Buenas prácticas</span>
+            <h4>10 buenas prácticas de seguridad digital para empresas</h4>
+            <p>Desde la gestión de contraseñas hasta la segmentación de red, las medidas fundamentales para tu empresa.</p>
+          </div>
+          <div class="ac-resource-card reveal-up">
+            <span class="ac-resource-tag">Guía</span>
+            <h4>Guía completa de gestión segura de contraseñas</h4>
+            <p>Políticas de contraseñas robustas, gestores de credenciales y autenticación multifactor paso a paso.</p>
+          </div>
+          <div class="ac-resource-card reveal-up">
+            <span class="ac-resource-tag">Normativa</span>
+            <h4>ENS y NIS2: qué deben saber las empresas españolas</h4>
+            <p>Resumen de las obligaciones de seguridad para organizaciones según la normativa española y europea.</p>
+          </div>
+          <div class="ac-resource-card reveal-up">
+            <span class="ac-resource-tag">Tutorial</span>
+            <h4>Cómo realizar una copia de seguridad segura de tus datos</h4>
+            <p>Estrategia 3-2-1 de backups, cifrado y verificación de integridad para proteger tu información crítica.</p>
+          </div>
+          <div class="ac-resource-card reveal-up">
+            <span class="ac-resource-tag">Concienciación</span>
+            <h4>Detectar correos de phishing: guía para empleados</h4>
+            <p>Aprende a identificar intentos de phishing y spear phishing antes de que comprometan tu organización.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-cta">
+      <div class="page-container about-cta-inner reveal-up">
+        <h2>¿Tienes alguna duda o necesitas asistencia técnica?</h2>
+        <a href="contacto.html" class="btn-red">Contactar con el equipo</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+        <div class="footer-col-brand">
+          <a href="prueba.html">
+            <img src="imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/atalanta-ciberseguridad" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://www.instagram.com/atalanta.academy/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="digital.html">Digital</a></li>
+            <li><a href="formacion.html">Formación</a></li>
+            <li><a href="empleo.html">Empleo</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="atencion_cliente.html">Atención al Cliente</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Madrid, España</span>
+          </div>
+          <div class="map-placeholder">
+            <iframe src="https://maps.google.com/maps?q=40.4292413,-3.7049219&z=16&output=embed" frameborder="0" width="100%" height="250" style="border: 0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright © 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="#">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="politica_privacidad.html">POLÍTICA DE PRIVACIDAD</a>
+          <span>|</span>
+          <a href="#">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top-btn" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+
+  <script src="js/js.js"></script>
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.ac-faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.ac-faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.ac-faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>

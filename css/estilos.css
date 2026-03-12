@@ -6911,14 +6911,16 @@ font-size:28px;
 }
 
 /* ── Article prev/next nav ── */
+.news-article-nav-wrap {
+  background: #0a0a0a;
+  padding: 50px 0 70px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
 .news-article-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-top: 70px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(255,255,255,0.1);
   flex-wrap: wrap;
 }
 .news-nav-prev,

@@ -95,18 +95,30 @@ nav a:hover{
 .nav-dropdown-menu {
   display: none;
   position: absolute;
-  top: calc(100% + 14px);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: #fff;
+  background: transparent;
   border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   min-width: 200px;
-  padding: 8px 0;
+  padding-top: 14px;
   z-index: 1000;
 }
 .nav-dropdown:hover .nav-dropdown-menu {
   display: block;
+}
+.nav-dropdown-menu::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 14px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  z-index: -1;
 }
 .nav-dropdown-menu a {
   display: block;
@@ -116,6 +128,10 @@ nav a:hover{
   font-weight: 600;
   text-decoration: none;
   transition: background 0.2s;
+  position: relative;
+  z-index: 1;
+  border-radius: 8px;
+  margin: 0 4px;
 }
 .nav-dropdown-menu a:hover {
   background: #f4f6f9;

@@ -31,7 +31,7 @@
   <main>
 
     <!-- HERO ARTICULO -->
-    <section class="news-article-hero" style="background-image: url('https://atalantago.com/wp-content/uploads/Installing-Tor-in-Kali-Linux-blackMORE-Ops-2.jpg');">
+    <section class="news-article-hero" style="background-image: url('imagenes/noticias/Installing-Tor-in-Kali-Linux-blackMORE-Ops-2.jpg');">
       <div class="news-article-hero-overlay"></div>
       <div class="page-container news-article-hero-content">
         <a href="noticias.html" class="news-article-back">← Volver a Noticias</a>
@@ -50,7 +50,7 @@
 
         <p>Kalitorify es un script de Shell para Kali Linux que usa la configuración de iptables para crear un <strong>proxy transparente a través de la red Tor</strong>. Con Kalitorify podemos enrutar todo el tráfico de nuestro ordenador a través de la red Tor.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/torify1-1024x512.png" alt="Proxy transparente a través de la red Tor">
+        <img src="imagenes/noticias/torify1-1024x512.png" alt="Proxy transparente a través de la red Tor">
 
         <p>Un proxy transparente es un sistema intermediario que se encuentra entre un usuario y un proveedor de contenido. Cuando un usuario realiza una solicitud a un servidor web, el proxy transparente intercepta la solicitud para realizar varias acciones, incluido el almacenamiento en caché, la redirección y la autenticación. Con esto configurado, ninguna aplicación podrá revelar su dirección IP conectándose directamente.</p>
 
@@ -64,7 +64,7 @@
 
         <pre><code>sudo apt-get install -y tor curl</code></pre>
 
-        <img src="https://atalantago.com/wp-content/uploads/torify2.png" alt="Instalación de Tor">
+        <img src="imagenes/noticias/torify2.png" alt="Instalación de Tor">
 
         <p>Una vez realizados los pasos previos, procedemos a clonar la app del repositorio oficial de GitHub:</p>
 
@@ -75,7 +75,7 @@
         <pre><code>cd kalitorify/
 sudo make install</code></pre>
 
-        <img src="https://atalantago.com/wp-content/uploads/torify3.png" alt="Instalación de Kalitorify">
+        <img src="imagenes/noticias/torify3.png" alt="Instalación de Kalitorify">
 
         <p>Para finalizar, vamos a realizar un reboot del sistema.</p>
 
@@ -92,11 +92,11 @@ sudo make install</code></pre>
 
         <pre><code>./kalitorify.sh -h</code></pre>
 
-        <img src="https://atalantago.com/wp-content/uploads/torify4.png" alt="Opciones de Kalitorify">
+        <img src="imagenes/noticias/torify4.png" alt="Opciones de Kalitorify">
 
         <p>Para poner en marcha la app utilizaremos la opción <code>-t</code>:</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/torify5.png" alt="Activar Kalitorify con opción -t">
+        <img src="imagenes/noticias/torify5.png" alt="Activar Kalitorify con opción -t">
 
         <p>Ahora mismo todo el tráfico de nuestra red estará enrutándose a través de la red Tor, pudiendo ver en la imagen anterior la IP pública que se nos ha asignado y la localización desde la cual estaríamos saliendo a la red — una localización e IP totalmente distintas a la nuestra.</p>
 
@@ -108,13 +108,13 @@ sudo make install</code></pre>
 
         <p>Veamos primero nuestra IP sin Kalitorify:</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/torify6.png" alt="IP sin Kalitorify">
+        <img src="imagenes/noticias/torify6.png" alt="IP sin Kalitorify">
 
         <p>Veamos ahora nuestra nueva IP con Kalitorify:</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/torify7.png" alt="IP con Kalitorify activo">
+        <img src="imagenes/noticias/torify7.png" alt="IP con Kalitorify activo">
 
-        <img src="https://atalantago.com/wp-content/uploads/torify8.png" alt="Confirmación de anonimato con Kalitorify">
+        <img src="imagenes/noticias/torify8.png" alt="Confirmación de anonimato con Kalitorify">
 
         <h2>Conclusión</h2>
 

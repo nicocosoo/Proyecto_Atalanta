@@ -31,7 +31,7 @@
   <main>
 
     <!-- HERO ARTICULO -->
-    <section class="news-article-hero" style="background-image: url('https://atalantago.com/wp-content/uploads/electricidad-atalanta-portada.jpg');">
+    <section class="news-article-hero" style="background-image: url('imagenes/noticias/electricidad-atalanta-portada.jpg');">
       <div class="news-article-hero-overlay"></div>
       <div class="page-container news-article-hero-content">
         <a href="noticias.html" class="news-article-back">← Volver a Noticias</a>
@@ -59,33 +59,33 @@
 
         <h3>Ejemplo 1</h3>
         <p>El primer paso es intentar averiguar el tipo de base de datos:</p>
-        <img src="https://atalantago.com/wp-content/uploads/sqlmap1.png" alt="SQLMap - Paso 1: detectar motor de base de datos">
+        <img src="imagenes/noticias/sqlmap1.png" alt="SQLMap - Paso 1: detectar motor de base de datos">
 
         <p>Como observamos, detecta que el tipo de base de datos es MySQL. Lo segundo que vamos a hacer es intentar ver el nombre de las bases de datos con el comando:</p>
         <pre><code>sqlmap -u "url" --dbs</code></pre>
-        <img src="https://atalantago.com/wp-content/uploads/sqlmap2.png" alt="SQLMap - Paso 2: nombre de bases de datos">
+        <img src="imagenes/noticias/sqlmap2.png" alt="SQLMap - Paso 2: nombre de bases de datos">
 
         <p>A continuación vemos las tablas que hay dentro de la base de datos:</p>
         <pre><code>sqlmap -u "url" -D nombre_de_la_base --tables</code></pre>
-        <img src="https://atalantago.com/wp-content/uploads/sqlmap3.png" alt="SQLMap - Paso 3: tablas">
+        <img src="imagenes/noticias/sqlmap3.png" alt="SQLMap - Paso 3: tablas">
 
         <p>Para ver las columnas de las tablas:</p>
         <pre><code>sqlmap -u "url" -D nombre_de_la_base -T nombre_de_la_tabla --columns</code></pre>
-        <img src="https://atalantago.com/wp-content/uploads/sqlmap4.png" alt="SQLMap - Paso 4: columnas">
+        <img src="imagenes/noticias/sqlmap4.png" alt="SQLMap - Paso 4: columnas">
 
         <p>Por último, para ver qué hay dentro de las columnas, es decir, los datos:</p>
         <pre><code>sqlmap -u "url" -D nombre_de_la_base -T nombre_de_la_tabla -C nombre_de_la_columna --dump</code></pre>
-        <img src="https://atalantago.com/wp-content/uploads/sqlmap5.png" alt="SQLMap - Paso 5: extraer datos">
+        <img src="imagenes/noticias/sqlmap5.png" alt="SQLMap - Paso 5: extraer datos">
 
         <p>Como veis, en cinco sencillos pasos hemos podido extraer toda la información de la base de datos de una página web.</p>
 
         <h3>Ejemplo 2</h3>
         <p>Primero introducimos el comando similar al anterior y observamos los resultados:</p>
-        <img src="https://atalantago.com/wp-content/uploads/sqlmap6.png" alt="SQLMap Ejemplo 2 - Paso 1">
-        <img src="https://atalantago.com/wp-content/uploads/sqlmap7.png" alt="SQLMap Ejemplo 2 - Paso 2: tipo de base de datos MySQL">
-        <img src="https://atalantago.com/wp-content/uploads/sqlmap8.png" alt="SQLMap Ejemplo 2 - Paso 3: nombres de bases de datos">
-        <img src="https://atalantago.com/wp-content/uploads/sqlmap9.png" alt="SQLMap Ejemplo 2 - Paso 4: tablas">
-        <img src="https://atalantago.com/wp-content/uploads/sqlmap10.png" alt="SQLMap Ejemplo 2 - Paso 5: columnas y datos">
+        <img src="imagenes/noticias/sqlmap6.png" alt="SQLMap Ejemplo 2 - Paso 1">
+        <img src="imagenes/noticias/sqlmap7.png" alt="SQLMap Ejemplo 2 - Paso 2: tipo de base de datos MySQL">
+        <img src="imagenes/noticias/sqlmap8.png" alt="SQLMap Ejemplo 2 - Paso 3: nombres de bases de datos">
+        <img src="imagenes/noticias/sqlmap9.png" alt="SQLMap Ejemplo 2 - Paso 4: tablas">
+        <img src="imagenes/noticias/sqlmap10.png" alt="SQLMap Ejemplo 2 - Paso 5: columnas y datos">
 
         <p>Vistos estos dos ejemplos nos podremos preguntar lo sencillo que es esto, pero no es así de fácil. Las empresas pueden evitar este tipo de fallos de seguridad mediante una programación correcta en sus webs al realizar llamadas a la base de datos, o utilizando los WAF.</p>
 
@@ -100,7 +100,7 @@
           <li><strong>space2comment</strong>: sustituye un carácter de espacio por <code>/**/</code>, que el navegador interpreta como espacio.</li>
           <li><strong>charencode.py</strong>: codifica todos los caracteres por códigos numéricos: <code>44%20%54%20%</code></li>
         </ul>
-        <img src="https://atalantago.com/wp-content/uploads/sqlmap11.png" alt="SQLMap - Ejemplo de tamper">
+        <img src="imagenes/noticias/sqlmap11.png" alt="SQLMap - Ejemplo de tamper">
 
         <p>Pero los tamper no siempre pueden evadir los WAF; dependerá de la fortaleza en la configuración que haya desarrollado cada administrador.</p>
 

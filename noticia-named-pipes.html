@@ -31,7 +31,7 @@
   <main>
 
     <!-- HERO ARTICULO -->
-    <section class="news-article-hero" style="background-image: url('https://atalantago.com/wp-content/uploads/leona-atalanta-portada.jpg');">
+    <section class="news-article-hero" style="background-image: url('imagenes/noticias/leona-atalanta-portada.jpg');">
       <div class="news-article-hero-overlay"></div>
       <div class="page-container news-article-hero-content">
         <a href="noticias.html" class="news-article-back">← Volver a Noticias</a>
@@ -54,7 +54,7 @@
 
         <p>Todo lo relativo a las named pipes se maneja usando la API Win32 de Windows con funciones como: <code>CreateFile</code>, <code>CreateNamedPipe</code>, <code>CallNamedPipe</code>, <code>ReadFile</code>, <code>WriteFile</code>, <code>ConnectNamedPipe</code>.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/pipe1.png" alt="Named Pipes en Windows">
+        <img src="imagenes/noticias/pipe1.png" alt="Named Pipes en Windows">
 
         <h2>¿Qué podemos hacer con las Named Pipes?</h2>
 
@@ -65,7 +65,7 @@
         </ul>
         <p>entonces se puede usar <code>ImpersonateNamedPipeClient()</code>.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/pipe2.png" alt="ImpersonateNamedPipeClient">
+        <img src="imagenes/noticias/pipe2.png" alt="ImpersonateNamedPipeClient">
 
         <h2>Abuso con Meterpreter</h2>
 
@@ -73,7 +73,7 @@
 
         <p>Cuando el proceso cmd que crea el servicio se conecta a la named pipe creada por Meterpreter, Meterpreter pasa a ejecutarse con el access token de SYSTEM.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/pipe3.png" alt="getsystem con Meterpreter">
+        <img src="imagenes/noticias/pipe3.png" alt="getsystem con Meterpreter">
 
         <h2>Enumeración de Named Pipes</h2>
 
@@ -81,23 +81,23 @@
 
         <pre><code>((Get-ChildItem \\.\pipe\).name)</code></pre>
 
-        <img src="https://atalantago.com/wp-content/uploads/Captura-de-pantalla-2020-11-16-13-49-50.png" alt="Enumeración de Named Pipes">
+        <img src="imagenes/noticias/Captura-de-pantalla-2020-11-16-13-49-50.png" alt="Enumeración de Named Pipes">
 
         <p>Para ver si podemos conectarnos a una named pipe con los privilegios que tenemos, solo tenemos que usar <code>accesschk</code> para ver su DACL o un cmdlet de NtObjectManager.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/pipe4.png" alt="Verificación de permisos con accesschk">
+        <img src="imagenes/noticias/pipe4.png" alt="Verificación de permisos con accesschk">
 
         <p>En Process Explorer usando Ctrl+H podemos ver los handles (y por extensión los named pipes) que usa cada proceso. En la foto de abajo podemos ver como Teams tiene una named pipe llamada mojo.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/pipe5.png" alt="Named Pipes en Process Explorer">
+        <img src="imagenes/noticias/pipe5.png" alt="Named Pipes en Process Explorer">
 
         <p>Si no tenemos claro qué procesos están usando la named pipe que nos interesa, podemos usar los siguientes cmdlets de PowerShell (del módulo NtObjectManager):</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/pipe6.png" alt="Cmdlets de NtObjectManager para Named Pipes">
+        <img src="imagenes/noticias/pipe6.png" alt="Cmdlets de NtObjectManager para Named Pipes">
 
-        <img src="https://atalantago.com/wp-content/uploads/pipe7.png" alt="Análisis de Named Pipes con NtObjectManager">
+        <img src="imagenes/noticias/pipe7.png" alt="Análisis de Named Pipes con NtObjectManager">
 
-        <img src="https://atalantago.com/wp-content/uploads/pipe8.png" alt="Resultados del análisis de Named Pipes">
+        <img src="imagenes/noticias/pipe8.png" alt="Resultados del análisis de Named Pipes">
 
         <h2>Conclusión</h2>
 

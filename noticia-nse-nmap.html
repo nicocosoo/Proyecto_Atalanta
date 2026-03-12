@@ -31,7 +31,7 @@
   <main>
 
     <!-- HERO ARTICULO -->
-    <section class="news-article-hero" style="background-image: url('https://atalantago.com/wp-content/uploads/Captura-de-pantalla-2020-08-25-09-38-51.png');">
+    <section class="news-article-hero" style="background-image: url('imagenes/noticias/Captura-de-pantalla-2020-08-25-09-38-51.png');">
       <div class="news-article-hero-overlay"></div>
       <div class="page-container news-article-hero-content">
         <a href="noticias.html" class="news-article-back">← Volver a Noticias</a>
@@ -54,11 +54,11 @@
         <p>El comando que usaremos es el siguiente:</p>
         <pre><code>nmap --script dns-brute microsoft.com</code></pre>
 
-        <img src="https://atalantago.com/wp-content/uploads/nse1.png" alt="NSE - Resultado dns-brute por defecto">
+        <img src="imagenes/noticias/nse1.png" alt="NSE - Resultado dns-brute por defecto">
 
         <p>El resultado obtenido lo pasamos a un archivo de texto para ver los registros detectados. Para ver el número de registros DNS, eliminamos las cabeceras y dejamos un registro por línea para ver con el comando <code>wc</code> el total de registros detectados.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/ns2.png" alt="NSE - Conteo de registros DNS">
+        <img src="imagenes/noticias/ns2.png" alt="NSE - Conteo de registros DNS">
 
         <p>Un total de 58 registros, lo que no está mal, pero es muy limitado para una empresa de la envergadura de Microsoft, por lo que sabemos que el diccionario usado por este script por defecto está muy limitado. Es por esto que es preciso mejorarlo o, en este caso, hacer uso de sus propiedades.</p>
 
@@ -66,43 +66,43 @@
         <p>Ahora vamos a lanzar un diccionario propio creado para la ocasión; esto es lo que marcará la diferencia en los resultados. He creado un diccionario de subdominios habituales llamado <em>subdominios</em> que coloco en la ruta de diccionarios por defecto de Kali Linux. Para ello me valgo de los argumentos de NMAP y lanzo el siguiente comando:</p>
         <pre><code>nmap --script dns-brute --script-args dns-brute.hostlist=/usr/share/wordlists/subdominios microsoft.com</code></pre>
 
-        <img src="https://atalantago.com/wp-content/uploads/nse3.png" alt="NSE - Lanzando diccionario propio">
+        <img src="imagenes/noticias/nse3.png" alt="NSE - Lanzando diccionario propio">
 
         <p>El resultado por lo general es rápido. Todo dependerá del número de palabras en el diccionario y la conexión, pero con una conexión 3G y un diccionario de cerca de 2500 palabras, el tiempo ha sido de 1 minuto aproximadamente. Afinar con mejores resultados dependerá de que vayamos mejorando y ampliando nuestro diccionario en base a la experiencia.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/nse4.png" alt="NSE - Resultado con diccionario propio">
+        <img src="imagenes/noticias/nse4.png" alt="NSE - Resultado con diccionario propio">
 
         <h2>Script de bash para depurar resultados</h2>
         <p>El resultado parece mucho más amplio que el obtenido por el script por defecto, pero el orden del resultado complica el análisis para continuar trabajando. La forma de solucionarlo es crear un propio script de bash que depure el resultado, lo ordene en base a nuestras necesidades e informe del número de registros detectados:</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/nse5.png" alt="NSE - Script bash personalizado">
+        <img src="imagenes/noticias/nse5.png" alt="NSE - Script bash personalizado">
 
         <p>Damos permisos de ejecución al script de bash y lo lanzamos para comparar resultados con el mismo dominio:</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/nse6.png" alt="NSE - Ejecutando script bash">
+        <img src="imagenes/noticias/nse6.png" alt="NSE - Ejecutando script bash">
 
         <p>Tras poco más de un minuto de espera, nos encontramos con un resultado muy superior a la inicial, concretamente un total de <strong>415 registros</strong>, 9 más que antes gracias a la propia información proporcionada por el cliente. Este resultado es fundamental para evitar dejar subdominios fuera de la auditoría.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/nse7.png" alt="NSE - 415 registros encontrados">
+        <img src="imagenes/noticias/nse7.png" alt="NSE - 415 registros encontrados">
 
         <h2>Extrayendo IPs únicas</h2>
         <p>Otra de las grandes ventajas es que, al crear un archivo en local con los resultados, podremos tratarlo a nuestro gusto. Por ejemplo, vamos a mostrar tan solo las direcciones IP ordenadas y sin repetirse:</p>
         <pre><code>cat microsoft.com.txt | sed 's/\s+/_/g' | cut -d '_' -f 2 | sort | uniq</code></pre>
 
-        <img src="https://atalantago.com/wp-content/uploads/nse8.png" alt="NSE - IPs únicas ordenadas">
+        <img src="imagenes/noticias/nse8.png" alt="NSE - IPs únicas ordenadas">
 
         <p>No solo obtenemos mayor número de registros DNS, sino que además vamos a encontrar pools de IPs sobre los que poder trabajar posteriormente. Para verificar que pertenecen al cliente, usamos una IP del rango y hacemos un <code>whois</code>:</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/nse9.png" alt="NSE - Verificación whois">
+        <img src="imagenes/noticias/nse9.png" alt="NSE - Verificación whois">
 
         <p>Con estas nuevas direcciones IP, podremos seguir usando NMAP con los puertos habituales para descubrir nuevos registros DNS:</p>
         <pre><code>nmap -p80,443 20.190.137.0/24</code></pre>
 
-        <img src="https://atalantago.com/wp-content/uploads/nse10.png" alt="NSE - Escaneo de rango de IPs">
+        <img src="imagenes/noticias/nse10.png" alt="NSE - Escaneo de rango de IPs">
 
         <p>Si accedemos a la web por el puerto SSL, veremos que logramos obtener multitud de nuevos dominios del cliente para continuar con nuestro trabajo. Este es un fallo habitual de las empresas, donde por ahorrar dinero usan un certificado digital para multitud de dominios.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/nse11.png" alt="NSE - Nuevos dominios descubiertos via SSL">
+        <img src="imagenes/noticias/nse11.png" alt="NSE - Nuevos dominios descubiertos via SSL">
 
         <h2>Conclusión</h2>
         <p>El objetivo de este artículo no es llegar hasta el final de las posibilidades de este script, ni hacer un footprinting completo de ninguna empresa. Es dar una visión de las capacidades de adaptación que cada script de NMAP o NSE proporciona al auditor para facilitar su trabajo. Este mismo ejemplo, siendo muy simple, se puede replicar en decenas de scripts de NMAP que se valen de diccionarios, como puedan ser los de enumeración de usuarios, fuzzers, etc.</p>

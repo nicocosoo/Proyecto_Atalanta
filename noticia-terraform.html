@@ -31,7 +31,7 @@
   <main>
 
     <!-- HERO ARTICULO -->
-    <section class="news-article-hero" style="background-image: url('https://atalantago.com/wp-content/uploads/Terraform-12.png');">
+    <section class="news-article-hero" style="background-image: url('imagenes/noticias/Terraform-12.png');">
       <div class="news-article-hero-overlay"></div>
       <div class="page-container news-article-hero-content">
         <a href="noticias.html" class="news-article-back">← Volver a Noticias</a>
@@ -64,31 +64,31 @@
 
         <p>En cuanto a la estructura de archivos, necesitarás estos archivos:</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/Terraform-1.png" alt="Estructura de archivos Terraform">
+        <img src="imagenes/noticias/Terraform-1.png" alt="Estructura de archivos Terraform">
 
         <p>Empecemos explicando los 3 archivos de la carpeta raíz:</p>
 
         <p>El <strong>archivo principal</strong> contiene todos los recursos necesarios para el estado remoto. Asegúrate de que la configuración es privada.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/Terraform-2.png" alt="Archivo principal Terraform">
+        <img src="imagenes/noticias/Terraform-2.png" alt="Archivo principal Terraform">
 
         <p>El <strong>archivo del proveedor</strong> contiene la configuración de Terraform. Nos interesa la sección «backend», la cual ahora mismo es local, pero cambiaremos a s3 después de la primera ejecución. También, puedes establecer una versión para el proveedor.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/Terraform-3.png" alt="Archivo del proveedor Terraform">
+        <img src="imagenes/noticias/Terraform-3.png" alt="Archivo del proveedor Terraform">
 
         <p>En lo que respecta al <strong>archivo de variables</strong>, no hay mucho que explicar.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/Terraform-4.png" alt="Archivo de variables Terraform">
+        <img src="imagenes/noticias/Terraform-4.png" alt="Archivo de variables Terraform">
 
         <p>Una vez pasamos a la carpeta env, tenemos que:</p>
 
         <p>El <strong>archivo backend</strong> tiene la configuración para el backend definida en el archivo del proveedor; usaremos esta configuración cuando pasemos al backend s3. Ten en cuenta que estos valores deben coincidir con los nombres de los recursos creados en el archivo principal.</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/Terraform-5.png" alt="Archivo backend Terraform">
+        <img src="imagenes/noticias/Terraform-5.png" alt="Archivo backend Terraform">
 
         <p>Por último, el <strong>fichero de valores</strong>:</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/Terraform-6.png" alt="Fichero de valores Terraform">
+        <img src="imagenes/noticias/Terraform-6.png" alt="Fichero de valores Terraform">
 
         <h2>A tener en cuenta</h2>
 
@@ -107,20 +107,20 @@
         <p>Después de que todo haya sido configurado, puedes proceder a init y aplicar localmente:</p>
 
         <p><strong>Init:</strong></p>
-        <img src="https://atalantago.com/wp-content/uploads/Terraform-7.png" alt="Terraform Init">
+        <img src="imagenes/noticias/Terraform-7.png" alt="Terraform Init">
 
         <p><strong>Aplicar:</strong></p>
-        <img src="https://atalantago.com/wp-content/uploads/Terraform-8.png" alt="Terraform Apply">
+        <img src="imagenes/noticias/Terraform-8.png" alt="Terraform Apply">
 
         <p>Después de aplicar con éxito el código Terraform, migraremos el estado a S3, cambiando el provider.tf &gt; terraform &gt; backend de local a s3:</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/Terraform-9.png" alt="Migración del estado a S3">
+        <img src="imagenes/noticias/Terraform-9.png" alt="Migración del estado a S3">
 
         <p>Y lanza init como sigue:</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/Terraform-10.png" alt="Terraform Init con backend S3">
+        <img src="imagenes/noticias/Terraform-10.png" alt="Terraform Init con backend S3">
 
-        <img src="https://atalantago.com/wp-content/uploads/Terraform-11.png" alt="Resultado de Terraform Init">
+        <img src="imagenes/noticias/Terraform-11.png" alt="Resultado de Terraform Init">
 
         <p>¡Listo! Ahora tienes tus recursos de estado Terraform creados y utilizados por Terraform sin crear ningún recurso manualmente, lo que es de gran utilidad para el arranque rápido de proyectos Terraform.</p>
 

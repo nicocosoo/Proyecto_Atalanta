@@ -31,7 +31,7 @@
   <main>
 
     <!-- HERO ARTICULO -->
-    <section class="news-article-hero" style="background-image: url('https://atalantago.com/wp-content/uploads/localstack-4.png');">
+    <section class="news-article-hero" style="background-image: url('imagenes/noticias/localstack-4.png');">
       <div class="news-article-hero-overlay"></div>
       <div class="page-container news-article-hero-content">
         <a href="noticias.html" class="news-article-back">← Volver a Noticias</a>
@@ -62,7 +62,7 @@
 
         <p>Tras instalarlo podemos lanzar el comando <code>localstack start -d</code> para iniciarlo, comprobar el estado de los servicios con <code>localstack status services</code> o bien pararlo con <code>localstack stop</code>:</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/Localstack1.png" alt="Comandos de localstack">
+        <img src="imagenes/noticias/Localstack1.png" alt="Comandos de localstack">
 
         <p>Ahora que tenemos todo iniciado, ¡es hora de empezar a interactuar con los servicios!</p>
 
@@ -73,10 +73,10 @@
         <p>Para poder interactuar con el CLI oficial tendremos que configurar un perfil de AWS y cambiar el end-point al que apuntamos en los comandos:</p>
 
         <p><strong>1. El perfil:</strong></p>
-        <img src="https://atalantago.com/wp-content/uploads/Localstack2.png" alt="Configuración del perfil AWS para localstack">
+        <img src="imagenes/noticias/Localstack2.png" alt="Configuración del perfil AWS para localstack">
 
         <p><strong>2. El end-point</strong> (No se puede cambiar el end-point de forma permanente, sino que se especifica en cada comando, por ese motivo yo tengo un alias para evitar escribir todo el rato lo mismo):</p>
-        <img src="https://atalantago.com/wp-content/uploads/Localstack3.png" alt="Configuración del end-point en localstack">
+        <img src="imagenes/noticias/Localstack3.png" alt="Configuración del end-point en localstack">
 
         <p>Con esto ya están las instancias creadas y sabemos cómo interactuar con localstack con el CLI.</p>
 
@@ -84,12 +84,12 @@
 
         <p>Como el script debería usar por defecto el end-point de AWS real, he metido el uso de localstack con el flag <code>-ls</code> o <code>--localstack</code>. A continuación, os dejo un pequeño bloque de código:</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/Localstack4.png" alt="Código del script con localstack">
+        <img src="imagenes/noticias/Localstack4.png" alt="Código del script con localstack">
 
         <p>Como se puede observar, hago uso del argumento <code>endpoint_url</code> (se puede usar tanto en "client" como en "resource"), y con eso ya podría probar interacciones entre mi script y AWS:</p>
 
-        <img src="https://atalantago.com/wp-content/uploads/Localstack5.png" alt="Interacción del script con localstack">
-        <img src="https://atalantago.com/wp-content/uploads/Localstack6.png" alt="Resultado de la ejecución con localstack">
+        <img src="imagenes/noticias/Localstack5.png" alt="Interacción del script con localstack">
+        <img src="imagenes/noticias/Localstack6.png" alt="Resultado de la ejecución con localstack">
 
         <h2>Reflexión sobre localstack</h2>
 

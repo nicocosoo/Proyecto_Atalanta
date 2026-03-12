@@ -286,6 +286,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 64px;
       align-items: center;
+      min-width: 0;
     }
     .ac-tickets-text h2 {
       font-family: 'Space Grotesk', sans-serif;
@@ -335,6 +336,8 @@
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 20px;
       padding: 36px;
+      min-width: 0;
+      overflow: hidden;
     }
     .ac-ticket-mock {
       background: rgba(255,255,255,0.04);
@@ -342,12 +345,15 @@
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 16px;
+      min-width: 0;
     }
     .ac-ticket-mock:last-child { margin-bottom: 0; }
     .ac-ticket-mock-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
       margin-bottom: 8px;
     }
     .ac-ticket-mock-id {
@@ -355,6 +361,7 @@
       font-size: 12px;
       font-weight: 700;
       color: rgba(255,255,255,0.3);
+      white-space: nowrap;
     }
     .ac-ticket-badge {
       font-size: 10px;
@@ -373,6 +380,8 @@
       font-weight: 600;
       color: rgba(255,255,255,0.8);
       margin-bottom: 4px;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
     .ac-ticket-mock-meta {
       font-size: 12px;

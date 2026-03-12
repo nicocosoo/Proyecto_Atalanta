@@ -2608,12 +2608,10 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
 
 /* VALORES */
 
+/* Quitado difuminado naranja/rojo, fondo oscuro puro */
 .about-values-v2{
   padding:140px 0;
-  background:
-    radial-gradient(circle at 12% 28%, rgba(255,0,0,0.08), transparent 18%),
-    radial-gradient(circle at 88% 74%, rgba(255,70,0,0.06), transparent 18%),
-    #050505;
+  background:#050505;
 }
 
 .values-v2-grid{

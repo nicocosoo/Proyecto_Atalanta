@@ -333,13 +333,17 @@
       if (e.persisted) window.location.reload();
     });
 
-    /* ── VALIDACIÓN FORMULARIO CONTACTO ── */
+    /* ── VALIDACIÓN FORMULARIO CONTACTO ──
+       Se ejecuta al hacer submit. Comprueba cada campo antes de enviar.
+       Si hay errores, los muestra en rojo bajo cada campo y detiene el envío.
+       Si todo es correcto, muestra mensaje de éxito y limpia el formulario. */
     (function() {
       const form = document.querySelector('.contact-form');
-      if (!form) return;
+      if (!form) return; // Salir si no existe el formulario en la página
 
+      // Muestra un mensaje de error rojo bajo el campo indicado
       function showError(field, msg) {
-        field.classList.add('field-error');
+        field.classList.add('field-error'); // Borde rojo al campo
         let err = field.parentElement.querySelector('.val-error');
         if (!err) {
           err = document.createElement('span');
@@ -349,12 +353,14 @@
         err.textContent = msg;
       }
 
+      // Elimina el error de un campo cuando el usuario empieza a corregirlo
       function clearError(field) {
         field.classList.remove('field-error');
         const err = field.parentElement.querySelector('.val-error');
         if (err) err.remove();
       }
 
+      // Comprueba que el email tenga formato válido (algo@algo.algo)
       function isValidEmail(val) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
       }

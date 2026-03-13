@@ -63,6 +63,14 @@ nav a:hover{
   color:#f00000;
 }
 
+nav a.nav-active {
+  color:#f00000;
+}
+
+.nav-dropdown-toggle.nav-active {
+  color:#f00000;
+}
+
 /* DROPDOWN OTROS */
 .nav-dropdown {
   position: relative;
@@ -1820,13 +1828,32 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
 .cta{
   background:#ffffff;
   padding:110px 0;
-  text-align:center;
 }
 
-.cta-inner h2{
-  font-size:54px;
+.cta-inner{
+  display:flex;
+  align-items:center;
+  gap:0;
+}
+
+.cta-half{
+  flex:1;
+  text-align:center;
+  padding:0 48px;
+}
+
+.cta-half h2{
+  font-size:40px;
   margin-bottom:26px;
   color:#111111;
+  text-transform:uppercase;
+}
+
+.cta-divider{
+  width:1px;
+  height:160px;
+  background:#e0e0e0;
+  flex-shrink:0;
 }
 
 /* FOOTER */
@@ -2118,8 +2145,19 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
     grid-template-columns:1fr;
   }
 
-  .cta-inner h2{
-    font-size:40px;
+  .cta-inner{
+    flex-direction:column;
+  }
+  .cta-divider{
+    width:80%;
+    height:1px;
+    margin:16px 0;
+  }
+  .cta-half{
+    padding:0 24px;
+  }
+  .cta-half h2{
+    font-size:32px;
   }
 }
 
@@ -2795,6 +2833,7 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
   max-width:900px;
   margin:0 auto 28px;
   color:#111111;
+  text-transform:uppercase;
 }
 
 @media (max-width: 1100px){
@@ -3134,21 +3173,35 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
   position:relative;
   z-index:2;
   padding:30px;
+  text-align:center;
 }
 
 .cyber-area-content h3{
-  font-size:34px;
+  font-size:28px;
   margin-bottom:10px;
   font-family:"Space Grotesk";
+  font-weight:800;
+  text-transform:uppercase;
+  text-align:center;
 }
 
 .cyber-area-content p{
-  font-size:18px;
+  font-size:17px;
   margin-bottom:16px;
+  font-weight:700;
+  text-align:center;
+}
+
+.cyber-area-content ul{
+  display:inline-block;
+  text-align:left;
+  width:fit-content;
+  margin:0 auto;
+  padding-left:20px;
 }
 
 .cyber-area-content li{
-  font-size:17px;
+  font-size:16px;
   margin-bottom:4px;
 }
 
@@ -3164,7 +3217,7 @@ Si prefieres que ocupe 2 columnas abajo, dime y te lo adapto.
 .cyber-certs{
   padding:120px 0;
   background:
-  linear-gradient(180deg,#8b0017,#081623);
+  linear-gradient(180deg,#4a0010,#081623);
   text-align:center;
 }
 
@@ -3941,6 +3994,39 @@ font-size:28px;
   align-items:center;
 }
 
+.academy-proof-image-wrap{
+  position:relative;
+  border-radius:26px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 24px 50px rgba(0,0,0,0.32),
+    0 0 30px rgba(255,70,70,0.08);
+}
+
+.academy-proof-image-wrap::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.24), rgba(0,0,0,0.06)),
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.18));
+  z-index:1;
+  pointer-events:none;
+}
+
+.academy-proof-image-wrap img{
+  width:100%;
+  display:block;
+  height:auto;
+  transform:scale(1.02);
+  transition:transform 0.5s ease;
+}
+
+.academy-proof-image-wrap:hover img{
+  transform:scale(1.06);
+}
+
 .academy-proof-text h2{
   font-family:"Space Grotesk", Arial, sans-serif;
   font-size:clamp(34px, 3.8vw, 58px);
@@ -3992,38 +4078,6 @@ font-size:28px;
   color:#e7e7e7;
 }
 
-.academy-proof-image-wrap{
-  position:relative;
-  border-radius:26px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:
-    0 24px 50px rgba(0,0,0,0.32),
-    0 0 30px rgba(255,70,70,0.08);
-}
-
-.academy-proof-image-wrap::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(90deg, rgba(0,0,0,0.24), rgba(0,0,0,0.06)),
-    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.18));
-  z-index:1;
-  pointer-events:none;
-}
-
-.academy-proof-image-wrap img{
-  width:100%;
-  display:block;
-  height:auto;
-  transform:scale(1.02);
-  transition:transform 0.5s ease;
-}
-
-.academy-proof-image-wrap:hover img{
-  transform:scale(1.06);
-}
 
 /* OFFSEC BLOCK */
 

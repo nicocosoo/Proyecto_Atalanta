@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angular – Lifecycle Article | Atalanta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/estilos.css?v=3">
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="../prueba.html">
+        <img src="../imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+      <nav>
+        <a href="../quienes_somos.html">Quiénes somos</a>
+        <a href="../ciberseguridad.html">Ciberseguridad</a>
+        <a href="../digital.html">Digital</a>
+        <a href="../formacion.html">Formación</a>
+        <a href="../empleo.html">Empleo</a>
+        <a href="../noticias.html">Noticias</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle">Otros <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown-menu">
+            <a href="../servicios.html">Servicios</a>
+            <a href="../atencion_cliente.html">Atención al Cliente</a>
+          </div>
+        </div>
+        <a href="../contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO ARTICULO -->
+    <section class="news-article-hero" style="background-image: url('../imagenes/noticias/angular.jpg');">
+      <div class="news-article-hero-overlay"></div>
+      <div class="page-container news-article-hero-content">
+        <a href="../noticias.html" class="news-article-back">← Volver a Noticias</a>
+        <span class="news-article-category">Desarrollo Web</span>
+        <h1>Angular – Lifecycle Article</h1>
+        <p class="news-article-author">Por Samuel Ruiz</p>
+      </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="news-article-body">
+      <div class="page-container news-article-container">
+
+        <p>¿Qué es lo que ocurre cuando creamos un componente en Angular? Al crear un nuevo componente o una directiva en Angular se genera una nueva instancia del componente/directiva que es agregada al DOM. Este proceso de creación se desarrolla en varios eventos diferentes que nos ofrecen la oportunidad de introducir nuestro código en cada una de las etapas de creación, actualización y destrucción.</p>
+
+        <p>Cada una de las etapas se denomina <strong>lifecycle hook event</strong> o «evento de enlace de ciclo de vida». Si hablamos de creación de componentes, no nos podemos olvidar del constructor, que se ejecuta antes que cualquier lifecycle hook; por lo que en caso de que necesitemos inyectar alguna dependencia al componente, este será el mejor lugar para hacerlo.</p>
+
+        <p>Una vez ejecutado el constructor, Angular comenzará a ejecutar la secuencia de lifecycle hook events en un orden específico.</p>
+
+        <h2>Lifecycle Methods (Métodos de Ciclo de Vida)</h2>
+        <p>Antes de entrar en el detalle de cada etapa, podemos observar que los eventos se pueden clasificar en función de si están vinculados al propio componente o si están vinculados al contenido externo (hijos o contenido proyectado). También los podemos clasificar en función de si los eventos son únicos o pueden ejecutarse un número indefinido de veces.</p>
+
+        <p>Veamos qué tipo de operaciones podemos ejecutar en cada evento:</p>
+
+        <h3>ngOnChanges</h3>
+        <p>Es llamado antes de <code>ngOnInit()</code> y cada vez que una o varias propiedades vinculadas a un <code>@Input()</code> cambian de valor. Este método recibe un objeto <code>SimpleChanges</code> con el valor anterior y el valor actual de las propiedades, lo que nos permite reaccionar ante cambios en los valores de cualquier propiedad que sea una entrada a nuestro componente.</p>
+        <p><strong>Nota:</strong> <code>ngOnChanges</code> puede ser ejecutado con mucha frecuencia, por lo que las operaciones que realicemos durante su llamada pueden afectar notablemente el rendimiento.</p>
+
+        <h3>ngOnInit</h3>
+        <p>Es el evento constructor. Se invocará solo una vez, después del primer <code>ngOnChanges</code> y después de que Angular haya desplegado los «data-bound properties» o se haya inicializado el componente. <code>ngOnInit</code> nos permite ejecutar inicializaciones más complejas como la obtención de datos.</p>
+
+        <h3>ngDoCheck</h3>
+        <p>Se ejecutará inmediatamente después de cada <code>ngOnChanges</code> en cada ciclo de detección, o inmediatamente después de <code>ngOnInit</code> en el primer ciclo. Es decir, cada vez que se produzca un cambio, <code>ngDoCheck</code> entra en acción. Esto permite detectar y actuar ante cambios que Angular no va o no puede detectar por sí mismo.</p>
+
+        <h3>ngAfterContentInit</h3>
+        <p>Para poder actuar sobre contenido externo que ha sido proyectado sobre la vista del componente o sobre la vista a la que pertenece la directiva, tenemos el evento <code>ngAfterContentInit</code>, que es ejecutado después del primer <code>ngDoCheck</code>.</p>
+
+        <h3>ngAfterContentCheck</h3>
+        <p>Es invocado al finalizar el evento <code>ngAfterContentInit</code> y cualquier <code>ngDoCheck</code> en los posteriores ciclos. Esto nos permitirá aplicar una detección de cambios sobre el contenido proyectado en nuestro componente.</p>
+
+        <h3>ngAfterViewInit</h3>
+        <p>Siguiendo los mismos pasos que los eventos sobre AfterContent, este evento es llamado después del primer <code>ngAfterContentCheck</code>, lo que nos permite actuar después de que Angular haya inicializado la vista del componente y de sus hijos o la vista que contiene la directiva.</p>
+
+        <h3>ngAfterViewChecked</h3>
+        <p>Es ejecutado después de <code>ngAfterViewInit</code> y cualquier <code>ngAfterContentCheck</code> en los posteriores ciclos. Esto nos permitirá aplicar una detección de cambios sobre la vista del componente y la de los hijos o la vista que contiene la directiva.</p>
+
+        <h3>ngOnDestroy</h3>
+        <p>Justo antes de destruir un componente o una directiva se invoca a este evento, lo que nos permite desengancharnos de cualquier evento u Observable al que esté vinculado el componente y evitar posibles fugas de memoria.</p>
+
+        <h2>Interfaces</h2>
+        <p>Para emplear estos métodos, Angular nos proporciona un conjunto de interfaces con el mismo nombre que cada uno de los eventos sin el prefijo «ng».</p>
+
+        <p>Puedes probar los lifecycle hooks de forma interactiva en StackBlitz:</p>
+        <p><a href="https://stackblitz.com/edit/lifecycicle-hooks?embed=1&file=src/app/life-cycle-hooks/life-cycle-hook-child.component.ts" target="_blank" rel="noopener noreferrer">Ver ejemplo en StackBlitz →</a></p>
+
+        <p><em>— Samuel Ruiz —</em></p>
+
+      </div>
+    </section>
+    <div class="page-container news-article-nav-wrap">
+      <nav class="news-article-nav">
+        <a href="noticia-seguridad-diseno.html" class="news-nav-prev"><span>Anterior noticia</span><em>Seguridad en el diseño, análisis de riesgos y cisnes negros</em></a>
+        <a href="../noticias.html" class="news-nav-index">Todas las noticias</a>
+        <a href="noticia-hacking-unicode.html" class="news-nav-next"><span>Siguiente noticia</span><em>Hacking con Unicode</em></a>
+      </nav>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('../imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+
+        <div class="footer-col-brand">
+          <a href="../prueba.html">
+            <img src="../imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/atalanta-ciberseguridad" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/atalanta.academy/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="../quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="../servicios.html">Servicios</a></li>
+            <li><a href="../ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="../digital.html">Digital</a></li>
+            <li><a href="../formacion.html">Formación</a></li>
+            <li><a href="../empleo.html">Empleo</a></li>
+            <li><a href="../noticias.html">Noticias</a></li>
+            <li><a href="../atencion_cliente.html">Atención al Cliente</a></li>
+            <li><a href="../contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Madrid, España</span>
+          </div>
+          <div class="map-placeholder">
+            <iframe src="https://maps.google.com/maps?q=40.4292413,-3.7049219&z=16&output=embed" frameborder="0" width="100%" height="250" style="border: 0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright © 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="../legal/aviso_legal.html">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="../legal/politica_privacidad.html">POLÍTICA DE PRIVACIDAD</a>
+          <span>|</span>
+          <a href="../legal/politica_cookies.html">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top-btn" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+
+  <script src="../js/js.js"></script>
+  <script>
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) window.location.reload();
+    });
+  </script>
+</body>
+</html>

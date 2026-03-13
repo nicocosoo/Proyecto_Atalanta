@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spiderfoot | Atalanta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/estilos.css?v=3">
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="../prueba.html">
+        <img src="../imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+      <nav>
+        <a href="../quienes_somos.html">Quiénes somos</a>
+        <a href="../ciberseguridad.html">Ciberseguridad</a>
+        <a href="../digital.html">Digital</a>
+        <a href="../formacion.html">Formación</a>
+        <a href="../empleo.html">Empleo</a>
+        <a href="../noticias.html">Noticias</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle">Otros <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown-menu">
+            <a href="../servicios.html">Servicios</a>
+            <a href="../atencion_cliente.html">Atención al Cliente</a>
+          </div>
+        </div>
+        <a href="../contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO ARTICULO -->
+    <section class="news-article-hero" style="background-image: url('../imagenes/noticias/spiderfootbien.png');">
+      <div class="news-article-hero-overlay"></div>
+      <div class="page-container news-article-hero-content">
+        <a href="../noticias.html" class="news-article-back">← Volver a Noticias</a>
+        <span class="news-article-category">Ciberseguridad</span>
+        <h1>Spiderfoot</h1>
+        <p class="news-article-author">Por Daniel Tapia</p>
+      </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="news-article-body">
+      <div class="page-container news-article-container">
+
+        <p>Para hacer un buen pentest es necesario realizar una buena recolección de información del objetivo, o lo que viene a ser una buena fase de <em>information gathering</em>. Por ello en este artículo vamos a ver cómo instalar y utilizar una herramienta OSINT automatizada que nos va a permitir recopilar mucha información que será necesaria para empezar a atacar a nuestro objetivo.</p>
+
+        <p>Esta herramienta se llama <strong>Spiderfoot</strong>. La podemos encontrar tanto en versión web online accediendo a <a href="https://www.spiderfoot.net/" target="_blank" rel="noopener">spiderfoot.net</a> o de manera local, que será lo que enseñaremos en este artículo.</p>
+
+        <h2>Instalación</h2>
+
+        <p>Para empezar, nos vamos a nuestra máquina de Kali Linux y en una terminal con usuario root tecleamos el siguiente comando:</p>
+
+        <pre><code>git clone https://github.com/smicallef/spiderfoot.git</code></pre>
+
+        <p>En caso de que no tengamos instalada la herramienta git, procederemos a instalarla con el siguiente comando:</p>
+
+        <pre><code>apt-get install git</code></pre>
+
+        <p>Una vez clonada la aplicación, lo siguiente que haremos es entrar dentro de ella:</p>
+
+        <pre><code>cd spiderfoot/</code></pre>
+
+        <p>Cuando estemos dentro de la carpeta, vamos a proceder a instalar los requirements necesarios para que la herramienta funcione correctamente:</p>
+
+        <pre><code>pip3 install -r requirements.txt</code></pre>
+
+        <p>En caso de que no tengamos la herramienta pip3 instalada, teclearemos el siguiente comando para instalarla:</p>
+
+        <pre><code>apt-get install pip</code></pre>
+
+        <h2>Arrancar la aplicación</h2>
+
+        <p>Ya tenemos la aplicación clonada y los requirements instalados. Vamos a arrancar la aplicación; para ello tenemos dos comandos posibles:</p>
+
+        <pre><code>./sf.py -l 127.0.0.1:5001
+python3 sf.py -l 127.0.0.1:5001</code></pre>
+
+        <p>Ahora que ya tenemos el programa funcionando, debemos abrir el navegador y en la URL ponemos lo siguiente:</p>
+
+        <pre><code>127.0.0.1:5001</code></pre>
+
+        <img src="../imagenes/noticias/foot1.png" alt="Interfaz de Spiderfoot">
+
+        <h2>Interfaz y opciones</h2>
+
+        <p>En la imagen anterior podemos observar la interfaz gráfica que tiene la herramienta y las distintas opciones que nos ofrece. Para empezar, tenemos el apartado <strong>New Scan</strong>, donde tendremos que darle un nombre a nuestro proyecto y la URL del objetivo. Más abajo observamos que, dependiendo de los usos, los módulos o los datos requeridos, tendremos distintas opciones que influirán en el resultado que obtendremos más adelante.</p>
+
+        <img src="../imagenes/noticias/foot2.png" alt="Opciones de búsqueda en Spiderfoot">
+
+        <h3>Búsqueda por datos requeridos</h3>
+
+        <p>Estas son algunas de las opciones que nos ofrece Spiderfoot; podemos seleccionar y quitar las que nos interesen, por defecto aparecen todas seleccionadas pues es la mejor configuración.</p>
+
+        <img src="../imagenes/noticias/foot3.png" alt="Módulos de Spiderfoot">
+
+        <p>En este apartado Spiderfoot recurre a páginas web, buscadores o decodificadores que nos ayudarán a obtener muchos más resultados. Los módulos que aparecen con un candado quiere decir que requieren API Key. Para obtenerlas debemos registrarnos en el sitio web que la solicita; algunas APIs son gratuitas y otras de pago.</p>
+
+        <img src="../imagenes/noticias/foot4.png" alt="Módulos con API Key en Spiderfoot">
+
+        <h3>Scans</h3>
+
+        <p>La siguiente opción que tiene nuestra herramienta se llama <strong>Scans</strong> y es donde se almacenarán nuestros escaneos. Si observamos la imagen podemos ver que tenemos un filtro de búsqueda para encontrar más rápido nuestros proyectos, una opción para parar y borrar escaneos y la posibilidad de descargar nuestros escaneos una vez finalicen.</p>
+
+        <img src="../imagenes/noticias/spider5-renovado.png" alt="Sección de Scans en Spiderfoot">
+
+        <h3>Settings</h3>
+
+        <p>El último apartado que nos ofrece Spiderfoot es <strong>Settings</strong>. En la configuración es donde podremos añadir las API Key anteriormente mencionadas.</p>
+
+        <img src="../imagenes/noticias/foot6.png" alt="Configuración de Spiderfoot">
+
+        <p>De primeras nos sale la configuración por defecto de Spiderfoot y los distintos módulos que utiliza. Para añadir una API Key, seleccionamos cualquier opción que contenga el candado y, una vez registrados y obtenida la API Key, la pegamos en la opción API Key. Después damos a "save settings" y en el próximo escaneo que hagamos utilizará la API Key que le hemos dado.</p>
+
+        <img src="../imagenes/noticias/foot7.png" alt="Añadir API Key en Spiderfoot">
+
+        <h2>Conclusión</h2>
+
+        <p>En resumen, Spiderfoot es una herramienta de OSINT automatizada que nos ayuda a recolectar información de una manera más ordenada y rápida, de esta manera conseguiremos obtener mejores resultados en nuestras auditorías.</p>
+      </div>
+<div class="page-container news-article-nav-wrap">
+      <nav class="news-article-nav">
+        <a href="noticia-kalitorify.html" class="news-nav-prev"><span>Anterior noticia</span><em>Kalitorify</em></a>
+        <a href="../noticias.html" class="news-nav-index">Todas las noticias</a>
+        <a href="noticia-hacking-google-dorks.html" class="news-nav-next"><span>Siguiente noticia</span><em>Introducción: Hacking con Google Dorks</em></a>
+      </nav>
+    </div>
+    </section>
+
+    <!-- CTA -->
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('../imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+        <div class="footer-col-brand">
+          <a href="../prueba.html">
+            <img src="../imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/atalanta-ciberseguridad" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://www.instagram.com/atalanta.academy/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="../quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="../servicios.html">Servicios</a></li>
+            <li><a href="../ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="../digital.html">Digital</a></li>
+            <li><a href="../formacion.html">Formación</a></li>
+            <li><a href="../empleo.html">Empleo</a></li>
+            <li><a href="../noticias.html">Noticias</a></li>
+            <li><a href="../atencion_cliente.html">Atención al Cliente</a></li>
+            <li><a href="../contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Madrid, España</span>
+          </div>
+          <div class="map-placeholder">
+              <iframe src="https://maps.google.com/maps?q=40.4292413,-3.7049219&z=16&output=embed" frameborder="0" width="100%" height="250" style="border: 0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright © 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="../legal/aviso_legal.html">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="../legal/politica_privacidad.html">POLÍTICA DE PRIVACIDAD</a>
+          <span>|</span>
+          <a href="../legal/politica_cookies.html">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top-btn" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+
+  <script src="../js/js.js"></script>
+  <script>
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) window.location.reload();
+    });
+  </script>
+</body>
+</html>

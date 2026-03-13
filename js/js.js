@@ -362,3 +362,39 @@ document.addEventListener('DOMContentLoaded', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 })();
+
+/* ── NAVBAR: resaltar pestaña activa según la página actual ── */
+(function () {
+  // Obtener el nombre del archivo actual
+  var page = window.location.pathname.split('/').pop() || 'prueba.html';
+
+  // Las páginas dentro de empleo/ apuntan al nav de Empleo
+  var empleoPages = [
+    'analista-soc-n3-madrid.html',
+    'analista-respuesta-incidentes-madrid.html',
+    'ejecutivo-cuentas-asuncion.html',
+    'key-account-manager-madrid.html',
+    'ingeniero-ot-valencia.html'
+  ];
+  // Las páginas dentro de noticias/ apuntan al nav de Noticias
+  if (page.startsWith('noticia-')) page = 'noticias.html';
+  else if (empleoPages.indexOf(page) !== -1) page = 'empleo.html';
+
+  // Páginas del dropdown "Otros": resaltar el botón toggle
+  var otrosPages = ['servicios.html', 'atencion_cliente.html'];
+
+  if (otrosPages.indexOf(page) !== -1) {
+    // Marcar el botón "Otros"
+    var toggle = document.querySelector('.nav-dropdown-toggle');
+    if (toggle) toggle.classList.add('nav-active');
+  } else {
+    // Buscar el link directo cuyo href apunte a la página actual
+    var links = document.querySelectorAll('nav > a');
+    links.forEach(function (link) {
+      var href = link.getAttribute('href') || '';
+      if (href.split('/').pop() === page) {
+        link.classList.add('nav-active');
+      }
+    });
+  }
+})();

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cómo mantener los recursos del estado de Terraform controlados por Terraform | Atalanta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/estilos.css?v=3">
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="../prueba.html">
+        <img src="../imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+      <nav>
+        <a href="../quienes_somos.html">Quiénes somos</a>
+        <a href="../ciberseguridad.html">Ciberseguridad</a>
+        <a href="../digital.html">Digital</a>
+        <a href="../formacion.html">Formación</a>
+        <a href="../empleo.html">Empleo</a>
+        <a href="../noticias.html">Noticias</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle">Otros <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown-menu">
+            <a href="../servicios.html">Servicios</a>
+            <a href="../atencion_cliente.html">Atención al Cliente</a>
+          </div>
+        </div>
+        <a href="../contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO ARTICULO -->
+    <section class="news-article-hero" style="background-image: url('../imagenes/Terraform-12.png');">
+      <div class="news-article-hero-overlay"></div>
+      <div class="page-container news-article-hero-content">
+        <a href="../noticias.html" class="news-article-back">← Volver a Noticias</a>
+        <span class="news-article-category">Digital</span>
+        <h1>Cómo mantener los recursos del estado de Terraform controlados por Terraform</h1>
+        <p class="news-article-author">Por Adrián Sanz</p>
+      </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="news-article-body">
+      <div class="page-container news-article-container">
+
+        <p>¡Hola! Hoy vuelvo a escribir en este blog para contaros una forma que conozco para mantener los recursos del estado de Terraform, controlados por este propio software. ¡Os cuento cómo lo hago!</p>
+
+        <h2>¿Cuál es el problema?</h2>
+
+        <p>Yo suelo trabajar con Terraform de esta manera:</p>
+        <ul>
+          <li>Creo mi S3</li>
+          <li>Creo mi proveedor</li>
+          <li>terraform Init</li>
+          <li>…</li>
+        </ul>
+
+        <p>Sin embargo, esta forma no me convence, ya que he tenido que seguir gestionando algunos recursos manualmente o importándolos después, lo que implica un mayor esfuerzo, y eso no me gusta. Así que, me encontré con un código y resultó ser exactamente lo que necesitaba. Después de algunas pruebas, voy a mostrar cómo eliminar todo ese proceso manual.</p>
+
+        <h2>Preparación de los archivos y requisitos</h2>
+
+        <p>El principal requisito es que cuentes con un perfil de AWS con credenciales válidas. En mi caso, tengo credenciales realmente permisivas debido a la naturaleza del código de Terraform que necesito hacer, pero puedes encontrar problemas si tienes acceso restringido.</p>
+
+        <p>En cuanto a la estructura de archivos, necesitarás estos archivos:</p>
+
+        <img src="../imagenes/noticias/Terraform-1.png" alt="Estructura de archivos Terraform">
+
+        <p>Empecemos explicando los 3 archivos de la carpeta raíz:</p>
+
+        <p>El <strong>archivo principal</strong> contiene todos los recursos necesarios para el estado remoto. Asegúrate de que la configuración es privada.</p>
+
+        <img src="../imagenes/noticias/Terraform-2.png" alt="Archivo principal Terraform">
+
+        <p>El <strong>archivo del proveedor</strong> contiene la configuración de Terraform. Nos interesa la sección «backend», la cual ahora mismo es local, pero cambiaremos a s3 después de la primera ejecución. También, puedes establecer una versión para el proveedor.</p>
+
+        <img src="../imagenes/noticias/Terraform-3.png" alt="Archivo del proveedor Terraform">
+
+        <p>En lo que respecta al <strong>archivo de variables</strong>, no hay mucho que explicar.</p>
+
+        <img src="../imagenes/noticias/Terraform-4.png" alt="Archivo de variables Terraform">
+
+        <p>Una vez pasamos a la carpeta env, tenemos que:</p>
+
+        <p>El <strong>archivo backend</strong> tiene la configuración para el backend definida en el archivo del proveedor; usaremos esta configuración cuando pasemos al backend s3. Ten en cuenta que estos valores deben coincidir con los nombres de los recursos creados en el archivo principal.</p>
+
+        <img src="../imagenes/noticias/Terraform-5.png" alt="Archivo backend Terraform">
+
+        <p>Por último, el <strong>fichero de valores</strong>:</p>
+
+        <img src="../imagenes/noticias/Terraform-6.png" alt="Fichero de valores Terraform">
+
+        <h2>A tener en cuenta</h2>
+
+        <p>A veces, cuando estás trabajando con plazos de entrega, el estrés te puede jugar una mala pasada y puedes ignorar algunas cosas básicas. Aquí enumero algunas de las que creo que se pueden pasar por alto:</p>
+
+        <ul>
+          <li>¡Personaliza tu perfil en valores y backend! Asegúrate de que es el mismo.</li>
+          <li>Cuidado con la región y las otras variables.</li>
+          <li>¡Cuidado con subir tu estado local a git! Cuando migres el estado, el archivo local no se borrará.</li>
+        </ul>
+
+        <p>Eso es más o menos todo, esos pequeños detalles pueden costarte tiempo. También ejecuto esto con perfiles, pero puedes preferir usar variables env y eliminar el perfil.</p>
+
+        <h2>¡Manos a la obra!</h2>
+
+        <p>Después de que todo haya sido configurado, puedes proceder a init y aplicar localmente:</p>
+
+        <p><strong>Init:</strong></p>
+        <img src="../imagenes/noticias/Terraform-7.png" alt="Terraform Init">
+
+        <p><strong>Aplicar:</strong></p>
+        <img src="../imagenes/noticias/Terraform-8.png" alt="Terraform Apply">
+
+        <p>Después de aplicar con éxito el código Terraform, migraremos el estado a S3, cambiando el provider.tf &gt; terraform &gt; backend de local a s3:</p>
+
+        <img src="../imagenes/noticias/Terraform-9.png" alt="Migración del estado a S3">
+
+        <p>Y lanza init como sigue:</p>
+
+        <img src="../imagenes/noticias/Terraform-10.png" alt="Terraform Init con backend S3">
+
+        <img src="../imagenes/noticias/Terraform-11.png" alt="Resultado de Terraform Init">
+
+        <p>¡Listo! Ahora tienes tus recursos de estado Terraform creados y utilizados por Terraform sin crear ningún recurso manualmente, lo que es de gran utilidad para el arranque rápido de proyectos Terraform.</p>
+
+        <h2>Algunos extras</h2>
+
+        <p>Si fueras a destruir tu proyecto, recomiendo migrar el estado localmente primero y luego aplicar el destroy. Además, mantén el control de la variable «prevent_destroy» en el archivo main.tf.</p>
+      </div>
+<div class="page-container news-article-nav-wrap">
+      <nav class="news-article-nav">
+        <a href="noticia-ciberseguridad-pinceladas.html" class="news-nav-prev"><span>Anterior noticia</span><em>Ciberseguridad: pinceladas de realidad</em></a>
+        <a href="../noticias.html" class="news-nav-index">Todas las noticias</a>
+        <a href="noticia-virtualizacion-ot.html" class="news-nav-next"><span>Siguiente noticia</span><em>Virtualización de la infraestructura OT</em></a>
+      </nav>
+    </div>
+    </section>
+
+    <!-- CTA -->
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('../imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+        <div class="footer-col-brand">
+          <a href="../prueba.html">
+            <img src="../imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/atalanta-ciberseguridad" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://www.instagram.com/atalanta.academy/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="../quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="../servicios.html">Servicios</a></li>
+            <li><a href="../ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="../digital.html">Digital</a></li>
+            <li><a href="../formacion.html">Formación</a></li>
+            <li><a href="../empleo.html">Empleo</a></li>
+            <li><a href="../noticias.html">Noticias</a></li>
+            <li><a href="../atencion_cliente.html">Atención al Cliente</a></li>
+            <li><a href="../contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Madrid, España</span>
+          </div>
+          <div class="map-placeholder">
+              <iframe src="https://maps.google.com/maps?q=40.4292413,-3.7049219&z=16&output=embed" frameborder="0" width="100%" height="250" style="border: 0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright © 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="../legal/aviso_legal.html">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="../legal/politica_privacidad.html">POLÍTICA DE PRIVACIDAD</a>
+          <span>|</span>
+          <a href="../legal/politica_cookies.html">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top-btn" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+
+  <script src="../js/js.js"></script>
+  <script>
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) window.location.reload();
+    });
+  </script>
+</body>
+</html>

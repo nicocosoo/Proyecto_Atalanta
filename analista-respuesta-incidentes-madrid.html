@@ -200,6 +200,76 @@
     window.addEventListener('pageshow', function(e) {
       if (e.persisted) window.location.reload();
     });
+
+    /* ── VALIDACIÓN FORMULARIO EMPLEO ── */
+    (function() {
+      const form = document.querySelector('.job-form');
+      if (!form) return;
+
+      function showError(field, msg) {
+        field.classList.add('field-error');
+        let err = field.parentElement.querySelector('.val-error');
+        if (!err) {
+          err = document.createElement('span');
+          err.className = 'val-error';
+          field.parentElement.appendChild(err);
+        }
+        err.textContent = msg;
+      }
+
+      function clearError(field) {
+        field.classList.remove('field-error');
+        const err = field.parentElement.querySelector('.val-error');
+        if (err) err.remove();
+      }
+
+      function isValidEmail(val) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+      }
+
+      function isValidPhone(val) {
+        return /^[\d\s\+\-\(\)]{7,}$/.test(val);
+      }
+
+      form.querySelectorAll('input, select, textarea').forEach(function(el) {
+        el.addEventListener('input', function() { clearError(el); });
+        el.addEventListener('change', function() { clearError(el); });
+      });
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let valid = true;
+
+        const nombre = form.querySelector('#nombre');
+        const apellidos = form.querySelector('#apellidos');
+        const email = form.querySelector('#email');
+        const telefono = form.querySelector('#telefono');
+        const mensaje = form.querySelector('#mensaje');
+        const checkbox = form.querySelector('input[type="checkbox"]');
+
+        if (!nombre.value.trim()) { showError(nombre, 'El nombre es obligatorio.'); valid = false; }
+        if (!apellidos.value.trim()) { showError(apellidos, 'Los apellidos son obligatorios.'); valid = false; }
+        if (!email.value.trim()) { showError(email, 'El email es obligatorio.'); valid = false; }
+        else if (!isValidEmail(email.value.trim())) { showError(email, 'Introduce un email válido.'); valid = false; }
+        if (telefono && telefono.value.trim() && !isValidPhone(telefono.value.trim())) {
+          showError(telefono, 'Introduce un teléfono válido.'); valid = false;
+        }
+        if (mensaje && !mensaje.value.trim()) { showError(mensaje, 'Cuéntanos por qué quieres unirte.'); valid = false; }
+        if (!checkbox.checked) { showError(checkbox, 'Debes aceptar la política de privacidad.'); valid = false; }
+
+        if (!valid) return;
+
+        form.innerHTML = '<div class="form-success"><svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#22c55e" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg><h3>¡Solicitud enviada!</h3><p>Hemos recibido tu candidatura. Nos pondremos en contacto contigo pronto.</p></div>';
+      });
+    })();
   </script>
+
+  <style>
+    .field-error { border-color: #e01f1f !important; }
+    .val-error { display: block; color: #e01f1f; font-size: 12px; margin-top: 4px; }
+    .form-success { text-align: center; padding: 48px 24px; }
+    .form-success h3 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: #fff; margin: 16px 0 8px; }
+    .form-success p { color: rgba(255,255,255,0.6); font-size: 15px; }
+  </style>
 </body>
 </html>

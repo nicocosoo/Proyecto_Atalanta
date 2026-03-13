@@ -63,7 +63,10 @@
           <h2>¿Para qué sirve SQLMap?</h2>
 
           <p>
-            <strong>SQLMap</strong> es una herramienta desarrollada en Python que sirve para <strong>detectar y explotar vulnerabilidades de inyección SQL</strong> en distintos motores de bases de datos como MySQL, Oracle o PostgreSQL. Se usa para poner a prueba la seguridad de páginas web siempre con fines éticos.
+            <strong>SQLMap</strong> es una herramienta desarrollada en Python que sirve para <strong>detectar y explotar vulnerabilidades de inyección SQL</strong>
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap1.png" alt="">
+          </figure> en distintos motores de bases de datos como MySQL, Oracle o PostgreSQL. Se usa para poner a prueba la seguridad de páginas web siempre con fines éticos.
           </p>
 
           <p>
@@ -75,6 +78,10 @@
           <p>El comando básico es:</p>
           <pre><code>sqlmap -u "URL_a_testear" --dbs</code></pre>
 
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap-1.png" alt="Terminal mostrando el inicio de SQLMap con la detección del motor de base de datos del objetivo">
+          </figure>
+
           <p>
             Primero hay que encontrar una URL con parámetros inyectables (del tipo <code>producto.php?id=1</code>). Podemos verificar si es inyectable añadiendo una comilla simple <code>'</code> al final: si devuelve error, puede ser vulnerable.
           </p>
@@ -84,23 +91,50 @@
           <p><strong>1. Detectar el motor de base de datos:</strong></p>
           <pre><code>sqlmap -u "URL"</code></pre>
 
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap3.png" alt="">
+          </figure>
+
           <p><strong>2. Listar las bases de datos:</strong></p>
           <pre><code>sqlmap -u "URL" --dbs</code></pre>
+
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap4.png" alt="">
+          </figure>
 
           <p><strong>3. Listar las tablas de una base de datos:</strong></p>
           <pre><code>sqlmap -u "URL" -D nombre_base --tables</code></pre>
 
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap5.png" alt="">
+          </figure>
+
           <p><strong>4. Ver las columnas de una tabla:</strong></p>
           <pre><code>sqlmap -u "URL" -D nombre_base -T nombre_tabla --columns</code></pre>
 
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap6.png" alt="">
+          </figure>
+
           <p><strong>5. Extraer los datos:</strong></p>
           <pre><code>sqlmap -u "URL" -D nombre_base -T nombre_tabla -C nombre_columna --dump</code></pre>
+
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap7.png" alt="">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap-2.png" alt="Terminal mostrando SQLMap extrayendo registros de una tabla con credenciales de la base de datos objetivo">
+          </figure>
 
           <h2>¿Qué es un WAF y cómo se evade?</h2>
 
           <p>
             Un <strong>WAF (Web Application Firewall)</strong> protege el servidor analizando peticiones HTTP/HTTPS antes de que lleguen a la aplicación. SQLMap incluye <strong>tampers</strong> para intentar evadir los WAF mediante técnicas de ofuscación:
           </p>
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap2.png" alt="">
+          </figure>
 
           <ul>
             <li><code>space2comment</code> — reemplaza espacios por <code>/**/</code></li>
@@ -110,6 +144,30 @@
           <p>
             No obstante, los tampers no siempre logran evadir los WAF: depende de la fortaleza de su configuración.
           </p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap8.png" alt="">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap9.png" alt="">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap10.png" alt="">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap11.png" alt="">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap12.png" alt="">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/sqlmap13.png" alt="">
+          </figure>
 
           <h2>Conclusión</h2>
 

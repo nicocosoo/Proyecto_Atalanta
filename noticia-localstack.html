@@ -62,33 +62,71 @@
           </a>
 
           <p>
-            Mi nombre es Adrián Sanz y me dedico a DevSecOps en Atalanta. Aparezco por aquí porque quiero compartir con vosotros una herramienta que me llamó mucho la atención cuando la descubrí: localstack. En concreto, en este artículo quiero enseñaros, para todos aquellos que no lo sepáis, cómo utilizar esta herramienta para interactuar en vuestros scripts con AWS.
+            ¡Buenas!
+          </p>
+
+          <p>
+            Mi nombre es Adrián Sanz y me dedico a DevSecOps en Atalanta. Aparezco por aquí porque quiero compartir con vosotros una herramienta que me llamó mucho la atención cuando la descubrí: localstack. En concreto, en este artículo quiero enseñaros, para todos aquellos que no lo sepáis, cómo utilizar esta herramienta para interactuar en vuestros scripts con AWS. ¡Empezamos!
           </p>
 
           <h2>El problema</h2>
 
           <p>
-            Cuando me interesé por automatizar y agilizar mi trabajo, solía usar una cuenta de AWS para probar, mejorar o desarrollar estas utilidades; sin embargo, ya no tengo accesos y tendría que usar la mía personal, pero dios sabe lo fácil que es que AWS te sorprenda a final de mes.
+            Cuando me interesé por automatizar y agilizar mi trabajo, solía usar una cuenta de AWS para probar, mejorar o desarrollar estas utilidades; sin embargo, ya no tengo accesos y tendría que usar la mía personal, pero dios sabe lo fácil que es que AWS te sorprenda a final de mes. Así que, me puse a investigar una herramienta que conocí hace no mucho tiempo y que llamó mi atención: <a href="https://github.com/localstack/localstack" target="_blank">localstack</a>.
           </p>
 
           <p>
-            Así que me puse a investigar una herramienta que conocí hace no mucho tiempo y que llamó mi atención: localstack. Localstack nos permite "emular" una versión simplificada de AWS, con la que podemos interactuar como si se tratase realmente de AWS, solo cambiando el end-point al que apuntamos en nuestro script.
+            Localstack nos permite “emular” una versión simpliﬁcada de AWS, con la que podemos interactuar como si se tratase realmente de AWS, solo cambiando el end-point al que apuntamos en nuestro script. Mola, ¿eh? Bueno, no todo son cosas buenas, ya que esta herramienta tiene un modelo de pago, lo que quiere decir que la versión comunity está limitada en algunos servicios. Por ejemplo, <a href="https://docs.localstack.cloud/aws/elastic-compute-cloud/#base-images">no puedes usar imágenes de docker como  “source” para las imágenes de EC2</a>, ni cuenta con todos los servicios o cubre todas las interacciones  de estos.
           </p>
 
           <p>
-            No todo son cosas buenas, ya que esta herramienta tiene un modelo de pago, lo que quiere decir que la versión community está limitada en algunos servicios. Por ejemplo, no puedes usar imágenes de docker como "source" para las imágenes de EC2, ni cuenta con todos los servicios o cubre todas las interacciones de estos.
+            Para más info sobre qué cubre localstack y si puede servirte para desarrollar, te invito a echar un ojo a este enlace: <a href="https://docs.localstack.cloud/aws/feature-coverage/" target="_blank">https://docs.localstack.cloud/aws/feature-coverage/</a>.
           </p>
 
           <h2>Hands on</h2>
 
           <p>
-            En este caso, he implementado el uso de localstack en un script para listado de instancias EC2, llamado "lister". Tras instalarlo podemos lanzar el comando <code>localstack start -d</code> para iniciarlo, comprobar el estado de los servicios con <code>localstack status services</code> o bien pararlo con <code>localstack stop</code>.
+            En este caso, he implementado el uso de localstack en un script para listado de instancias EC2, llamado <a href="https://github.com/adsanz/lister" target="_blank">“lister”.</a> Es un proyecto activo y, al no tener cuenta de AWS, probar cambios puede complicarse. Es ahí donde esta herramienta muestra su utilidad. Tras <a href="https://docs.localstack.cloud/get-started/#localstack-cli" target="_blank">instalarlo</a> podemos lanzar el comando <strong>localstack start -d</strong> para iniciarlo, comprobar el estado de los servicios con <strong>localstack status services</strong> o bien pararlo con <strong>localstack stop</strong>:
+          </p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Localstack1.png" alt="">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Localstack2.png" alt="">
+          </figure>
+
+          <p>
+            Ahora que tenemos todo iniciado, ¡es hora de empezar a interactuar con los servicios!
           </p>
 
           <h3>En AWS CLI</h3>
 
           <p>
-            Mi script lista instancias EC2, y si no hay instancias, no hay listado, así que primero debo crearlas. Personalmente, prefiero el CLI oficial de AWS, pues awslocal es un wrapper alrededor del CLI oficial y no soporta muy bien todavía la v2. Para poder interactuar con el CLI oficial tendremos que configurar un perfil de AWS y cambiar el end-point al que apuntamos en los comandos.
+            Mi script lista instancias EC2, y si no hay instancias, no hay listado, así que, primero debo crearlas. Para esto, dispones de 2 opciones: el CLI de AWS o el CLI creado por localstack, awslocal. Personalmente, preﬁero el CLI oﬁcial de AWS, pues awslocal es un wrapper alrededor del CLI oﬁcial y no soporta muy bien todavía la v2. Para poder  interactuar con el CLI oﬁcial tendremos que conﬁgurar un perﬁl de AWS y cambiar el end-point al que apuntamos en los comandos:
+          </p>
+
+          <p>1. El perfil:</p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Localstack3.png" alt="">
+          </figure>
+
+          <p>
+            2. El end-point (No se puede cambiar el end-point de forma permanente, sino que se especiﬁca en cada comando, por ese motivo yo tengo un alias para evitar escribir todo el rato lo mismo):
+          </p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Localstack4.png" alt="">
+          </figure>
+
+          <p>
+            (PD: La AMI la encuentras listando las imágenes disponibles en localstack como si fuera AWS con ec2 describe)
+          </p>
+
+          <p>
+            Con esto ya están las instancias creadas y sabemos cómo interactuar con localstack con el CLI.
           </p>
 
           <h3>En el script</h3>
@@ -97,16 +135,31 @@
             Como el script debería usar por defecto el end-point de AWS real, he metido el uso de localstack con el flag <code>-ls</code> o <code>--localstack</code>. Se hace uso del argumento "endpoint_url" (se puede usar tanto en "client" como en "resource"), y con eso ya podría probar interacciones entre mi script y AWS.
           </p>
 
+          <figure class="article-content-image">
+            <img src="imagenes/Localstack5.png" alt="">
+          </figure>
+
+          <p>
+            Como se puede observar, hago uso del argumento “endpoint_url” (se puede usar tanto en “<a href="https://docs.aws.amazon.com/boto3/latest/reference/core/session.html#boto3.session.Session.client" target="_blank">client</a>” como en “<a href="https://docs.aws.amazon.com/boto3/latest/reference/core/session.html#boto3.session.Session.resource">resource</a>”), y con eso ya podría probar interacciones entre mi script y AWS:
+          </p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Localstack6.png" alt="">
+          </figure>
+
           <h2>Reflexión sobre localstack</h2>
 
           <p>
-            Poder emular algunos de los servicios de AWS puede ser exageradamente útil, no solo para desarrollo local, sino también para integrar con terraform y probar en CI las configuraciones antes de desplegarse en un entorno real. Sin embargo, la herramienta queda limitada a uso local si no adquieres la versión pro, así que la sensación final es un poco agridulce.
+            Poder emular algunos de los servicios de AWS puede ser exageradamente útil, no solo para desarrollo local (que también, de hecho, podría automatizarse la creación de un entorno local serverless en AWS con un simple script en bash), sino también para integrar con <a href="https://docs.localstack.cloud/integrations/terraform/" target="_blank">terraform</a> y probar en <a href="https://docs.localstack.cloud/ci/" target="_blank">CI</a> las configuraciones antes de desplegarse en un entorno real. Sin embargo, la herramienta queda limitada a uso local si no adquieres la versión pro, así que la sensación ﬁnal es un poco agridulce.
           </p>
 
           <p>
-            En fin, espero que os haya resultado de utilidad todo lo que he expuesto en esta entrada. Y si solo os quedáis con una parte, ya os ha servido de algo.
+            En fin, espero que os haya resultado de utilidad todo lo que he expuesto en esta entrada. Y si solo os quedáis con una parte, ¡ya os ha servido de algo! ?
           </p>
 
+          <p>
+            ¡Nos vemos!
+          </p>
         </div>
       </div>
     </section>

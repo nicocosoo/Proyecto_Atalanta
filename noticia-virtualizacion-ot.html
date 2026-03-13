@@ -66,48 +66,89 @@
           </p>
 
           <p>
-            Todo profesional que esté inmerso en el sector de la tecnología conoce la virtualización y sus aplicaciones técnicas, dado que lleva años implementada en el sector IT, pero ¿qué ocurre en OT? ¿A qué se debe esta adopción lenta de entornos virtualizados en los sistemas de control en las plantas industriales?
+            Todo profesional que este inmerso en el sector de la tecnología conoce la virtualización y sus aplicaciones técnicas, dado que lleva años implementada en el sector IT, pero ¿qué ocurre en OT? ¿a qué se debe esta adopción lenta de entornos virtualizados en los sistemas de control en las plantas industriales?
           </p>
 
           <p>
             En este artículo vamos a hablar concretamente de las ventajas e inconvenientes de virtualizar la infraestructura del sistema de control distribuido (DCS), con el objetivo de intentar arrojar algo de luz a un tema tan poco discutido.
           </p>
 
+          <p>Pero antes de entrar en el meollo de la cuestión, repasemos sin entrar en mucho detalle en qué consiste la virtualización y qué es un DCS.</p>
+
           <h2>¿Qué es la virtualización?</h2>
 
           <p>
-            La virtualización es la tecnología que permite la ejecución de varias máquinas virtuales, tales como servidores, sobre un dispositivo físico con el fin de aprovechar al máximo los recursos de un sistema y conseguir que el rendimiento sea mayor. Cada máquina virtual puede interactuar de forma independiente entre ellas con diferentes recursos, memoria, unidades de almacenamiento, procesado, sistemas operativos y/o aplicaciones mientras comparten los recursos de una sola máquina host.
+            La virtualización, es la tecnología que permite la ejecución de varias máquinas virtuales, tales como servidores, sobre un dispositivo físico con el fin de aprovechar al máximo los recursos de un sistema y conseguir que el rendimiento sea mayor. Cada máquina virtual puede interactuar de forma independiente entre ellas con diferentes recursos, memoria, unidades de almacenamiento, procesado, sistemas operativos y/o aplicaciones mientras comparten los recursos de una sola maquina host.
+          </p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Captura-de-pantalla-2022-01-26-a-las-23.42.08.png" alt="Diagrama comparativo entre arquitecturas IT y OT mostrando sus diferencias y puntos de convergencia">
+          </figure>
+
+          <p>
+            Al crear varios recursos a partir de un único equipo o servidor, la virtualización mejora la escalabilidad, al tiempo que permite usar menos servidores y reducir el consumo de energía, los costos de infraestructura y el mantenimiento.
           </p>
 
           <h2>¿Qué es un DCS?</h2>
 
           <p>
-            Un DCS es un sistema de control aplicado a procesos industriales complejos en las grandes industrias como petroquímicas, papeleras, metalúrgicas, centrales de generación, plantas de tratamiento de aguas, incineradoras o la industria farmacéutica. Consiste en el enlace, por medio de una red de comunicaciones, de diversos nodos distribuidos físicamente, dotados de capacidad de proceso y enlazados a sensores y/o actuadores.
+            Un DCS, es un sistema de control aplicado a procesos industriales complejos en las grandes industrias como petroquímicas, papeleras, metalúrgicas, centrales de generación, plantas de tratamiento de aguas, incineradoras o la industria farmacéutica.
+          </p>
+
+          <p>
+            Consiste en el enlace, por medio de una red de comunicaciones, de diversos nodos distribuidos físicamente, dotados de capacidad de proceso y enlazados a sensores y/o actuadores. Estos sistemas se caracterizan porque el proceso de control tiene lugar en estos nodos de manera coordinada. Las redes de comunicaciones orientadas al enlace de estos nodos son conocidas también como buses de comunicaciones o redes multiplexadas. Un nodo es un procesador autónomo con su propio hardware: procesador (CPU), memoria, oscilador de reloj, interfaz de comunicaciones, e interfaz hacia el subsistema que controla.
+          </p>
+
+          <p>
+            Se trabaja con una sola base de datos integrada para todas las señales, variables, objetos gráficos, alarmas y eventos del sistema. La suite de ingeniería para programar el sistema es sólo una y opera de forma centralizada para desarrollar la lógica de sus controladores o los objetos gráficos de la monitorización.
+          </p>
+
+          <p>
+            La plataforma de programación es multi-usuario de forma que varios programadores pueden trabajar simultáneamente sobre el sistema de forma segura sin conflictos de versiones. Todos los equipos del sistema (ordenadores, servidores, controladores) están sincronizados contra un mismo reloj patrón, de forma que todas las medidas, alarmas y eventos tienen una misma marca de tiempo.El software de control DCS dispone de herramientas para la gestión de la información de planta, integrándola verticalmente hacia la cadena de toma de decisiones y otros sistemas ubicados más arriba en la jerarquía de la producción.
+          </p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Imagen-2.png" alt="">
+          </figure>
+          
+          <p>
+            A la hora de virtualizar un DCS debemos de tener en cuenta que hay elementos que no podemos virtualizar por la naturaleza de estos, como podrían ser los elementos de campo como una válvula, un motor…
+          </p>
+
+          <p>
+            Las redes de comunicaciones en un DCS se podrían virtualizar, tenemos la tecnología para ello, pero hoy en día no se contempla por diversos motivos, pero diría que el más relevante seguramente sea la complejidad de esta implementación y el hecho de que la red sea un elemento crítico de un DCS.
+          </p>
+
+          <p>
+            Habiendo descartado varios elementos susceptibles a virtualizar, solo nos quedaría la infraestructura de ordenadores del DCS con la que operamos la planta. ¿En qué consiste? Habría que virtualizar las máquinas físicas y añadirlas a equipos especializados en virtualización. Por poner un ejemplo podríamos quitar 10 máquinas físicas y añadirlas virtualmente en un único servidor físico especializado en virtualización, con las ventajas y desventajas que esto puede suponer. Y he aquí el quid de la cuestión, cuáles son esas ventajas y desventajas que tendríamos a la hora de virtualizar la infraestructura de los sistemas en un DCS.
           </p>
 
           <h2>Ventajas de virtualizar un DCS</h2>
 
           <ul>
-            <li>Requerimos de menos espacio para alojar nuestra infraestructura.</li>
-            <li>El hardware especializado en virtualización es más robusto y fiable, por lo que las posibles averías se reducen.</li>
-            <li>Mantenimiento de hardware más rápido.</li>
-            <li>Las tecnologías avanzadas de alta disponibilidad permiten la recuperación inmediata de cualquier máquina virtual que pudiera perderse.</li>
-            <li>La escalabilidad del sistema: facilidad de crear nuevas máquinas mediante clonación o creación de plantillas.</li>
-            <li>La compartición de recursos entre las máquinas huésped gestionados por la máquina host es más eficiente.</li>
+            <li>Lo más obvio, y no por ello menos importante, requerimos de menos espacio para alojar nuestra infraestructura, donde antes había varias cabinas con equipos ahora esos equipos pueden incluirse virtualmente en un único servidor. Esto evidentemente varía dependiendo de cuan amplio sea el sistema, pero podemos asegurar que virtualizando el sistema vamos a reducir la cantidad de máquinas respecto al sistema totalmente físico.</li>
+            <li>El hardware especializado en virtualización es más robusto y fiable (también más caro, pero ya iremos con las desventajas mas adelante), por lo que las posibles averías y sustituciones de máquinas tradicionales se reduce.</li>
+            <li>Mantenimiento de hardware más rápido, no es lo mismo hacer el mantenimiento de 10 máquinas físicas que hacerlo en un único servidor físico.</li>
+            <p>
+              Las tecnologías avanzadas de alta disponibilidad, una vez propiamente implementadas, permiten la recuperación inmediata de cualquier máquina virtual que pudiera perderse por errores de configuración o de cualquier otro tipo. Si además se trabaja con un clúster de hardware de virtualización se garantiza la disponibilidad de las máquinas virtuales VMs en situaciones de fallo del mismo hardware siempre que no se den fallos de hardware simultáneos en varios nodos (hosts) de virtualización; incluso hay casos en que se soporta un número limitado de fallos simultáneos de hardware. Esto puede representar la diferencia real entre los días o semanas que pudiera demorar el tener de nuevo disponible un servidor de proceso redundante en caso de fallo grave del existente y literalmente 0 segundos si la VM es configurada como de alta tolerancia a fallos.
+            </p>
+            <li>La escalabilidad del sistema, por un lado, la facilidad de crear nuevas máquinas en un sistema virtual gracias a la tecnología que nos ofrecen estos sistemas mediante la clonación o creación de plantillas. Por otro lado, no debemos de preocuparnos de la inexistencia de espacio para escalar el sistema, siempre y cuando el equipo host nos permita contener las máquinas que requerimos (los recursos no son infinitos).</li>
+            <li>La escalabilidad del hardware, por norma los entornos hardware virtualizados funcionan de una manera modular lo que nos permite escalar el sistema de una manera más sencilla.</li>
+            <li>La compartición de recursos entre las máquinas huésped gestionados por la máquina host es más eficiente, configurable según las necesidades e inocua para el sistema.</li>
           </ul>
 
           <h2>Desventajas</h2>
 
           <ul>
             <li>El hardware especializado en virtualización es sustancialmente más caro que el hardware estándar.</li>
-            <li>El licenciamiento de cada elemento de la infraestructura virtual es muy elevado en comparación con un entorno físico tradicional.</li>
-            <li>El tiempo de implementación es largo por la complejidad del proceso.</li>
-            <li>Se está añadiendo una capa más de gestión, por lo que los técnicos de mantenimiento deben estar formados para ello.</li>
-            <li>Si el host cae, caen todas las máquinas que contiene. Se puede prevenir mediante soluciones de tolerancia a fallos, que elevarán el coste del proyecto.</li>
+            <li>El de cada elemento de la infraestructura virtual es muy elevado en comparación con el licenciamiento de un entorno físico tradicional. Una infraestructura virtual consta de varias capas y/o elementos, cada uno de estos debe de ir con su licencia, sin embargo, en un entorno físico tradicional, únicamente licenciamos el sistema operativo.</li>
+            <li>El tiempo de implementación es largo por la complejidad del proceso, y dada la naturaleza de producción en una planta industrial, encontrar ese momento para implementar el sistema se puede tornar complicado.</li>
+            <li>Se está añadiendo una capa más de gestión en el proceso de la planta, por lo que los técnicos de mantenimiento deben de estar formados para ello.</li>
+            <li>Como se ha repetido en el artículo varias veces, virtualizar la infraestructura no es mas que cambiar de máquinas físicas a virtuales y que éstas estén gestionadas por una máquina host. Esto nos lleva a algo evidente, si el host cae, caen todas las máquinas que contienen. Se puede prevenir mediante distintas soluciones que nos ofrece el proveedor para añadir capas de seguridad con tolerancia a fallos, esto generalmente se consigue con la adición de más host para redundar el sistema, que como es lógico, elevará el coste del proyecto.</li>
           </ul>
 
           <p>
-            En definitiva, viendo los pros y contras, se hace visible que el principal contra de esta implementación es el elevado coste inicial, pero manteniéndola en el tiempo y con el personal técnico adecuado, en el medio-largo plazo el coste será más económico que un sistema tradicional.
+            En definitiva, viendo los pros y contras, se hace visible que el principal contra de esta implementación es el elevado coste inicial, pero manteniéndola en el tiempo y con el personal técnico adecuado en el medio-largo plazo el coste será más económico que un sistema tradicional.
           </p>
 
         </div>

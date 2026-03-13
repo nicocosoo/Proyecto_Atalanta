@@ -131,6 +131,39 @@ nav a:hover{
     visibility 0.8s ease;
 }
 
+/* Cambios de dani + cambios Nico2.4, se ajustó el tamaño y la altura de línea del texto para evitar que se corte en algunos dispositivos */
+.hero-content h3{
+  font-style:italic;
+  font-family:"Space Grotesk", sans-serif;
+  color:#ff0033;
+  font-size:clamp(15px, 2vw, 24px);
+  line-height:1.15;
+  font-weight:200;
+  letter-spacing:-1px;
+  margin-bottom:22px;
+  max-width:960px;
+  word-break:normal;
+  overflow-wrap:break-word;
+}
+
+
+.hero-content h1{
+  font-family:"Space Grotesk", sans-serif;
+  color: #ffffff;
+  font-size:clamp(15px, 5vw, 30px);
+  line-height:1.00;
+
+  font-weight:200;
+  letter-spacing:-1.2px;
+
+  margin-bottom:28px;
+  max-width:960px;
+
+  word-break:normal;
+  overflow-wrap:break-word;
+}
+
+/*Cambio de tamaño y width*/
 .hero-content h1{
   font-family:"Space Grotesk", sans-serif;
 
@@ -5896,6 +5929,19 @@ font-size:28px;
   stroke-width:2;
   stroke-linecap:round;
   stroke-linejoin:round;
+}
+
+.article-featured-image{
+  margin:32px 0 40px;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.article-featured-image img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:cover;
 }
 
 @media(max-width:768px){

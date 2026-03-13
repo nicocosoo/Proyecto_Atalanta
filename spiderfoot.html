@@ -64,6 +64,18 @@
           <p>
             Para hacer un buen pentest es necesario realizar una buena recolección de información del objetivo, o lo que viene a ser una buena fase de <em>information gathering</em>. En este artículo vamos a ver cómo instalar y utilizar una herramienta OSINT automatizada que nos va a permitir recopilar mucha información necesaria para empezar a atacar a nuestro objetivo: <strong>Spiderfoot</strong>.
           </p>
+          <figure class="article-content-image">
+            <img src="imagenes/foot7.png" alt="">
+          </figure>
+          <figure class="article-content-image">
+            <img src="imagenes/foot6.png" alt="">
+          </figure>
+          <figure class="article-content-image">
+            <img src="imagenes/spider5-renovado.png" alt="">
+          </figure>
+          <figure class="article-content-image">
+            <img src="imagenes/foot4.png" alt="">
+          </figure>
 
           <p>
             Esta herramienta la podemos encontrar tanto en versión web online en <a href="https://www.spiderfoot.net/" target="_blank">spiderfoot.net</a> o de manera local, que será lo que enseñaremos en este artículo.
@@ -75,6 +87,10 @@
 
           <pre><code>git clone https://github.com/smicallef/spiderfoot.git</code></pre>
 
+          <figure class="article-content-image">
+            <img src="imagenes/spiderfoot-1.png" alt="Terminal mostrando el comando git clone del repositorio de Spiderfoot">
+          </figure>
+
           <p>En caso de no tener git instalado:</p>
 
           <pre><code>apt-get install git</code></pre>
@@ -83,6 +99,10 @@
 
           <pre><code>cd spiderfoot/
 pip3 install -r requirements.txt</code></pre>
+
+          <figure class="article-content-image">
+            <img src="imagenes/spiderfoot-2.png" alt="Terminal mostrando la instalación de dependencias con pip3 en Spiderfoot">
+          </figure>
 
           <p>Si no tenemos pip3:</p>
 
@@ -95,22 +115,61 @@ pip3 install -r requirements.txt</code></pre>
           <pre><code>./sf.py -l 127.0.0.1:5001
 python3 sf.py -l 127.0.0.1:5001</code></pre>
 
+          <figure class="article-content-image">
+            <img src="imagenes/foot1.png" alt="">
+          </figure>
+
           <p>Abrimos el navegador y accedemos a <code>127.0.0.1:5001</code>.</p>
+          <figure class="article-content-image">
+            <img src="imagenes/foot2.png" alt="">
+          </figure>
 
-          <h2>Interfaz de Spiderfoot</h2>
+          <p>En la imagen anterior podemos observar la interfaz gráfica que tiene la herramienta y las distintas opciones que nos ofrece, veámoslas un poco más en detalle.</p>
 
-          <p><strong>New Scan:</strong> Aquí daremos un nombre a nuestro proyecto e indicaremos la URL del objetivo. Podemos configurar los módulos y datos requeridos que influirán en el resultado.</p>
+          <p>Para empezar tenemos el apartado “New Scan”, aquí tendremos que darle un nombre a nuestro proyecto y la url del objetivo.</p>
 
-          <p><strong>Módulos con API Key:</strong> Los módulos que aparecen con un candado requieren API Key. Para obtenerlas debemos registrarnos en el sitio web correspondiente. Algunas son gratuitas y otras de pago.</p>
+          <p>Más abajo observamos que dependiendo de los usos, los módulos o los datos requeridos tendremos distintas opciones que influirán en el resultado que obtendremos más adelante.</p>
 
-          <p><strong>Scans:</strong> Aquí se almacenan nuestros escaneos. Disponemos de un filtro de búsqueda, opciones para parar y borrar escaneos, y la posibilidad de descargar los resultados.</p>
+          <li>Busqueda por datos requeridos</li>
 
-          <p><strong>Settings:</strong> En la configuración podemos añadir las API Keys de los distintos módulos. Seleccionamos el módulo deseado, pegamos la clave obtenida y guardamos con "Save settings".</p>
+          <p>Estas son algunas de las opciones que nos ofrece spiderfoot podemos seleccionar y quitar las que nos interesen, por defecto aparecen todas seleccionadas pues es la mejor configuración.</p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/foot3.png" alt="">
+          </figure>
+
+          <p>Estas son algunas de las opciones que nos ofrece spiderfoot podemos seleccionar y quitar las que nos interesen, por defecto aparecen todas seleccionadas pues es la mejor configuración.</p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/foot4.png" alt="">
+          </figure>
+
+          <p>En este apartado spiderfoot recurre a páginas web, buscadores o decodificadores que nos ayudarán a obtener muchos más resultados que si no hacemos uso de ellos, los módulos que aparecen con un candado quiere decir que requieren API Key, para obtenerlas nos debemos de registrar en el sitio web que la solicita cabe destacar que algunas apis son gratuitas y otras de pago, aquí ya entra la elección de cada uno.</p>
+
+          <p>La siguiente opción que tiene nuestra herramienta se llama “scans” y como bien su nombre indica es donde se almacenaran nuestros escaneos.</p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/spider5-renovado.png" alt="">
+          </figure>
+          
+          <p>Si observamos la imagen podemos observar que tenemos un filtro de búsqueda para encontrar más rapido nuestros proyectos, tenemos una opción para parar y borrar escaneos y por último también podemos descargar nuestros escaneos una vez estos finalizen.</p>
+
+          <p>El último apartado que nos ofrece spiderfoot es Settings, en la configuración es donde podremos añadir las API Key anteriormente mencionadas, veamos cómo se hace.</p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/foot6.png" alt="">
+          </figure>
+
+          <p>De primeras nos sale la configuración por defecto de spiderfoot y los distintos modulos que utiliza, para añadir una API Key seleccionamos cualquier opción que contenga el candado y una vez nos hallamos registrado y obtenido la API Key la pegamos en la opcion API Key. Despues damos a “save settings” y en el proximo escaneo que hagamos utilizará la API Key que le hemos dado.</p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/foot7.png" alt="">
+          </figure>
 
           <h2>Conclusión</h2>
 
           <p>
-            Spiderfoot es una herramienta OSINT automatizada que nos ayuda a recolectar información de una manera más ordenada y rápida, consiguiendo mejores resultados en nuestras auditorías de seguridad.
+            En resumen, spiderfoot es una herramienta de OSINT automatizada que nos ayuda a recolectar información de una manera más ordenada y rápida, de esta manera conseguiremos obtener mejores resultados en nuestras auditorías.
           </p>
 
         </div>

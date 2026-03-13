@@ -70,6 +70,9 @@
           <p>
             Unicode (al contrario de lo que parece) no es un tipo de encoding; es una <strong>base de datos que mapea cualquier símbolo (glifo) existente a un número único</strong> llamado <em>code point</em>, al cual se le asigna también un nombre único. Por ejemplo, "A" se mapea a U+0041 y "a" se mapea a U+0061.
           </p>
+          <figure class="article-content-image">
+            <img src="imagenes/Captura-de-pantalla-2020-08-04-09-35-49-300x123.png" alt="">
+          </figure>
 
           <p>
             Existen caracteres Unicode desde U+000000 hasta U+10FFFF (más de un millón de símbolos). Unicode divide todos esos posibles símbolos en «planos»; el más conocido es el <strong>BMP (Basic Multilingual Plane)</strong>, que va desde U+0000 hasta U+FFFF. Existen 16 planos más, denominados «planos astrales».
@@ -78,6 +81,10 @@
           <p>
             Unicode se puede usar en JavaScript y la manera de representarlo es con secuencias de escape:
           </p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/hacking-con-unicode-1.png" alt="Diagrama mostrando los planos Unicode: BMP y planos astrales con sus rangos de code points">
+          </figure>
 
           <ul>
             <li><strong>Secuencias de escape Unicode (BMP):</strong> <code>\u0041\u0042</code></li>
@@ -97,6 +104,14 @@
             Podemos usar herramientas como <strong>EvilURL</strong> para buscar nombres de dominio parecidos a los que queremos suplantar, generando URLs que visualmente son idénticas al dominio legítimo pero apuntan a otro servidor.
           </p>
 
+          <figure class="article-content-image">
+            <img src="imagenes/hacking-con-unicode-2.png" alt="Comparación visual de un dominio legítimo y un dominio homoglífico con caracteres Unicode indistinguibles">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Captura-de-pantalla-2020-08-04-09-47-10.png" alt="">
+          </figure>
+
           <h2>2. Inyecciones SQL</h2>
 
           <p>
@@ -114,6 +129,10 @@
           <p>
             Unicode puede usarse para conseguir <strong>path traversals con restricciones de caracteres</strong>, usando codificaciones como <code>%c1%1c</code> o <code>%c0%af</code> en vez de <code>../</code>, o representaciones hexadecimales de <code>..</code>.
           </p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/hacking-con-unicode-3.png" alt="Solicitud HTTP mostrando path traversal con codificación Unicode para evadir filtros de seguridad">
+          </figure>
 
           <h2>5. Extensiones de archivos</h2>
 
@@ -138,6 +157,12 @@
           <p>
             Muchos programas tienen problemas para manejar caracteres Unicode, lo que da lugar a vulnerabilidades como <strong>stack buffer overflow, heap-based overflow, out-of-bounds read/write, integer overflow o use-after-free (UAF)</strong>. Unicode también incluye caracteres de control, caracteres vacíos (U+2800 y U+200C) y «colisiones» en la conversión de mayúsculas a minúsculas que pueden ser explotadas.
           </p>
+          <figure class="article-content-image">
+            <img src="imagenes/Captura-de-pantalla-2020-08-04-09-48-27.png" alt="">
+          </figure>
+          <figure class="article-content-image">
+            <img src="imagenes/unicode3.png" alt="">
+          </figure>
 
           <p>
             Hay un sinfín de cosas curiosas y útiles que pueden hacerse con Unicode, seguramente muchas más de las que yo he podido encontrar. Espero que os haya gustado. ¡Hasta la próxima!
@@ -150,6 +175,9 @@
     <section class="about-cta">
       <div class="page-container about-cta-inner">
         <h2>Explora más contenidos y mantente al día en ciberseguridad y tecnología</h2>
+          <figure class="article-content-image">
+            <img src="imagenes/Captura-de-pantalla-2020-08-04-09-45-25.png" alt="">
+          </figure>
         <a href="contacto.html" class="btn-red">Contactar</a>
       </div>
     </section>

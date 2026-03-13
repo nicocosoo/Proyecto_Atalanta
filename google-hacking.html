@@ -65,6 +65,15 @@
           <p>
             El <strong>Google Hacking</strong> (o Google Dorking) es el uso inteligente de los operadores de búsqueda de Google para encontrar vulnerabilidades, fallos de configuración, fugas de información y Zero Days. Con él podemos obtener información valiosa sobre un objetivo en una auditoría o detectar distintos vectores de ataque.
           </p>
+          <figure class="article-content-image">
+            <img src="imagenes/gh5.png" alt="">
+          </figure>
+          <figure class="article-content-image">
+            <img src="imagenes/gh6.png" alt="">
+          </figure>
+          <figure class="article-content-image">
+            <img src="imagenes/gh3.png" alt="">
+          </figure>
 
           <h2>Operadores básicos</h2>
 
@@ -76,6 +85,10 @@
             <li><code>"frase exacta"</code> — busca el conjunto exacto entre comillas</li>
           </ul>
 
+          <figure class="article-content-image">
+            <img src="imagenes/gh4.png" alt="">
+          </figure>
+
           <h2>Operadores avanzados</h2>
 
           <ul>
@@ -85,11 +98,19 @@
             <li><code>filetype:pdf</code> — busca un tipo de archivo concreto</li>
           </ul>
 
+          <figure class="article-content-image">
+            <img src="imagenes/gh7.png" alt="">
+          </figure>
+
           <h2>Combinaciones para buscar vulnerabilidades</h2>
 
           <p><strong>Listado de directorios:</strong></p>
           <pre><code>intitle:index.of
 intitle:index.of "parent directory"</code></pre>
+
+          <figure class="article-content-image">
+            <img src="imagenes/google-hacking-1.png" alt="Google mostrando resultados de índice de directorios expuestos con el dork intitle:index.of">
+          </figure>
 
           <p><strong>Archivos sensibles:</strong></p>
           <pre><code>filetype:xls user password
@@ -106,6 +127,10 @@ intitle:index.of "powered by"</code></pre>
           <p><strong>Backups y archivos temporales:</strong></p>
           <pre><code>inurl:temp inurl:backup inurl:bak</code></pre>
 
+          <figure class="article-content-image">
+            <img src="imagenes/google-hacking-2.png" alt="Google mostrando paneles de administración expuestos con dorks de inurl y intitle combinados">
+          </figure>
+
           <h2>Google Hacking para Data Leaks</h2>
 
           <p>
@@ -113,11 +138,21 @@ intitle:index.of "powered by"</code></pre>
           </p>
           <pre><code>("twitter" "email" "password" site:pastebin.com)</code></pre>
 
+          <figure class="article-content-image">
+            <img src="imagenes/google-hacking-3.png" alt="Pastebin mostrando credenciales filtradas encontradas mediante dorks de Google Hacking">
+          </figure>
+
           <h2>¿Es legal?</h2>
 
           <p>
             Sí, el Google Hacking es legal puesto que toda la información que ofrece es pública. Lo que pasaría a ser ilegal es hacer uso de las cuentas y contraseñas obtenidas.
           </p>
+          <figure class="article-content-image">
+            <img src="imagenes/gh2.png" alt="">
+          </figure>
+          <figure class="article-content-image">
+            <img src="imagenes/gh1.png" alt="">
+          </figure>
 
           <p>
             Para indagar más existe la base de datos <strong>Google Hacking Database</strong> en exploit-db.com con miles de consultas catalogadas.

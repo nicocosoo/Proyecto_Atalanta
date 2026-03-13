@@ -62,14 +62,25 @@
           </a>
 
           <p>
-            Hoy vuelvo a escribir en este blog para contaros una forma que conozco para mantener los recursos del estado de Terraform, controlados por este propio software. Os cuento cómo lo hago.
+            ¡Hola! Hoy vuelvo a escribir en este blog para contaros una forma que conozco para mantener los recursos del estado de Terraform, controlados por este propio software. ¡Os cuento cómo lo hago!
           </p>
 
           <h2>¿Cuál es el problema?</h2>
 
           <p>
-            Yo suelo trabajar con Terraform de esta manera: creo mi S3, creo mi proveedor, terraform init... Sin embargo, esta forma no me convence, ya que he tenido que seguir gestionando algunos recursos manualmente o importándolos después, lo que implica un mayor esfuerzo. Así que me encontré con un código y resultó ser exactamente lo que necesitaba.
+            Yo suelo trabajar con Terraform de esta manera:
           </p>
+
+          <ol>
+            <li>Creo mi S3</li>
+            <li>Creo mi proveedor terraform</li>
+            <li>Init</li>
+            <li>…</li>
+          </ol>
+
+          <p>Sin embargo, esta forma no me convence, ya que he tenido que seguir gestionando algunos recursos manualmente o importándolos después, lo que implica un mayor esfuerzo, y eso no me gusta.</p>
+
+          <p>Así que, me encontré con un código y resultó ser exactamente lo que necesitaba. Después de algunas pruebas, voy a mostrar cómo eliminar todo ese proceso manual.</p>
 
           <h2>Preparación de los archivos y requisitos</h2>
 
@@ -79,10 +90,31 @@
 
           <p>En cuanto a la estructura de archivos, necesitarás estos archivos:</p>
 
+          <figure class="article-content-image">
+            <img src="imagenes/Terraform-1.png">
+          </figure>
+
           <ul>
             <li><strong>El archivo principal</strong> contiene todos los recursos necesarios para el estado remoto. Asegúrate de que la configuración es privada.</li>
+            <figure class="article-content-image">
+              <img src="imagenes/Terraform-2.png">
+            </figure>
             <li><strong>El archivo del proveedor</strong> contiene la configuración de Terraform. Nos interesa la sección "backend", la cual ahora mismo es local, pero cambiaremos a S3 después de la primera ejecución.</li>
+            <figure class="article-content-image">
+              <img src="imagenes/Terraform-3.png">
+            </figure>
             <li><strong>El archivo de variables</strong> con los valores necesarios.</li>
+            <figure class="article-content-image">
+              <img src="imagenes/Terraform-4.png">
+            </figure>
+            <li><strong>Una vez pasamos a la carpeta env, tenemos que:</strong>El archivo backend tiene la configuración para el backend definida en el archivo del proveedor; usaremos esta configuración cuando pasemos al backend s3. Ten en cuenta que estos valores deben coincidir con los nombres de los recursos creados en el archivo principal.</li>
+            <figure class="article-content-image">
+              <img src="imagenes/Terraform-5.png">
+            </figure>
+            <li><strong>Por último, el fichero de valores:</strong></li>
+            <figure class="article-content-image">
+              <img src="imagenes/Terraform-6.png">
+            </figure>
           </ul>
 
           <h2>A tener en cuenta</h2>
@@ -96,7 +128,43 @@
           <h2>Manos a la obra</h2>
 
           <p>
-            Después de que todo haya sido configurado, puedes proceder a init y aplicar localmente. Después de aplicar con éxito el código Terraform, migraremos el estado a S3, cambiando el provider.tf &gt; terraform &gt; backend de local a S3.
+            Después de que todo haya sido configurado, puedes proceder a init y aplicar localmente:
+          </p>
+
+          <p>Init:</p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Terraform-7.png">
+          </figure>
+
+          <p>Aplicar:</p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Terraform-8.png">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Terraform-9.png">
+          </figure>
+
+          <p>
+            Después de aplicar con éxito el código Terraform, migraremos el estado a S3, cambiando el provider.tf > terraform > backend de local a s3:
+          </p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Terraform-10.png">
+          </figure>
+          
+          <p>
+            Y lanza init como sigue:
+          </p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Terraform-11.png">
+          </figure>
+
+          <p>
+            ¡Listo!
           </p>
 
           <p>

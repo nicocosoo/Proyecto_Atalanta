@@ -64,30 +64,63 @@
           <p>
             En este artículo veremos qué son las Named Pipes y sus posibles usos en el ámbito de la ciberseguridad.
           </p>
+          <figure class="article-content-image">
+            <img src="imagenes/pipe6.png" alt="">
+          </figure>
+          <figure class="article-content-image">
+            <img src="imagenes/pipe4.png" alt="">
+          </figure>
 
           <h2>¿Qué es una Named Pipe?</h2>
 
           <p>
             Una <strong>Named Pipe</strong> es un canal de comunicaciones half-duplex o full-duplex entre un servidor pipe y uno o más clientes. Todas las instancias de una named pipe comparten el mismo nombre, pero cada instancia tiene sus propios búferes y handles, y tienen conductos separados para la comunicación cliente-servidor.
           </p>
+          <figure class="article-content-image">
+            <img src="imagenes/pipe8.png" alt="">
+          </figure>
+          <figure class="article-content-image">
+            <img src="imagenes/Captura-de-pantalla-2020-11-16-13-49-50.png" alt="">
+          </figure>
 
           <p>
             Se usa para <strong>IPC (Inter-Process Communication)</strong>, es decir, para comunicación entre procesos. Existen dos tipos de pipes: las anónimas y las named (con nombre), siendo estas últimas las más útiles a nivel de ciberseguridad.
           </p>
+          <figure class="article-content-image">
+            <img src="imagenes/pipe1.png" alt="">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/pipe2.png" alt="">
+          </figure>
 
           <p>
             Todo lo relativo a las named pipes se maneja usando la <strong>API Win32 de Windows</strong> con funciones como: <code>CreateFile</code>, <code>CreateNamedPipe</code>, <code>CallNamedPipe</code>, <code>ReadFile</code>, <code>WriteFile</code>, <code>ConnectNamedPipe</code>.
           </p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/named-pipes-1.png" alt="Diagrama del modelo de comunicación cliente-servidor con Named Pipes en Windows">
+          </figure>
 
           <h2>¿Qué podemos hacer con las Named Pipes?</h2>
 
           <p>
             Existe una feature de las named pipes que permite al hilo del servidor asumir el access token del cliente que se conecta. Si se tiene el <code>SeImpersonatePrivilege</code> en el access token del servidor de la named pipe, entonces se puede usar <code>ImpersonateNamedPipeClient()</code>.
           </p>
+          <figure class="article-content-image">
+            <img src="imagenes/pipe3.png" alt="">
+          </figure>
 
           <p>
             Una de las formas más conocidas de abusar de una named pipe es mediante <strong>Meterpreter</strong>. Cuando se usa <code>getsystem -t 1</code>, se crea una named pipe (el usuario que la crea debe tener el <code>SeImpersonatePrivilege</code>) y un servicio que al conectarse a esa pipe permite a Meterpreter ejecutarse con el access token de SYSTEM.
           </p>
+          <figure class="article-content-image">
+            <img src="imagenes/pipe5.png" alt="">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/named-pipes-2.png" alt="Meterpreter ejecutando getsystem mediante abuso de Named Pipe para escalada a SYSTEM">
+          </figure>
 
           <h2>Enumeración de Named Pipes</h2>
 
@@ -102,6 +135,14 @@
           <p>
             Para verificar si podemos conectarnos a una named pipe con nuestros privilegios actuales, se puede usar <strong>accesschk</strong> para ver su DACL, o cmdlets de <strong>NtObjectManager</strong>.
           </p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/named-pipes-3.png" alt="PowerShell listando Named Pipes disponibles en el sistema con Get-ChildItem">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/pipe7.png" alt="">
+          </figure>
 
           <h2>Análisis y debugging</h2>
 

@@ -65,46 +65,37 @@
             En las últimas semanas se ha montado un gran revuelo por algo llamado Log4shell, que si es una vulnerabilidad de proporciones catastróficas, que si internet iba a ser destrozada… El objetivo de este artículo es precisamente hacer entender a los que no os dedicáis a esto en qué consiste esta vulnerabilidad recientemente descubierta.
           </p>
 
-          <h2>¿Qué es una vulnerabilidad?</h2>
-
           <p>
-            De una forma rápida es una brecha o fallo que puede aprovechar un delincuente para colarse en nuestros sistemas de una forma o de otra y tomar su control parcial o totalmente. Imaginemos que alguien descubre que el último modelo de un famoso fabricante de candados es posible abrirlo si hace una maniobra concreta. Ha descubierto una vulnerabilidad de día cero o 0-day, es decir, una vulnerabilidad que no conoce ni el fabricante.
+            Si dejamos estos artículos, entre sombríos y curiosos, llegamos a los que nos hablan de la parte técnica de esta vulnerabilidad, y si no te dedicas profesionalmente a la informática difícilmente vas a sacar nada en claro. El objetivo de este articulo es precisamente hacer entender a los que no os dedicáis a esto en qué consiste esta vulnerabilidad recientemente descubierta.
           </p>
 
           <p>
-            En estos casos, si el descubrimiento lo ha hecho una empresa de seguridad, se lo comunicará al fabricante para darles la oportunidad de corregir el problema. Pero si el que descubre esta vulnerabilidad es un delincuente, se dedicará a buscar sistemas vulnerables para explotarlos, e incluso puede publicar la técnica en internet para que cualquiera pueda aprovecharla.
-          </p>
-
-          <h2>¿Qué es Log4j?</h2>
-
-          <p>
-            En el mundo del desarrollo de software, uno de los lenguajes de programación más extendidos es Java. Los desarrolladores reutilizan librerías de código que han escrito otros programadores y que hacen públicas. Una de esas librerías de código abierto es Log4j, desarrollada por la Apache Software Foundation, que se usa para escribir y registrar los mensajes que generan los programas (logs).
+            Lo primero es explicar qué es una vulnerabilidad. De una forma rápida es una brecha o fallo que puede aprovechar un delincuente para colarse en nuestros sistemas de una forma o de otra y tomar su control parcial o totalmente. Imaginemos que alguien al que le gusta jugar con candados (y sí, existe el hacking de candados) descubre que el último modelo de un famoso fabricante de candados es posible abrirlo si hace una maniobra que él ha descubierto, seguramente comprando un par de candados y desmontándolos uno a uno para entender como funcionan. Ha descubierto una vulnerabilidad de día cero o 0-day, es decir, una vulnerabilidad que no conoce ni el fabricante. En estos casos, si el descubrimiento lo ha hecho una empresa que se dedica a analizar la seguridad de candados, se lo comunicará a la empresa que los fabrica para darles la oportunidad a corregir el problema y que ésta avise a sus clientes haciéndoles saber que tienen un candado que se puede abrir sin tener la llave. Ahora bien, si el que descubre esta vulnerabilidad es un delincuente, se dedicará a buscar objetos protegidos con ese candado para, usando su descubrimiento, poder acceder al bien que protege, y es mas, puede usar las redes sociales para explicar su técnica para abrir los candados sin llave, o exploit, y que cualquiera que se encuentre ese tipo de candado pueda abrirlo.
           </p>
 
           <p>
-            Esta librería es usada por millones de sistemas y servidores accesibles en internet. Es más, puede que un programador no la use directamente, pero puede ser que esté usando otra librería que sí lo haga, y por tanto también sea vulnerable.
-          </p>
-
-          <h2>¿Qué permite hacer esta vulnerabilidad?</h2>
-
-          <p>
-            Básicamente permite ejecutar código de forma remota: el atacante puede confeccionar una URL donde le "dice" al servidor que ejecute un programa y que le permita ganar acceso al sistema. Los comandos posibles son ilimitados: listar usuarios, cambiar contraseñas, descargar virus y ejecutarlos...
+            Por suerte en el mundo físico no hay una base de datos de candados, su ubicación y su propietario, ¿lo imagináis? Pues bien, en internet si existen esas bases de datos de dispositivos, nutridas por sistemas que recorren internet analizando que objetos hay conectados y con qué “candados” están protegidos. Solo tengo que saber qué buscar y cómo hacerlo para, cómodamente desde casa, tener al alcance todos los sistemas que tengan esa vulnerabilidad y tratar de explotarla y tomar el control.
           </p>
 
           <p>
-            El gran problema es que es sumamente sencillo de explotar. Hay documentación publicada en internet con instrucciones de cómo hacerlo y no requiere de grandes conocimientos, por eso se le ha otorgado un <strong>10 de 10 en criticidad</strong>.
+            En nuestro caso, el nombre que la comunidad ha dado a esta vulnerabilidad es Log4Shell (log for shell) y que afecta a la librería de código abierto Log4j (log for Java).
           </p>
 
-          <h2>¿Cómo protegerse?</h2>
+          <p>
+            Ahora bien, ¿que es eso de Log4j? En el mundo del desarrollo de software, uno de los lenguajes de programación mas extendidos es Java, y como en otros lenguajes, los desarrolladores reutilizan librerías de código que han escrito otros programadores y que hacen públicas y accesibles a todos. Esta reutilización de código para complementar sus programas permite ahorrar una gran cantidad de tiempo en el proceso de desarrollo y además de que crean cierto nivel de estandarización. Una de esas librerías de código abierto es Log4j, que ha sido desarrollada por la Apache Software Foundation, que se usa para escribir los mensajes que pueden generar nuestros programas y registrarlos en ficheros de log, para, por ejemplo, poder saber porque un programa falla, quien ha ejecutado una transacción, etc. Esta librería, es usada por millones de sistemas y servidores que son accesibles en internet (el dron Ingenuity de la NASA no lo hace y era todo un bulo). Es más, puede que un programador no la use directamente, pero puede ser que esté usando otra librería u otra utilidad que si lo haga y por tanto también es vulnerable.
+          </p>
 
           <p>
-            Esta vulnerabilidad afecta a todas las versiones anteriores a la 2.15.0 de Log4j. La versión 2.15.0 fue publicada también con vulnerabilidad, así como la 2.16.0, por lo que la <strong>versión segura a la que hay que actualizar es la 2.17.0</strong>.
+            Ahora que ya tenemos claros los conceptos vamos a ver qué puede conseguir un atacante mediante esta vulnerabilidad y por que se la ha dado el mayor nivel de criticidad posible. Básicamente permite ejecutar código de forma remota, es decir, el atacante puede confeccionar una llamada a una web (eso de https://www.laweb.com/pagina.html?muchosparametros) o URL (Link), donde le “dice” al servidor que ejecute un programa (comando) y que nos permita ganar acceso al sistema. ¿Qué tipo de comandos?, se podrían listar los usuarios del sistema y luego cambiar el password de los mismos para poder tener acceso, puedo descargar un virus desde internet y ejecutarlo…tantas opciones como imaginación o conocimientos tengan los delincuentes, y el gran problema: que es sumamente sencillo de hacer, hay documentación publicada en internet con las instrucciones de como hacerlo y no requiere de grandes conocimientos para hacer uso y abuso de esta vulnerabilidad, por eso se le ha otorgado un 10 de 10 en criticidad.
+          </p>
+
+          <p>
+            Esta vulnerabilidad afecta a todas las versiones anteriores a la 2.15.0 de Log4j, pero esta fue publicada también con vulnerabilidad, así como la 2.16.0, por lo que la versión segura a la que hay que actualizar es la 2.17.0 .
           </p>
 
           <p>
             Esperamos haber aclarado los conceptos y que os hayamos ayudado a entender la magnitud real de este caso.
           </p>
-
         </div>
       </div>
     </section>

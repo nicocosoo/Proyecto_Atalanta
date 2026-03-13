@@ -61,6 +61,10 @@
             Volver a Noticias
           </a>
 
+          <figure class="article-content-image">
+            <img src="imagenes/Captura-de-pantalla-2020-08-04-09-55-11.png" alt="">
+          </figure>
+
           <p>
             ¿Qué es lo que ocurre cuando creamos un componente en Angular? Al crear un nuevo componente o una directiva en Angular se genera una nueva instancia del componente/directiva que es agregada al DOM. Este proceso de creación se desarrolla en varios eventos diferentes que nos ofrecen la oportunidad de introducir nuestro código en cada una de las etapas de creación, actualización y destrucción.
           </p>
@@ -69,7 +73,15 @@
             Cada una de las etapas se denomina <strong>lifecycle hook event</strong> o «evento de enlace de ciclo de vida». Y si hablamos de creación de componentes, no nos podemos olvidar del <strong>constructor</strong>, que se ejecuta antes que cualquier lifecycle hook, por lo que en caso de que necesitemos inyectar alguna dependencia al componente este será el mejor lugar para hacerlo. Una vez ejecutado el constructor, Angular comenzará a ejecutar la secuencia de lifecycle hook events en un orden específico.
           </p>
 
+          <figure class="article-content-image">
+            <img src="imagenes/Captura-de-pantalla-2020-08-04-10-02-57.png" alt="">
+          </figure>
+
           <h2>Lifecycle Methods (Métodos de Ciclo de Vida)</h2>
+
+          <figure class="article-content-image">
+            <img src="imagenes/angular-lifecycle-1.png" alt="Diagrama del ciclo de vida de un componente Angular con todos los hooks en orden de ejecución">
+          </figure>
 
           <p>
             Antes de entrar en el detalle de cada etapa, podemos observar que los eventos se pueden clasificar en función de si están vinculados al propio componente o si están vinculados al contenido externo del componente (hijos o contenido proyectado). También los podemos clasificar en función de si los eventos son únicos o pueden ejecutarse un número indefinido de veces.
@@ -109,6 +121,10 @@
             Es invocado al finalizar el evento <code>ngAfterContentInit</code> y cualquier <code>ngDoCheck</code> en los posteriores ciclos. Esto nos permitirá aplicar una detección de cambios sobre el contenido proyectado en nuestro componente.
           </p>
 
+          <figure class="article-content-image">
+            <img src="imagenes/angular-lifecycle-2.png" alt="Consola del navegador mostrando el orden de ejecución de los lifecycle hooks ngOnInit, ngDoCheck y ngOnDestroy">
+          </figure>
+
           <h2>ngAfterViewInit</h2>
 
           <p>
@@ -120,6 +136,10 @@
           <p>
             Es ejecutado después de <code>ngAfterViewInit</code> y cualquier <code>ngAfterContentChecked</code> en los posteriores ciclos. Esto nos permitirá aplicar una detección de cambios sobre la vista del componente y la de los hijos, o la vista que contiene la directiva.
           </p>
+
+          <figure class="article-content-image">
+            <img src="imagenes/Captura-de-pantalla-2020-08-04-10-05-13.png" alt="">
+          </figure>
 
           <h2>ngOnDestroy</h2>
 

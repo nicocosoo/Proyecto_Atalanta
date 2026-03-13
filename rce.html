@@ -92,6 +92,10 @@ $cmd = $_GET['cmd'];
 system($cmd);
 ?&gt;</code></pre>
 
+          <figure class="article-content-image">
+            <img src="imagenes/rce-1.png" alt="Ejemplos de código PHP vulnerable a RCE usando eval() y system()">
+          </figure>
+
           <h2>Cómo explotar esta vulnerabilidad</h2>
 
           <p><strong>Primera manera:</strong> Modificar el parámetro para usar la función <code>system()</code> e incluir el comando que queramos ejecutar:</p>
@@ -101,6 +105,10 @@ system($cmd);
           <p><strong>Segunda manera:</strong> Sustituir el parámetro por <code>cmd</code> y añadir el comando a ejecutar:</p>
 
           <pre><code>http://www.url.com/9g3j.php?cmd=ipconfig</code></pre>
+
+          <figure class="article-content-image">
+            <img src="imagenes/rce-2.png" alt="Navegador mostrando la explotación de RCE mediante parámetros GET en la URL">
+          </figure>
 
           <h2>Cómo protegerse</h2>
 

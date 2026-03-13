@@ -64,6 +64,12 @@
           <p>
             Actualmente navegar por internet tiene sus riesgos, puesto que nuestra información puede ser accedida por cualquiera con conocimientos informáticos. Por ello los usuarios cada día demandan más privacidad y seguridad en internet. Hoy nos vamos a centrar en una herramienta para Kali Linux que nos ofrecerá un alto nivel de anonimato a la hora de navegar.
           </p>
+          <figure class="article-content-image">
+            <img src="imagenes/torify3.png" alt="">
+          </figure>
+          <figure class="article-content-image">
+            <img src="imagenes/torify1-1024x512.png" alt="">
+          </figure>
 
           <h2>¿Qué es Kalitorify?</h2>
 
@@ -81,6 +87,10 @@
 
           <pre><code>sudo apt-get update && sudo apt-get dist-upgrade -y</code></pre>
 
+          <figure class="article-content-image">
+            <img src="imagenes/kalitorify-1.png" alt="Terminal mostrando la actualización del sistema con apt-get en Kali Linux">
+          </figure>
+
           <p>Instalamos el servicio Tor necesario para que la aplicación funcione:</p>
 
           <pre><code>sudo apt-get install -y tor curl</code></pre>
@@ -94,6 +104,14 @@
           <pre><code>cd kalitorify/
 sudo make install</code></pre>
 
+          <figure class="article-content-image">
+            <img src="imagenes/kalitorify-2.png" alt="Terminal mostrando la instalación de Kalitorify con make install">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/torify2.png" alt="">
+          </figure>
+
           <p>Realizamos un reinicio del sistema para aplicar los cambios.</p>
 
           <h2>Uso de Kalitorify</h2>
@@ -102,15 +120,43 @@ sudo make install</code></pre>
 
           <pre><code>./kalitorify.sh -h</code></pre>
 
+          <figure class="article-content-image">
+            <img src="imagenes/kalitorify-3.png" alt="Terminal mostrando el menú de ayuda de Kalitorify con todas las opciones disponibles">
+          </figure>
+
           <p>Para poner en marcha la aplicación y enrutar todo el tráfico por Tor:</p>
 
           <pre><code>./kalitorify.sh -t</code></pre>
+
+          <figure class="article-content-image">
+            <img src="imagenes/kalitorify-4.png" alt="Terminal mostrando Kalitorify activo enrutando el tráfico a través de la red Tor">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/torify4.png" alt="">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/torify5.png" alt="">
+          </figure>
 
           <p>Todo el tráfico de nuestra red estará enrutándose a través de la red Tor, asignándonos una IP pública y una localización totalmente distintas a las nuestras.</p>
 
           <p>Para detener la aplicación:</p>
 
           <pre><code>./kalitorify -c</code></pre>
+
+          <figure class="article-content-image">
+            <img src="imagenes/torify6.png" alt="">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/torify7.png" alt="">
+          </figure>
+
+          <figure class="article-content-image">
+            <img src="imagenes/torify8.png" alt="">
+          </figure>
 
           <h2>Conclusión</h2>
 

@@ -310,7 +310,9 @@
         const checkbox = form.querySelector('input[type="checkbox"]');
 
         if (!nombre.value.trim()) { showError(nombre, 'El nombre es obligatorio.'); valid = false; }
+        else if (/[0-9]/.test(nombre.value)) { showError(nombre, 'El nombre no puede contener números.'); valid = false; }
         if (!apellidos.value.trim()) { showError(apellidos, 'Los apellidos son obligatorios.'); valid = false; }
+        else if (/[0-9]/.test(apellidos.value)) { showError(apellidos, 'Los apellidos no pueden contener números.'); valid = false; }
         if (!email.value.trim()) { showError(email, 'El email es obligatorio.'); valid = false; }
         else if (!isValidEmail(email.value.trim())) { showError(email, 'Introduce un email válido.'); valid = false; }
         if (telefono && telefono.value.trim() && !isValidPhone(telefono.value.trim())) {

@@ -2,6 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Noticias | Atalanta</title>
 
@@ -26,6 +29,13 @@
         <a href="formacion.html">Formación</a>
         <a href="empleo.html">Empleo</a>
         <a href="noticias.html">Noticias</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle">Otros <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown-menu">
+            <a href="servicios.html">Servicios</a>
+            <a href="atencion_cliente.html">Atención al Cliente</a>
+          </div>
+        </div>
         <a href="contacto.html">Contacto</a>
       </nav>
     </div>
@@ -48,7 +58,7 @@
 
         <p class="news-hero-lead reveal-up">
           Explora artículos, guías y novedades sobre ciberseguridad, inteligencia artificial,
-          transformación digital y formación especializada. Mantente al día con las mejores prácticas 
+          transformación digital y formación especializada. Mantente al día con las mejores prácticas
           y consejos para proteger tu negocio y potenciar tu carrera.
         </p>
       </div>
@@ -61,169 +71,397 @@
           <span class="section-kicker-dark">Actualidad</span>
           <h2>Últimos artículos y recursos</h2>
           <p>
-            Te dejamos seis piezas destacadas en un formato más editorial, más limpio y más visual.
+            Toda nuestra biblioteca de artículos sobre ciberseguridad, hacking, desarrollo y transformación digital.
           </p>
         </div>
 
-        <div class="news-grid">
+        <div class="news-grid" id="news-grid">
 
           <!-- NOTICIA 1 -->
-          <article class="news-card reveal-left">
-            <a href="contacto.html" class="news-card-link">
+          <article class="news-card reveal-left" data-page="1">
+            <a href="noticia-declaracion-renta.html" class="news-card-link">
               <div class="news-card-image-wrap">
-                <img src="imagenes/ciberseguridad.png" alt="Noticia 1" class="news-card-image">
+                <img src="imagenes/ciberseguridad.png" alt="Que no te estafen durante la declaración de la Renta" class="news-card-image">
                 <span class="news-card-category">Ciberseguridad</span>
               </div>
-
               <div class="news-card-body">
                 <h3>Que no te estafen durante la declaración de la Renta</h3>
-                <p>
-                  Como cada año por estas fechas, los contribuyentes tienen que rendir cuentas.
-                  Te contamos cómo detectar campañas fraudulentas y protegerte.
-                </p>
-
-                <span class="news-card-cta">
-                  Leer más
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M5 12h14"></path>
-                    <path d="m13 6 6 6-6 6"></path>
-                  </svg>
-                </span>
+                <p>Como cada año por estas fechas, los contribuyentes tienen que rendir cuentas. Te contamos cómo detectar campañas fraudulentas y protegerte.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
               </div>
             </a>
           </article>
 
           <!-- NOTICIA 2 -->
-          <article class="news-card reveal-up">
-            <a href="contacto.html" class="news-card-link">
+          <article class="news-card reveal-up" data-page="1">
+            <a href="noticia-ciberseguridad-pinceladas.html" class="news-card-link">
               <div class="news-card-image-wrap">
-                <img src="imagenes/herramientas.webp" alt="Noticia 2" class="news-card-image">
-                <span class="news-card-category">Herramientas</span>
+                <img src="imagenes/herramientas.webp" alt="Ciberseguridad: pinceladas de realidad" class="news-card-image">
+                <span class="news-card-category">Ciberseguridad</span>
               </div>
-
               <div class="news-card-body">
                 <h3>Ciberseguridad: pinceladas de realidad</h3>
-                <p>
-                  Una visión práctica del panorama actual, con claves para entender mejor los riesgos,
-                  el contexto técnico y las decisiones que importan.
-                </p>
-
-                <span class="news-card-cta">
-                  Leer más
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M5 12h14"></path>
-                    <path d="m13 6 6 6-6 6"></path>
-                  </svg>
-                </span>
+                <p>Una visión práctica del panorama actual, con claves para entender mejor los riesgos, el contexto técnico y las decisiones que importan.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
               </div>
             </a>
           </article>
 
           <!-- NOTICIA 3 -->
-          <article class="news-card reveal-right">
-            <a href="contacto.html" class="news-card-link">
+          <article class="news-card reveal-right" data-page="1">
+            <a href="noticia-terraform.html" class="news-card-link">
               <div class="news-card-image-wrap">
-                <img src="imagenes/Terraform-12.png" alt="Noticia 3" class="news-card-image">
+                <img src="imagenes/Terraform-12.png" alt="Cómo mantener los recursos del estado de Terraform controlados" class="news-card-image">
                 <span class="news-card-category">Desarrollo</span>
               </div>
-
               <div class="news-card-body">
                 <h3>Cómo mantener los recursos del estado de Terraform controlados</h3>
-                <p>
-                  Buenas prácticas para gestionar infraestructura como código con más control,
-                  trazabilidad y menos sorpresas en producción.
-                </p>
-
-                <span class="news-card-cta">
-                  Leer más
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M5 12h14"></path>
-                    <path d="m13 6 6 6-6 6"></path>
-                  </svg>
-                </span>
+                <p>Buenas prácticas para gestionar infraestructura como código con más control, trazabilidad y menos sorpresas en producción.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
               </div>
             </a>
           </article>
 
           <!-- NOTICIA 4 -->
-          <article class="news-card reveal-left">
-            <a href="contacto.html" class="news-card-link">
+          <article class="news-card reveal-left" data-page="1">
+            <a href="noticia-virtualizacion-ot.html" class="news-card-link">
               <div class="news-card-image-wrap">
-                <img src="imagenes/automatizacion.jpg" alt="Noticia 4" class="news-card-image">
-                <span class="news-card-category">Automatización</span>
+                <img src="imagenes/industria.jpg" alt="Virtualización de la infraestructura OT" class="news-card-image">
+                <span class="news-card-category">Digital</span>
               </div>
-
               <div class="news-card-body">
-                <h3>IA aplicada: automatización útil más allá del hype</h3>
-                <p>
-                  Un repaso a casos reales donde la automatización y la IA están ayudando a reducir
-                  tiempos, mejorar decisiones y escalar procesos.
-                </p>
-
-                <span class="news-card-cta">
-                  Leer más
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M5 12h14"></path>
-                    <path d="m13 6 6 6-6 6"></path>
-                  </svg>
-                </span>
+                <h3>Virtualización de la infraestructura OT</h3>
+                <p>Un enfoque práctico para modernizar entornos industriales, reducir la superficie de ataque y mejorar la resiliencia operativa.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
               </div>
             </a>
           </article>
 
           <!-- NOTICIA 5 -->
-          <article class="news-card reveal-up">
-            <a href="contacto.html" class="news-card-link">
+          <article class="news-card reveal-up" data-page="1">
+            <a href="noticia-localstack.html" class="news-card-link">
               <div class="news-card-image-wrap">
-                <img src="imagenes/Cloud-Computing-1.jpg" alt="Noticia 5" class="news-card-image">
-                <span class="news-card-category">Cloud</span>
+                <img src="imagenes/Cloud-Computing-1.jpg" alt="Cómo usar localstack para interactuar con AWS" class="news-card-image">
+                <span class="news-card-category">Digital</span>
               </div>
-
               <div class="news-card-body">
-                <h3>Arquitecturas cloud más seguras desde el diseño</h3>
-                <p>
-                  Te contamos cómo construir entornos cloud robustos, gobernables y pensados para
-                  crecer sin comprometer la seguridad.
-                </p>
-
-                <span class="news-card-cta">
-                  Leer más
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M5 12h14"></path>
-                    <path d="m13 6 6 6-6 6"></path>
-                  </svg>
-                </span>
+                <h3>Cómo usar localstack para interactuar con AWS en tus scripts</h3>
+                <p>Aprende a simular servicios de AWS en local con LocalStack para desarrollar y probar tus aplicaciones cloud sin costes ni dependencias externas.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
               </div>
             </a>
           </article>
 
           <!-- NOTICIA 6 -->
-          <article class="news-card reveal-right">
-            <a href="contacto.html" class="news-card-link">
+          <article class="news-card reveal-right" data-page="1">
+            <a href="noticia-agile-gestion-tiempo.html" class="news-card-link">
               <div class="news-card-image-wrap">
-                <img src="imagenes/industria.jpg" alt="Noticia 6" class="news-card-image">
-                <span class="news-card-category">Industria</span>
+                <img src="imagenes/automatizacion.jpg" alt="Trabajando desde casa no tengo vida" class="news-card-image">
+                <span class="news-card-category">Digital</span>
               </div>
-
               <div class="news-card-body">
-                <h3>Seguridad OT: proteger la industria sin frenar la operación</h3>
-                <p>
-                  Un enfoque práctico para reforzar redes industriales, reducir superficie de ataque
-                  y mejorar resiliencia operativa.
-                </p>
+                <h3>¡Trabajando desde casa no tengo vida!</h3>
+                <p>Reflexión sobre la gestión del tiempo en el teletrabajo y cómo aplicar metodologías ágiles para mejorar la productividad sin perder el equilibrio personal.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
 
-                <span class="news-card-cta">
-                  Leer más
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M5 12h14"></path>
-                    <path d="m13 6 6 6-6 6"></path>
-                  </svg>
-                </span>
+          <!-- NOTICIA 7 -->
+          <article class="news-card reveal-left" data-page="1">
+            <a href="noticia-log4shell.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/ciberseguridad.png" alt="Log4shell para profanos" class="news-card-image">
+                <span class="news-card-category">Ciberseguridad</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Log4shell para profanos</h3>
+                <p>Una explicación accesible de una de las vulnerabilidades más críticas de los últimos años: qué es Log4Shell, cómo funciona y cómo protegerse.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 8 -->
+          <article class="news-card reveal-up" data-page="1">
+            <a href="noticia-cazando-bots.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/herramientas.webp" alt="Cazando bots" class="news-card-image">
+                <span class="news-card-category">Ciberseguridad</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Cazando bots</h3>
+                <p>Técnicas y herramientas para detectar y neutralizar bots maliciosos en redes y aplicaciones web antes de que causen daño.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 9 -->
+          <article class="news-card reveal-right" data-page="1">
+            <a href="noticia-master-ciberseguridad.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/Certificaciones-OffSec-OSCP.jpg" alt="Máster en Ciberseguridad Atalanta-CEU" class="news-card-image">
+                <span class="news-card-category">Formación</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Máster en Ciberseguridad (Atalanta-CEU)</h3>
+                <p>Descubre el programa de máster en ciberseguridad desarrollado junto a la Universidad CEU para formar a los profesionales que la industria necesita.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 10 -->
+          <article class="news-card reveal-left" data-page="2">
+            <a href="noticia-python-library-hijacking.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/herramientas.webp" alt="Python Library Hijacking" class="news-card-image">
+                <span class="news-card-category">Ciberseguridad</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Python Library Hijacking</h3>
+                <p>Cómo los atacantes explotan el sistema de importación de Python para ejecutar código malicioso suplantando librerías legítimas.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 11 -->
+          <article class="news-card reveal-up" data-page="2">
+            <a href="noticia-rce.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/ciberseguridad.png" alt="RCE - Remote Code Execution" class="news-card-image">
+                <span class="news-card-category">Ciberseguridad</span>
+              </div>
+              <div class="news-card-body">
+                <h3>RCE</h3>
+                <p>Introducción a las vulnerabilidades de ejecución remota de código: cómo funcionan, cómo se explotan y cómo se mitigan.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 12 -->
+          <article class="news-card reveal-right" data-page="2">
+            <a href="noticia-named-pipes.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/ciberseguridad.png" alt="Named Pipes" class="news-card-image">
+                <span class="news-card-category">Ciberseguridad</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Named Pipes</h3>
+                <p>Qué son los Named Pipes en Windows, cómo los utilizan los atacantes para comunicaciones encubiertas y movimiento lateral en redes corporativas.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 13 -->
+          <article class="news-card reveal-left" data-page="2">
+            <a href="noticia-lfi.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/ciberseguridad.png" alt="LFI Local File Inclusion" class="news-card-image">
+                <span class="news-card-category">Ciberseguridad</span>
+              </div>
+              <div class="news-card-body">
+                <h3>LFI (Local File Inclusion)</h3>
+                <p>Aprende cómo funciona la vulnerabilidad Local File Inclusion, cómo se explota para leer archivos del servidor y cómo prevenirla en tus aplicaciones.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 14 -->
+          <article class="news-card reveal-up" data-page="2">
+            <a href="noticia-footprinting.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/herramientas.webp" alt="Footprinting" class="news-card-image">
+                <span class="news-card-category">Ciberseguridad</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Footprinting</h3>
+                <p>La primera fase de cualquier auditoría de seguridad: cómo recopilar información pública sobre un objetivo de forma sistemática y efectiva.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 15 -->
+          <article class="news-card reveal-right" data-page="2">
+            <a href="noticia-ingenieria-social.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/ciberseguridad.png" alt="Ingeniería Social" class="news-card-image">
+                <span class="news-card-category">Ciberseguridad</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Ingeniería Social</h3>
+                <p>Cómo los atacantes manipulan a las personas para obtener acceso a sistemas o información sensible, y qué medidas tomar para protegerse.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 16 -->
+          <article class="news-card reveal-left" data-page="2">
+            <a href="noticia-deep-web.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/ciberseguridad.png" alt="Deep Web" class="news-card-image">
+                <span class="news-card-category">Ciberseguridad</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Deep Web</h3>
+                <p>Qué hay realmente en la Deep Web y la Dark Web, cómo funcionan las redes anónimas y qué riesgos suponen para usuarios y organizaciones.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 17 -->
+          <article class="news-card reveal-up" data-page="2">
+            <a href="noticia-iot-motores-busqueda.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/Cloud-Computing-1.jpg" alt="IoT y Motores de búsqueda" class="news-card-image">
+                <span class="news-card-category">Ciberseguridad</span>
+              </div>
+              <div class="news-card-body">
+                <h3>IoT y Motores de búsqueda</h3>
+                <p>Cómo los motores de búsqueda especializados como Shodan permiten descubrir dispositivos IoT expuestos y qué implica esto para la seguridad corporativa.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 18 -->
+          <article class="news-card reveal-right" data-page="2">
+            <a href="noticia-kalitorify.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/herramientas.webp" alt="Kalitorify" class="news-card-image">
+                <span class="news-card-category">Ciberseguridad</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Kalitorify</h3>
+                <p>Cómo usar Kalitorify para redirigir todo el tráfico de Kali Linux a través de la red Tor y aumentar el anonimato en tus auditorías.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 19 -->
+          <article class="news-card reveal-left" data-page="3">
+            <a href="noticia-spiderfoot.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/herramientas.webp" alt="Spiderfoot" class="news-card-image">
+                <span class="news-card-category">Ciberseguridad</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Spiderfoot</h3>
+                <p>Una guía sobre Spiderfoot, la herramienta de OSINT automatizada para recopilar inteligencia sobre dominios, IPs, emails y mucho más.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 20 -->
+          <article class="news-card reveal-up" data-page="3">
+            <a href="noticia-hacking-google-dorks.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/herramientas.webp" alt="Introducción: Hacking con Google Dorks" class="news-card-image">
+                <span class="news-card-category">Footprinting</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Introducción: Hacking con Google Dorks</h3>
+                <p>El uso inteligente de los operadores de búsqueda de Google para encontrar vulnerabilidades, fugas de información y vectores de ataque en auditorías.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 21 -->
+          <article class="news-card reveal-right" data-page="3">
+            <a href="noticia-sqlmap.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/herramientas.webp" alt="SQLMap" class="news-card-image">
+                <span class="news-card-category">Iniciación al Hacking</span>
+              </div>
+              <div class="news-card-body">
+                <h3>SQLMap</h3>
+                <p>Aprende a usar SQLMap para detectar y explotar vulnerabilidades de inyección SQL en bases de datos, y por qué es esencial en cualquier auditoría web.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 22 -->
+          <article class="news-card reveal-left" data-page="3">
+            <a href="noticia-nse-nmap.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/herramientas.webp" alt="NSE, un campo abierto para el pentest" class="news-card-image">
+                <span class="news-card-category">Footprinting</span>
+              </div>
+              <div class="news-card-body">
+                <h3>NSE, un campo abierto para el pentest</h3>
+                <p>Cómo aprovechar los scripts NSE de NMAP para ir mucho más allá del análisis de puertos y adaptarlos a las necesidades de cada auditoría.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 23 -->
+          <article class="news-card reveal-up" data-page="3">
+            <a href="noticia-seguridad-diseno.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/ciber estrategia.jpg" alt="Seguridad en el diseño, análisis de riesgos y cisnes negros" class="news-card-image">
+                <span class="news-card-category">Ingeniería Social</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Seguridad en el diseño, análisis de riesgos y cisnes negros</h3>
+                <p>Por qué la seguridad debe integrarse desde el inicio de cualquier proyecto y cómo el análisis de riesgos ayuda a prepararse ante lo imprevisto.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 24 -->
+          <article class="news-card reveal-right" data-page="3">
+            <a href="noticia-angular-lifecycle.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/digital.jpg" alt="Angular Lifecycle Article" class="news-card-image">
+                <span class="news-card-category">Desarrollo Web</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Angular – Lifecycle Article</h3>
+                <p>Guía completa sobre los lifecycle hooks de Angular: qué ocurre cuando se crea un componente y cómo aprovechar cada evento del ciclo de vida.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <!-- NOTICIA 25 -->
+          <article class="news-card reveal-left" data-page="3">
+            <a href="noticia-hacking-unicode.html" class="news-card-link">
+              <div class="news-card-image-wrap">
+                <img src="imagenes/ciberseguridad.png" alt="Hacking con Unicode" class="news-card-image">
+                <span class="news-card-category">Iniciación al Hacking</span>
+              </div>
+              <div class="news-card-body">
+                <h3>Hacking con Unicode</h3>
+                <p>Cómo usar las particularidades del estándar Unicode para realizar ataques de phishing, inyecciones SQL, bypass de WAF y mucho más en Red Team.</p>
+                <span class="news-card-cta">Leer más <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></span>
               </div>
             </a>
           </article>
 
         </div>
+
+        <!-- PAGINACIÓN -->
+        <nav class="news-pagination" id="news-pagination" aria-label="Paginación de noticias">
+          <button class="news-page-btn active" data-page="1">1</button>
+          <button class="news-page-btn" data-page="2">2</button>
+          <button class="news-page-btn" data-page="3">3</button>
+          <button class="news-page-next" id="news-page-next">Siguiente »</button>
+        </nav>
+
       </div>
     </section>
 
@@ -287,14 +525,14 @@
             <img src="imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
           </a>
           <div class="footer-socials">
-            <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/atalanta-ciberseguridad" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                 <rect x="2" y="9" width="4" height="12"></rect>
                 <circle cx="4" cy="4" r="2"></circle>
               </svg>
             </a>
-            <a href="#" class="footer-social-btn" aria-label="Instagram">
+            <a href="https://www.instagram.com/atalanta.academy/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
               <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -308,11 +546,13 @@
           <h4 class="footer-heading">MENÚ</h4>
           <ul class="footer-nav-list">
             <li><a href="quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
             <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
             <li><a href="digital.html">Digital</a></li>
             <li><a href="formacion.html">Formación</a></li>
             <li><a href="empleo.html">Empleo</a></li>
             <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="atencion_cliente.html">Atención al Cliente</a></li>
             <li><a href="contacto.html">Contacto</a></li>
           </ul>
         </div>
@@ -347,7 +587,7 @@
         <div class="footer-legal-links">
           <a href="#">AVISO LEGAL</a>
           <span>|</span>
-          <a href="#">POLÍTICA DE PRIVACIDAD</a>
+          <a href="politica_privacidad.html">POLÍTICA DE PRIVACIDAD</a>
           <span>|</span>
           <a href="#">POLÍTICA DE COOKIES</a>
         </div>
@@ -358,5 +598,53 @@
   <button id="scroll-top-btn" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
 
   <script src="js/js.js"></script>
+
+  <script>
+    /* Paginación de noticias */
+    (function () {
+      var currentPage = 1;
+      var totalPages = 3;
+
+      function showPage(page) {
+        currentPage = page;
+        var cards = document.querySelectorAll('#news-grid .news-card');
+        cards.forEach(function (card) {
+          card.style.display = parseInt(card.dataset.page) === page ? '' : 'none';
+        });
+
+        document.querySelectorAll('.news-page-btn').forEach(function (btn) {
+          btn.classList.toggle('active', parseInt(btn.dataset.page) === page);
+        });
+
+        var nextBtn = document.getElementById('news-page-next');
+        if (nextBtn) {
+          nextBtn.style.display = page < totalPages ? '' : 'none';
+        }
+
+        document.querySelector('.news-grid-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      document.querySelectorAll('.news-page-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          showPage(parseInt(btn.dataset.page));
+        });
+      });
+
+      var nextBtn = document.getElementById('news-page-next');
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function () {
+          if (currentPage < totalPages) showPage(currentPage + 1);
+        });
+      }
+
+      showPage(1);
+    })();
+  </script>
+
+  <script>
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) window.location.reload();
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQLMap | Atalanta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav page-container">
+      <a href="prueba.html">
+        <img src="imagenes/ATALANTA_5_150ppp.png" class="logo" alt="Atalanta">
+      </a>
+      <nav>
+        <a href="quienes_somos.html">Quiénes somos</a>
+        <a href="ciberseguridad.html">Ciberseguridad</a>
+        <a href="digital.html">Digital</a>
+        <a href="formacion.html">Formación</a>
+        <a href="empleo.html">Empleo</a>
+        <a href="noticias.html">Noticias</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle">Otros <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown-menu">
+            <a href="servicios.html">Servicios</a>
+            <a href="atencion_cliente.html">Atención al Cliente</a>
+          </div>
+        </div>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO ARTICULO -->
+    <section class="news-article-hero" style="background-image: url('imagenes/noticias/electricidad-atalanta-portada.jpg');">
+      <div class="news-article-hero-overlay"></div>
+      <div class="page-container news-article-hero-content">
+        <a href="noticias.html" class="news-article-back">← Volver a Noticias</a>
+        <span class="news-article-category">Iniciación al Hacking</span>
+        <h1>SQLMap</h1>
+        <p class="news-article-author">Por Mouad Tenbihi</p>
+      </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="news-article-body">
+      <div class="page-container news-article-container">
+
+        <p>Los pentester y hackers utilizan hoy en día distintos programas que los ayudan a llevar a cabo sus objetivos. En este caso imaginemos que lo que queremos hacer es acceder a una base de datos de una empresa a través de su página web, ¿esto se puede hacer? Por supuesto que sí; si quieres saber más sobre ello quédate hasta el final del artículo.</p>
+
+        <h2>¿Para qué sirve y por qué se utiliza?</h2>
+        <p>Este programa sirve para detectar vulnerabilidades en los distintos motores de bases de datos como pueden ser MySQL, Oracle o PostgreSQL, entre otros. Es utilizado para poner a prueba la seguridad de una página web, y esto se hace siempre con fines morales, puesto que el uso malicioso de este programa es ilegal.</p>
+        <p>SQLmap está desarrollada en Python y lo podemos utilizar en cualquier distribución de Linux y también en Windows, puesto que soporta Python. Viene preinstalado en algunas distribuciones Linux, pero suele disponerse en casi todos los repositorios Linux.</p>
+
+        <h2>¿Cómo se utiliza?</h2>
+        <p>Este programa es muy sencillo de utilizar. Una vez lo tengamos instalado, lo que debemos hacer es llamarlo en una terminal poniendo:</p>
+        <pre><code>sqlmap -u "dirección a testear" --dbs</code></pre>
+        <p>Esto lo primero que va a hacer es intentar averiguar el gestor de base de datos que la página web utiliza. ¿Pero cómo conseguimos la URL que queremos testear? Esas URLs tienen el siguiente formato al final de la dirección: <code>product.php?id=</code>, donde podremos alterar los valores contenidos en el campo ID. Para ver si puede ser inyectable, añadimos al final de la URL una <code>'</code> o un <code>%27</code>; si nos da error quiere decir que puede ser inyectable.</p>
+
+        <h2>Demostración gráfica</h2>
+
+        <h3>Ejemplo 1</h3>
+        <p>El primer paso es intentar averiguar el tipo de base de datos:</p>
+        <img src="imagenes/noticias/sqlmap1.png" alt="SQLMap - Paso 1: detectar motor de base de datos">
+
+        <p>Como observamos, detecta que el tipo de base de datos es MySQL. Lo segundo que vamos a hacer es intentar ver el nombre de las bases de datos con el comando:</p>
+        <pre><code>sqlmap -u "url" --dbs</code></pre>
+        <img src="imagenes/noticias/sqlmap2.png" alt="SQLMap - Paso 2: nombre de bases de datos">
+
+        <p>A continuación vemos las tablas que hay dentro de la base de datos:</p>
+        <pre><code>sqlmap -u "url" -D nombre_de_la_base --tables</code></pre>
+        <img src="imagenes/noticias/sqlmap3.png" alt="SQLMap - Paso 3: tablas">
+
+        <p>Para ver las columnas de las tablas:</p>
+        <pre><code>sqlmap -u "url" -D nombre_de_la_base -T nombre_de_la_tabla --columns</code></pre>
+        <img src="imagenes/noticias/sqlmap4.png" alt="SQLMap - Paso 4: columnas">
+
+        <p>Por último, para ver qué hay dentro de las columnas, es decir, los datos:</p>
+        <pre><code>sqlmap -u "url" -D nombre_de_la_base -T nombre_de_la_tabla -C nombre_de_la_columna --dump</code></pre>
+        <img src="imagenes/noticias/sqlmap5.png" alt="SQLMap - Paso 5: extraer datos">
+
+        <p>Como veis, en cinco sencillos pasos hemos podido extraer toda la información de la base de datos de una página web.</p>
+
+        <h3>Ejemplo 2</h3>
+        <p>Primero introducimos el comando similar al anterior y observamos los resultados:</p>
+        <img src="imagenes/noticias/sqlmap6.png" alt="SQLMap Ejemplo 2 - Paso 1">
+        <img src="imagenes/noticias/sqlmap7.png" alt="SQLMap Ejemplo 2 - Paso 2: tipo de base de datos MySQL">
+        <img src="imagenes/noticias/sqlmap8.png" alt="SQLMap Ejemplo 2 - Paso 3: nombres de bases de datos">
+        <img src="imagenes/noticias/sqlmap9.png" alt="SQLMap Ejemplo 2 - Paso 4: tablas">
+        <img src="imagenes/noticias/sqlmap10.png" alt="SQLMap Ejemplo 2 - Paso 5: columnas y datos">
+
+        <p>Vistos estos dos ejemplos nos podremos preguntar lo sencillo que es esto, pero no es así de fácil. Las empresas pueden evitar este tipo de fallos de seguridad mediante una programación correcta en sus webs al realizar llamadas a la base de datos, o utilizando los WAF.</p>
+
+        <h2>¿Qué es un WAF?</h2>
+        <p>Un Web Application Firewall (WAF) protege de múltiples ataques al servidor de aplicaciones web en el backend. La función del WAF es garantizar la seguridad del servidor web mediante el análisis de paquetes de petición HTTP/HTTPS y modelos de tráfico. El WAF examina cada petición enviada al servidor, antes de que llegue a la aplicación, para asegurarse de que cumple con las reglas del firewall.</p>
+        <p>Las características WAF pueden ser implementadas en software (instalando una aplicación en el sistema operativo) o en hardware (integrando las funcionalidades en una solución de appliance).</p>
+
+        <h2>¿Se puede bypassear un WAF?</h2>
+        <p>Efectivamente, esto se puede hacer mediante el uso de los <strong>tamper</strong>. Un Tamper es un aplicativo open source creado en Python, compatible con SQLmap, para insertar payloads camuflados mediante envíos de peticiones de sintaxis a la base de datos, burlando algunas aplicaciones de protección web como los conocidos WAF.</p>
+        <p>Para cada tipo de motor de base de datos hay distintos tamper, aunque algunos sirven para varios. Dos ejemplos habituales:</p>
+        <ul>
+          <li><strong>space2comment</strong>: sustituye un carácter de espacio por <code>/**/</code>, que el navegador interpreta como espacio.</li>
+          <li><strong>charencode.py</strong>: codifica todos los caracteres por códigos numéricos: <code>44%20%54%20%</code></li>
+        </ul>
+        <img src="imagenes/noticias/sqlmap11.png" alt="SQLMap - Ejemplo de tamper">
+
+        <p>Pero los tamper no siempre pueden evadir los WAF; dependerá de la fortaleza en la configuración que haya desarrollado cada administrador.</p>
+
+        <h2>Conclusión</h2>
+        <p>Con esta aplicación podemos poner a prueba nuestra propia página web o la de un amigo. El objetivo de este artículo es que nos concienciemos de la poca seguridad que tienen muchas páginas web y demostrar que con 5 sencillos pasos podemos extraer toda la información de una empresa.</p>
+
+        <p><em>— Mouad Tenbihi —</em></p>
+
+      </div>
+    </section>
+    <div class="page-container news-article-nav-wrap">
+      <nav class="news-article-nav">
+        <a href="noticia-hacking-google-dorks.html" class="news-nav-prev"><span>Anterior noticia</span><em>Introducción: Hacking con Google Dorks</em></a>
+        <a href="noticias.html" class="news-nav-index">Todas las noticias</a>
+        <a href="noticia-nse-nmap.html" class="news-nav-next"><span>Siguiente noticia</span><em>NSE, un campo abierto para el pentest</em></a>
+      </nav>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-bg" style="background-image: url('imagenes/Fondo-Atalanta-Logo-scaled-e1770985160923.jpg');"></div>
+      <div class="footer-main-overlay"></div>
+      <div class="footer-inner page-container">
+
+        <div class="footer-col-brand">
+          <a href="prueba.html">
+            <img src="imagenes/ATALANTA_5_150ppp.png" alt="Atalanta" class="footer-logo-img">
+          </a>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/atalanta-ciberseguridad" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/atalanta.academy/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col-menu">
+          <h4 class="footer-heading">MENÚ</h4>
+          <ul class="footer-nav-list">
+            <li><a href="quienes_somos.html">Quiénes somos</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
+            <li><a href="digital.html">Digital</a></li>
+            <li><a href="formacion.html">Formación</a></li>
+            <li><a href="empleo.html">Empleo</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="atencion_cliente.html">Atención al Cliente</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col-contact">
+          <h4 class="footer-heading">CONTACTO</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>info@atalantago.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Madrid, España</span>
+          </div>
+          <div class="map-placeholder">
+            <iframe src="https://maps.google.com/maps?q=40.4292413,-3.7049219&z=16&output=embed" frameborder="0" width="100%" height="250" style="border: 0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner page-container">
+        <p>Copyright © 2026. Todos los derechos reservados por Atalanta Evolution</p>
+        <div class="footer-legal-links">
+          <a href="#">AVISO LEGAL</a>
+          <span>|</span>
+          <a href="politica_privacidad.html">POLÍTICA DE PRIVACIDAD</a>
+          <span>|</span>
+          <a href="#">POLÍTICA DE COOKIES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top-btn" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+
+  <script src="js/js.js"></script>
+  <script>
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) window.location.reload();
+    });
+  </script>
+</body>
+</html>

@@ -2,6 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ingeniero/a Ciberseguridad Industrial OT | Atalanta</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +23,13 @@
         <a href="formacion.html">Formación</a>
         <a href="empleo.html">Empleo</a>
         <a href="noticias.html">Noticias</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle">Otros <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-dropdown-menu">
+            <a href="servicios.html">Servicios</a>
+            <a href="atencion_cliente.html">Atención al Cliente</a>
+          </div>
+        </div>
         <a href="contacto.html">Contacto</a>
       </nav>
     </div>
@@ -178,5 +188,10 @@
   <button id="scroll-top-btn" aria-label="Volver arriba"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
 
   <script src="js/js.js"></script>
+  <script>
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) window.location.reload();
+    });
+  </script>
 </body>
 </html>
